@@ -1,6 +1,6 @@
 # Spaces iOS
 
-Implement [Spaces iOS UI][spaces_ui] using React.
+Implement [Spaces iOS UI](spaces_ui) using React.
 
 ## Instructions
 
@@ -10,4 +10,4 @@ Implement [Spaces iOS UI][spaces_ui] using React.
 - Use a mock API, assuming it will be available to replaced at the end
 - Track your work through projects dashboard
 
-[spaces]: https://dribbble.com/shots/2845710-Invision-Projects-Spaces-iOS
+[spaces_ui]: https://dribbble.com/shots/2845710-Invision-Projects-Spaces-iOS
