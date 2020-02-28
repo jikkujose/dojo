@@ -1,6 +1,6 @@
 # Spaces iOS
 
-Implement [Spaces iOS UI](spaces_ui) using React.
+Implement [Spaces iOS UI][spaces_ui] using React.
 
 ## Instructions
 
