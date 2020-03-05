@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import Nav from './components/Nav';
-import Main from './components/Main';
-import Footer from './components/Footer';
+import Nav from './components/Nav/Nav';
+import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
 
 const App = () => (
   <section className="App-container">
