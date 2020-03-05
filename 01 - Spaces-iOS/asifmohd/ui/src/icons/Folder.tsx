@@ -7,7 +7,7 @@ const Folder = props => (
       data-original="#000000"
       className="prefix__active-path"
       data-old_color="#000000"
-      fill="#AEAEAE"
+      fill="#ea4c89"
     />
   </svg>
 );
