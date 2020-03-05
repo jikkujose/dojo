@@ -5,26 +5,9 @@
   h2 {
     color: #ff40b6;
     text-transform: capitalize;
-    font-weight: 300;
+    font-weight: 400;
   }
 }
 
-.App-header .App-header-nav {
-  display: flex;
-  overflow-x: auto;
-  align-items: center;
-  max-width: 48em;
-  margin: 1rem auto;
-  background-color: #fffeff;
-}
-.App-header .App-header-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.App-header .App-header-item {
-  flex: 0 0 auto;
-  padding: 8px 10px;
-  margin-right: 1rem;
-  text-decoration: none;
-  color: #ff40b6;
+.App-header {
 }
