@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=block');
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=block");
 body {
   margin: 0 auto;
-  font-family: 'Source Sans Pro', sans-serif;
+  background: #303030;
+  font-family: "Source Sans Pro", sans-serif;
   font-display: block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

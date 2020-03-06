@@ -2,10 +2,11 @@
   display: grid;
   width: 100%;
   height: 100vh;
+  background: white;
   grid-template-areas:
-    'nav'
-    'main'
-    'foot';
+    "nav"
+    "main"
+    "foot";
   grid-template-rows: 95px minmax(400px, 1fr) 95px;
   grid-template-columns: 1fr;
 
