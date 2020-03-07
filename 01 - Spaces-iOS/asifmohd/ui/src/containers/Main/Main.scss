@@ -1,0 +1,14 @@
+main {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  & .carousel {
+    width: 100%;
+    & .flickity-viewport {
+      padding-bottom: 25px;
+    }
+  }
+}
