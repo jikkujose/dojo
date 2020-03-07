@@ -1,0 +1,60 @@
+.Card-container {
+  padding-right: 28px;
+
+  .Card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    width: 300px;
+
+    & .Card-image {
+      overflow: hidden;
+      position: relative;
+      img {
+        transform: scale(1.2);
+      }
+
+      .badge {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: #666;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    & .Card-info {
+      padding: 30px 30px 50px;
+    }
+
+    & .Card-title {
+      font-weight: bold;
+      color: #575757;
+      margin: 0;
+      line-height: 1;
+      letter-spacing: 0.2px;
+      font-size: 19px;
+      opacity: 0.9;
+    }
+    & .Card-sub {
+      margin-top: 4px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      opacity: 0.4;
+    }
+  }
+}
