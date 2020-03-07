@@ -1,10 +1,10 @@
 import React from 'react';
-import Flickity from 'react-flickity-component';
+import Flickity, { FlickityOptions } from 'react-flickity-component';
 import './Main.scss';
 import '../../styles/flickity.css';
 import Card from '../../components/card/Card';
 
-const flickityOptions = {
+const flickityOptions: FlickityOptions = {
   initialIndex: 0,
   imagesLoaded: true,
   cellAlign: 'center',
