@@ -7,8 +7,9 @@ const Nav = () => {
   return (
     <nav>
       <ul className="Nav-container">
-        {navData.map(n => (
+        {navData.map((n, i) => (
           <li
+            key={i}
             className={`Nav-list ${n.title === 'SPACES' ? 'Nav-active' : ''}`}
           >
             <a
@@ -22,7 +23,7 @@ const Nav = () => {
           </li>
         ))}
         <li className="Nav-list">
-          <img src={search} />
+          <img src={search} alt="search" />
         </li>
       </ul>
     </nav>
