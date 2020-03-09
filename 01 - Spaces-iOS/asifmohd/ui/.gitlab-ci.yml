@@ -1,9 +1,0 @@
-deploy to s3:
- type: deploy
- image: srikoushik/aws-cli-node-docker
- script:
-  - npm install
-  - CI=false npm run build
-  - sh sync.sh
- only:
-  - asifmohd

@@ -1,0 +1,10 @@
+deploy to s3:
+  type: deploy
+  image: srikoushik/aws-cli-node-docker
+  script:
+    - cd 01\ -\ Spaces-iOS/asifmohd/ui/
+    - npm install
+    - CI=false npm run build
+    - sh sync.sh
+  only:
+    - asifmohd
