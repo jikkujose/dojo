@@ -9,6 +9,9 @@ main {
     width: 100%;
     & .flickity-viewport {
       padding-bottom: 25px;
+      & .flickity-slider {
+        transform: translateX(20.72%);
+      }
     }
   }
 }
