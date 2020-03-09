@@ -10,7 +10,7 @@ cache:
 prodInstall:
   stage: install
   only:
-    - ^asif-v[0-9]+(?:.[0-9]+)+(rc$)?$
+    - asifmohd
   script:
     - cd 01\ -\ Spaces-iOS/asifmohd/ui/
     - echo $(node -v)
@@ -23,7 +23,7 @@ deployingDev:
   dependencies:
     - prodInstall
   only:
-    - ^asif-v[0-9]+(?:.[0-9]+)+(rc$)?$
+    - asifmohd
   script:
     - echo $(ls -la)
     - pip3 install awscli
