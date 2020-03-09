@@ -1,33 +1,21 @@
 image: nikolaik/python-nodejs:latest
 
 stages:
-  - install
   - build
   - deploy
 cache:
   paths:
-    - 01\ -\ Spaces-iOS/asifmohd/ui/node_modules/
+    - node_modules/
   key: "$CI_COMMIT_REF_SLUG"
 
-prodInstall:
-  stage: install
+buildingDev:
+  stage: build
   only:
     - asifmohd
   script:
     - cd 01\ -\ Spaces-iOS/asifmohd/ui/
     - echo $(node -v)
     - npm install
-  artifacts:
-    untracked: true
-
-buildingDev:
-  stage: build
-  dependencies:
-    - prodInstall
-  only:
-    - asifmohd
-  script:
-    - cd 01\ -\ Spaces-iOS/asifmohd/ui/
     - npm run build
   artifacts:
     untracked: true
@@ -35,7 +23,6 @@ buildingDev:
 deployingDev:
   stage: deploy
   dependencies:
-    - prodInstall
     - buildingDev
   only:
     - asifmohd
@@ -45,5 +32,4 @@ deployingDev:
     - aws configure set aws_access_key_id "AKIAZGMGLG3TULD6XM52"
     - aws configure set aws_secret_access_key "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"
     - cd 01\ -\ Spaces-iOS/asifmohd/ui/
-    - echo $(ls -la)
     - aws s3 sync ./build/ s3://space-ios-asifmohd
