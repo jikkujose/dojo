@@ -3,9 +3,14 @@ image: nikolaik/python-nodejs:latest
 stages:
   - install
   - deploy
+cache:
+  untracked: true
+  key: "$CI_COMMIT_REF_SLUG"
 
 prodInstall:
   stage: install
+  only:
+    - tags
   script:
     - cd 01\ -\ Spaces-iOS/asifmohd/ui/
     - echo $(node -v)
