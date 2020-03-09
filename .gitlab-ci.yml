@@ -1,10 +1,25 @@
-deploy to s3:
-  type: deploy
-  image: srikoushik/aws-cli-node-docker
+image: nikolaik/python-nodejs:latest
+
+stages:
+  - install
+  - deploy
+
+prodInstall:
+  stage: install
   script:
     - cd 01\ -\ Spaces-iOS/asifmohd/ui/
+    - echo $(node -v)
     - npm install
-    - CI=false npm run build
-    - sh sync.sh
-  only:
-    - asifmohd
+  artifacts:
+    untracked: true
+
+deployingDev:
+  stage: deploy
+  dependencies:
+    - prodInstall
+  script:
+    - pip3 install awscli
+    - aws configure set profile bucket-dev
+    - aws configure set aws_access_key_id "$DEV_AWS_KEY"
+    - aws configure set aws_secret_access_key "$DEV_AWS_SECRET"
+    - aws s3 sync ./build/ s3://space-ios-asifmohd
