@@ -1,27 +1,27 @@
 .App-header-nav {
-    display: flex;
-    overflow-x: auto;
-    align-items: center;
-    max-width: 48em;
-    margin: 1rem auto;
-    background-color: #fffeff;
-  }
-  .App-header-nav::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .App-header-item {
-    flex: 0 0 auto;
-    padding: 8px 10px;
-    margin-right: 1rem;
-    text-decoration: none;
-    color: #ff40b6;
-  }
-  .App-header-item li.active {
-    color: green;
-    background-color: yellow;
-  }
-  .App-header-item li.active a {
-    color: red;
-  }
-  
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+  max-width: 48em;
+  margin: 0;
+  background-color: #fffeff;
+}
+.App-header-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.App-header-item {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  margin-right: 1rem;
+  text-decoration: none;
+  font-size: small;
+  color: #ff40b6;
+}
+.App-header-item li.active {
+  color: green;
+  background-color: yellow;
+}
+.App-header-item li.active a {
+  color: red;
+}

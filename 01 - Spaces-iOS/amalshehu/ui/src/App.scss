@@ -1,13 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500&display=swap');
 .App {
-  text-align: left;
-  font-family: 'Oxanium', cursive;
-  h2 {
-    color: #ff40b6;
-    text-transform: capitalize;
-    font-weight: 400;
+  // text-align: left;
+
+  // h2 {
+  //   color: #ff40b6;
+  //   text-transform: capitalize;
+  //   font-weight: 400;
+  //   font-size: 12px;
+  // }
+}
+.gg-bolt {
+  left: 20px;
+}
+.content {
+  grid-area: content;
+}
+
+.header {
+  grid-area: header;
+}
+
+.footer {
+  grid-area: footer;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+}
+
+.wrapper {
+  background-color: #fff;
+  color: #444;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+}
+
+@media only screen and (min-width: 500px) {
+  .wrapper {
+    grid-template-columns: 20% auto;
+    grid-template-areas:
+      'header '
+      'content'
+      'footer';
   }
 }
 
-.App-header {
+// @media only screen and (min-width: 600px) {
+//   .wrapper {
+//     grid-gap: 20px;
+//     grid-template-columns: 120px auto 120px;
+//     grid-template-areas:
+//       'header  header  header'
+//       'sidebar content sidebar2'
+//       'footer  footer  footer';
+//     max-width: 600px;
+//   }
+// }
+
+.box {
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  font-size: 150%;
+}
+
+.header,
+.footer {
+  background-color: #999;
 }
