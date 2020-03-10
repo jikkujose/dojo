@@ -14,15 +14,25 @@ const Card: React.FC<{
       <div className="Card">
         <div className="Card-image">
           <img data-flickity-lazyload={space?.bg_image} alt="" ref={imgRef} />
-          <div className=" "></div>
+          {/* <div className=""></div> */}
         </div>
-        <div className="Card-info">
-          <h2 className="Card-title">{space.title}</h2>
-          <div className="Card-sub">
-            {space.description.count +
-              ' ' +
-              space.description.type.toUpperCase() +
-              (space.description.count > 1 && 'S')}
+        <div className="Card-info-wrapper">
+          <div className="Card-info">
+            <h2 className="Card-title">{space.title}</h2>
+            <div className="Card-sub">
+              {space.description.count +
+                ' ' +
+                space.description.type.toUpperCase() +
+                (space.description.count > 1 && 'S')}
+            </div>
+            {space.face_thumbs.map(
+              (thumb, i) =>
+                i < 3 && (
+                  <span className={'Card-thumb Card-thumb__' + i}>
+                    <img src={thumb.image} alt={thumb.name} />
+                  </span>
+                )
+            )}
           </div>
         </div>
       </div>
