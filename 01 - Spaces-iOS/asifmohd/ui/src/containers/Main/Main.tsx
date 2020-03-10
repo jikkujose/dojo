@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Flickity, { FlickityOptions } from 'react-flickity-component';
 import './Main.scss';
 import '../../styles/flickity.css';
@@ -10,7 +10,8 @@ const flickityOptions: FlickityOptions = {
   imagesLoaded: true,
   cellAlign: 'center',
   pageDots: false,
-  prevNextButtons: false
+  prevNextButtons: false,
+  lazyLoad: 3
 };
 
 export type ParellaxMap = Number[];
@@ -33,6 +34,12 @@ const scrollHandler = (imgRef: HTMLImageElement) => {
   }
 };
 const Main = () => {
+  useEffect(() => {
+    flktyRef.on('lazyLoad', function(event) {
+      var img = event.target;
+      console.log(event.type, img.src);
+    });
+  }, []);
   return (
     <main>
       <Flickity
