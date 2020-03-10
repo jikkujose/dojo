@@ -13,7 +13,7 @@ const Card: React.FC<{
     <div className="Card-container">
       <div className="Card">
         <div className="Card-image">
-          <img src={space?.bg_image} alt="" ref={imgRef} />
+          <img data-flickity-lazyload={space?.bg_image} alt="" ref={imgRef} />
           <div className=" "></div>
         </div>
         <div className="Card-info">
