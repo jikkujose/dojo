@@ -44,7 +44,7 @@
         "image": "s3 url"
       }
     ],
-    "bg_image": "http://unsplash.it/300/?image=529",
+    "bg_image": "http://unsplash.it/300/?image=101",
     "icon": "s3 url"
   },
   {
@@ -68,7 +68,7 @@
         "image": "s3 url"
       }
     ],
-    "bg_image": "http://unsplash.it/300/?image=101",
+    "bg_image": "http://unsplash.it/300/?image=529",
     "icon": "s3 url"
   }
 ]
