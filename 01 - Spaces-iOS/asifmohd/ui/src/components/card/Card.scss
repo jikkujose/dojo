@@ -47,25 +47,57 @@
       }
     }
 
-    & .Card-info {
-      padding: 30px 30px 50px;
-    }
+    & .Card-info-wrapper {
+      padding: 40px 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-    & .Card-title {
-      font-weight: bold;
-      color: #575757;
-      margin: 0;
-      line-height: 1;
-      letter-spacing: 0.2px;
-      font-size: 19px;
-      opacity: 0.9;
-    }
-    & .Card-sub {
-      margin-top: 4px;
-      font-size: 12px;
-      letter-spacing: 1px;
-      font-weight: 600;
-      opacity: 0.4;
+      & .Card-info {
+        position: relative;
+        width: 100%;
+
+        & .Card-title {
+          font-weight: bold;
+          color: #575757;
+          margin: 0;
+          line-height: 1;
+          letter-spacing: 0.2px;
+          font-size: 19px;
+          opacity: 0.9;
+        }
+        & .Card-sub {
+          margin-top: 4px;
+          font-size: 12px;
+          letter-spacing: 1px;
+          font-weight: 600;
+          opacity: 0.4;
+        }
+
+        & .Card-thumb {
+          position: absolute;
+          padding: 4px;
+          top: 0;
+          justify-content: center;
+          display: flex;
+          border-radius: 50%;
+          background: white;
+          &__0 {
+            right: 0;
+          }
+          &__1 {
+            right: 30px;
+          }
+          &__2 {
+            right: 60px;
+          }
+          & img {
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+          }
+        }
+      }
     }
   }
 }
