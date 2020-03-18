@@ -25,7 +25,7 @@
 					"type": "Project",
 					"count": 14 
 				},
-				"face_thumbs": [
+				"faceThumbs": [
 					{
 						"name": "Jikku",
 						"image": "s3 url"
@@ -39,7 +39,7 @@
 						"image": "s3 url"
 					}
 				],
-				"bg_image": "s3 url",
+				"bgImage": "s3 url",
 				"icon": "s3 url",
 			}
 		]
@@ -54,8 +54,8 @@
 	| id | `uuid of space` |
 	| title | `Name of the space` |
 	| description | `An object with type of the space and the count` |
-	| face_thumbs | `Array of object(s) with name and image url` |
-	| bg_image | `Background image url` |
+	| faceThumbs | `Array of object(s) with name and image url` |
+	| bgImage | `Background image url` |
 	| icon | `icon image url` |
 
 
@@ -89,7 +89,7 @@
 					"type": "Screen",
 					"count": 32 
 				},
-				"bg_image": "s3 url",
+				"bgImage": "s3 url",
 				"icon": "s3 url",
 			}
 		]
@@ -111,5 +111,5 @@
 	| id | `uuid of project` |
 	| title | `Name of the Project` |
 	| description | `An object with type of the project and the count` |
-	| bg_image | `Background image url of project` |
+	| bgImage | `Background image url of project` |
 	| icon | `icon image url of project` |
