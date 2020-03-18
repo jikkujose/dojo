@@ -80,17 +80,17 @@
 	  "id": "uuid of space",
 	  "prototypes": 12,
 	  "boards": 2,
-	  "star": True,
 	  "projects": [
 	    {
 	      "id": "uuid of project",
 	      "title": "Nike+ Training Club",
+	      "bgImage": "s3 url",
+	      "icon": "s3 url",
+	      "star": true,
 	      "description": {
 	        "type": "Screen",
 	        "count": 32
-	      },
-	      "bgImage": "s3 url",
-	      "icon": "s3 url"
+	      }
 	   }
 	 ]
 	}
@@ -101,7 +101,6 @@
 	| id | `uuid of space` |
 	| prototypes | `count of prototypes` |
 	| boards | `count of boards` |
-	| star | `True or False boolean response` |
 
 	The returned object have `projects` attribute which is an array of object(s) where each object is a project under the space and contains following attributes
 
@@ -110,6 +109,7 @@
 	| :--- | :--- |
 	| id | `uuid of project` |
 	| title | `Name of the Project` |
-	| description | `An object with type of the project and the count` |
 	| bgImage | `Background image url of project` |
 	| icon | `icon image url of project` |
+	| star | `true or false boolean response` |
+	| description | `An object with type of the project and the count` |
