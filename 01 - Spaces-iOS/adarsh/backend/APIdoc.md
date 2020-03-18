@@ -13,6 +13,8 @@
 
 	Returns a JSON response in the following format:
 
+	`HTTP status: 200 OK`
+
 	```javascript
 	{
 		"spaces": [
@@ -70,6 +72,8 @@
 	#### Response
 
 	Returns a JSON response in the following format:
+
+	`HTTP status: 200 OK`
 
 	```javascript
 	{
