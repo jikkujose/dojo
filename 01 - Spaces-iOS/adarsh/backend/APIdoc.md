@@ -109,15 +109,3 @@
 	| description | `An object with type of the project and the count` |
 	| bg_image | `Background image url of project` |
 	| icon | `icon image url of project` |
-
-
-## Status Codes
-
-Spaces returns the following status codes in its API:
-
-| Status Code | Description |
-| :--- | :--- |
-| 200 | `OK` |
-| 400 | `BAD REQUEST` |
-| 404 | `NOT FOUND` |
-| 500 | `INTERNAL SERVER ERROR` |
