@@ -16,34 +16,34 @@
 	`HTTP status: 200 OK`
 
 	```javascript
-	{
-		"spaces": [
-			{
-				"id": "uuid of space"
-				"title": "Nike Running",
-				"description": {
-					"type": "Project",
-					"count": 14 
-				},
-				"faceThumbs": [
-					{
-						"name": "Jikku",
-						"image": "s3 url"
-					},
-					{
-						"name": "Jibin",
-						"image": "s3 url"
-					},
-					{
-						"name": "Rakesh",
-						"image": "s3 url"
-					}
-				],
-				"bgImage": "s3 url",
-				"icon": "s3 url",
-			}
-		]
-	}
+    {
+      "spaces": [
+        {
+          "id": "uuid of space"
+          "title": "Nike Running",
+          "description": {
+            "type": "Project",
+            "count": 14
+          },
+          "faceThumbs": [
+            {
+              "name": "Jikku",
+              "image": "s3 url"
+            },
+            {
+              "name": "Jibin",
+              "image": "s3 url"
+            },
+            {
+              "name": "Rakesh",
+              "image": "s3 url"
+            }
+          ],
+          "bgImage": "s3 url",
+          "icon": "s3 url",
+        }
+      ]
+    }
 	```
 
 	The returned object have `spaces` attribute which is an array of object(s) where each object is a space and contains the following attributes
@@ -77,22 +77,22 @@
 
 	```javascript
 	{
-		"id": "uuid of space",
-		"prototypes": 12,
-		"boards": 2,
-		"star": True
-		"projects": [
-			{
-				"id": "uuid of project"
-				"title": "Nike+ Training Club",
-				"description": {
-					"type": "Screen",
-					"count": 32 
-				},
-				"bgImage": "s3 url",
-				"icon": "s3 url",
-			}
-		]
+	  "id": "uuid of space",
+	  "prototypes": 12,
+	  "boards": 2,
+	  "star": True,
+	  "projects": [
+	    {
+	      "id": "uuid of project",
+	      "title": "Nike+ Training Club",
+	      "description": {
+	        "type": "Screen",
+	        "count": 32
+	      },
+	      "bgImage": "s3 url",
+	      "icon": "s3 url"
+	   }
+	 ]
 	}
 	```
 
