@@ -6,9 +6,11 @@ const Card: React.FC<{
   onScroll: Function;
 }> = ({ space, onScroll }) => {
   const imgRef = useRef(null);
+
   useEffect(() => {
     onScroll(imgRef.current);
   }, [onScroll]);
+  
   return (
     <div className="Card-container">
       <div className="Card">

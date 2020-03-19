@@ -14,7 +14,6 @@ const flickityOptions: FlickityOptions = {
   lazyLoad: 3
 };
 
-export type ParellaxMap = Number[];
 const imgRefList: HTMLImageElement[] = [];
 let flickityRef: Flickity;
 
@@ -27,12 +26,14 @@ const flkityParallaxOnScroll = imgRef => {
     });
   });
 };
+
 const scrollHandler = (imgRef: HTMLImageElement) => {
   if (flickityRef && imgRef) {
     imgRefList.push(imgRef);
     if (imgRefList.length === spaces.length) flkityParallaxOnScroll(imgRefList);
   }
 };
+
 const Main = () => {
   useEffect(() => {
     flickityRef.on('lazyLoad', function(event) {
@@ -40,6 +41,7 @@ const Main = () => {
       console.log(event.type, img.src);
     });
   }, []);
+  
   return (
     <main>
       <Flickity
