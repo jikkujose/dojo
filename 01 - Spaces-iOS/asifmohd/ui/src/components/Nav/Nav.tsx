@@ -7,14 +7,9 @@ const Nav = () => (
   <nav>
     <ul className="Nav-container">
       {navData.map((n, i) => (
-        <li
-          key={i}
-          className={`Nav-list ${n.title === "spaces" ? "Nav-active" : ""}`}
-        >
+        <li key={i} className={`Nav-list ${i === 0 ? "Nav-active" : ""}`}>
           <a
-            className={`Nav-item ${
-              n.title === "spaces" ? "Nav-active-text" : ""
-            }`}
+            className={`Nav-item ${i === 0 ? "Nav-active-text" : ""}`}
             href={n.href}
           >
             {n.title}
