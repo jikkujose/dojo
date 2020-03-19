@@ -4,7 +4,7 @@ import "./Footer.scss"
 import Folder from "../../icons/Folder"
 import Inbox from "../../icons/Inbox"
 import User from "../../icons/User"
-const Footer = () => (
+const TabBar = () => (
   <footer>
     <div className="Footer-contianer">
       <Diamonds />
@@ -15,4 +15,4 @@ const Footer = () => (
   </footer>
 )
 
-export default Footer
+export default TabBar
