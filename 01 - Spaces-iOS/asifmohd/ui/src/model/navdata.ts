@@ -1,6 +1,6 @@
 export const navData = [
-  { title: 'SPACES', href: '#' },
-  { title: 'PROTOYPES', href: '#' },
-  { title: 'BOARDS', href: '#' },
-  { title: 'FAVORITES', href: '#' }
+  { title: 'spaces', href: '#' },
+  { title: 'prototypes', href: '#' },
+  { title: 'boards', href: '#' },
+  { title: 'favorites', href: '#' }
 ];

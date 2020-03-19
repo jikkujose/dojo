@@ -22,8 +22,8 @@ const Card: React.FC<{
             <div className="Card-sub">
               {space.description.count +
                 ' ' +
-                space.description.type.toUpperCase() +
-                (space.description.count > 1 && 'S')}
+                space.description.type +
+                (space.description.count > 1 && 's')}
             </div>
             {space.face_thumbs.map(
               (thumb, i) =>

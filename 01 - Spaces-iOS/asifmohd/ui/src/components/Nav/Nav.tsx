@@ -10,11 +10,11 @@ const Nav = () => {
         {navData.map((n, i) => (
           <li
             key={i}
-            className={`Nav-list ${n.title === 'SPACES' ? 'Nav-active' : ''}`}
+            className={`Nav-list ${n.title === 'spaces' ? 'Nav-active' : ''}`}
           >
             <a
               className={`Nav-item ${
-                n.title === 'SPACES' ? 'Nav-active-text' : ''
+                n.title === 'spaces' ? 'Nav-active-text' : ''
               }`}
               href={n.href}
             >
