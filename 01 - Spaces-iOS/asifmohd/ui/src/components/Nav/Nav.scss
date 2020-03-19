@@ -9,12 +9,14 @@
   & .Nav-list {
     padding: 10px;
     position: relative;
+    display: flex;
     & .Nav-item {
       text-decoration: none;
       font-weight: 600;
       font-size: 12px;
       letter-spacing: 1.5px;
       color: #aeaeae;
+      text-transform: uppercase;
 
       &.Nav-active-text {
         color: #ea4c89;
@@ -22,7 +24,7 @@
     }
     &.Nav-active {
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         width: 100%;
         height: 4px;
