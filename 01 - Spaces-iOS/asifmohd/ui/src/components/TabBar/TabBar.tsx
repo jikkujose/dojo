@@ -1,9 +1,9 @@
 import React from "react"
-import Diamonds from "../../icons/Diamonds"
 import "./TabBar.scss"
-import Folder from "../../icons/Folder"
-import Inbox from "../../icons/Inbox"
-import User from "../../icons/User"
+import Diamonds from "icons/Diamonds"
+import Folder from "icons/Folder"
+import Inbox from "icons/Inbox"
+import User from "icons/User"
 
 const TabBar = () => (
   <footer>

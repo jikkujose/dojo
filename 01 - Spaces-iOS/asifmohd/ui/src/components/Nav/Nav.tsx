@@ -1,7 +1,7 @@
 import React from "react"
 import "./Nav.scss"
-import { navData } from "./../../model/navdata"
-import search from "../../search.svg"
+import { navData } from "model/navdata"
+import search from "search.svg"
 
 const Nav = () => (
   <nav>

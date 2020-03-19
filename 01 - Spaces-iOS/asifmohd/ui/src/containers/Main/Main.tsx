@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import Flickity, { FlickityOptions } from 'react-flickity-component';
 import './Main.scss';
-import '../../styles/flickity.css';
-import Card from '../../components/Card/Card';
-import spaces from './../../model/spacesdata.json';
+import 'styles/flickity.css';
+import Card from 'components/Card/Card';
+import spaces from 'model/spacesdata.json';
 
 const flickityOptions: FlickityOptions = {
   initialIndex: 0,
