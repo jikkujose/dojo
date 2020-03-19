@@ -16,26 +16,26 @@ const flickityOptions: FlickityOptions = {
 
 export type ParellaxMap = Number[];
 const imgRefList: HTMLImageElement[] = [];
-let flktyRef: Flickity;
+let flickityRef: Flickity;
 
 const flkityParallaxOnScroll = imgRef => {
-  flktyRef.on('scroll', e => {
-    const slides = flktyRef.slides as Array<any>;
+  flickityRef.on('scroll', e => {
+    const slides = flickityRef.slides as Array<any>;
     slides.forEach((slide, i) => {
-      let offset = (+(slide['target'] + flktyRef['x']) * -1) / 3;
+      let offset = (+(slide['target'] + flickityRef['x']) * -1) / 3;
       imgRef[i].style.transform = 'translateX(' + offset + 'px) scale(1.3) ';
     });
   });
 };
 const scrollHandler = (imgRef: HTMLImageElement) => {
-  if (flktyRef && imgRef) {
+  if (flickityRef && imgRef) {
     imgRefList.push(imgRef);
     if (imgRefList.length === spaces.length) flkityParallaxOnScroll(imgRefList);
   }
 };
 const Main = () => {
   useEffect(() => {
-    flktyRef.on('lazyLoad', function(event) {
+    flickityRef.on('lazyLoad', function(event) {
       var img = event.target;
       console.log(event.type, img.src);
     });
@@ -43,7 +43,7 @@ const Main = () => {
   return (
     <main>
       <Flickity
-        flickityRef={ref => (flktyRef = ref)}
+        flickityRef={ref => (flickityRef = ref)}
         className={'carousel'}
         elementType={'div'}
         options={flickityOptions}
