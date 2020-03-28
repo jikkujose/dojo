@@ -1,0 +1,20 @@
+.App-footer-nav {
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+  max-width: 48em;
+  margin: 0;
+  background-color: #fffeff;
+}
+.App-footer-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.App-footer-item {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  margin-right: 1rem;
+  text-decoration: none;
+  font-size: small;
+  color: #ff40b6;
+}
