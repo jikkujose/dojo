@@ -1,7 +1,7 @@
 import React from "react"
 import "./Nav.scss"
 import { navData } from "model/navdata"
-import search from "search.svg"
+import Search from "icons/Search"
 
 const Nav = () => (
   <nav>
@@ -17,7 +17,7 @@ const Nav = () => (
         </li>
       ))}
       <li className="Nav-list">
-        <img src={search} alt="search" />
+        <Search />
       </li>
     </ul>
   </nav>
