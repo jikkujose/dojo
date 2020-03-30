@@ -1,16 +1,16 @@
-import React, { useEffect, useRef } from 'react';
-import './Card.scss';
+import React, { useEffect, useRef } from "react"
+import "./Card.scss"
 
 const Card: React.FC<{
-  space;
-  onScroll: Function;
+  space
+  onScroll: Function
 }> = ({ space, onScroll }) => {
-  const imgRef = useRef(null);
+  const imgRef = useRef(null)
 
   useEffect(() => {
-    onScroll(imgRef.current);
-  }, [onScroll]);
-  
+    onScroll(imgRef.current)
+  }, [onScroll])
+
   return (
     <div className="Card-container">
       <div className="Card">
@@ -23,14 +23,14 @@ const Card: React.FC<{
             <h2 className="Card-title">{space.title}</h2>
             <div className="Card-sub">
               {space.description.count +
-                ' ' +
+                " " +
                 space.description.type +
-                (space.description.count > 1 && 's')}
+                (space.description.count > 1 && "s")}
             </div>
             {space.face_thumbs.map(
               (thumb, i) =>
                 i < 3 && (
-                  <span className={'Card-thumb Card-thumb__' + i}>
+                  <span className={"Card-thumb Card-thumb__" + i}>
                     <img src={thumb.image} alt={thumb.name} />
                   </span>
                 )
@@ -39,7 +39,7 @@ const Card: React.FC<{
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card
