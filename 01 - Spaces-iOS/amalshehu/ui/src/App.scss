@@ -19,26 +19,28 @@
   flex-direction: column;
   color: #000000;
 }
-.content {
-  grid-area: content;
-}
 
-.header {
-  grid-area: header;
-}
-
-.footer {
-  grid-area: footer;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 50px;
+.Content {
+  display: flex;
+  align-items: center;
   width: 100%;
+  background-color: #ffffff;
+  flex: 1 0 auto;
 }
 
-.wrapper {
-  background-color: #fff;
-  color: #444;
+.Header,
+.Content,
+.Footer {
+  padding: 15px;
+}
+
+.Header {
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.Header,
+.Footer {
+  background-color: rgb(255, 255, 255);
 }
 
 .wrapper {
