@@ -1,20 +1,17 @@
 .App-footer-nav {
   display: flex;
   overflow-x: auto;
-  align-items: center;
-  max-width: 48em;
-  margin: 0;
-  background-color: #fffeff;
+  background-color: #ffffff;
 }
 .App-footer-nav::-webkit-scrollbar {
   display: none;
 }
 
 .App-footer-item {
-  flex: 0 0 auto;
-  padding: 8px 10px;
-  margin-right: 1rem;
-  text-decoration: none;
-  font-size: small;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  margin-left: 20px;
+  width: 100%;
   color: #ff40b6;
+  // margin-bottom: 10px;
 }
