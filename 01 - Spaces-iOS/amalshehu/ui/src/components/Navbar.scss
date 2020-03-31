@@ -6,17 +6,22 @@
   margin: 0;
   background-color: #fffeff;
 }
-.App-header-nav::-webkit-scrollbar {
-  display: none;
+.Active {
+  border-bottom: 3px solid;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 .App-header-item {
   flex: 0 0 auto;
   padding: 8px 10px;
   margin-right: 1rem;
+  letter-spacing: 2px;
   text-decoration: none;
-  font-size: small;
-  color: #ff40b6;
+  font-size: medium;
+  color: #ff4090;
 }
 .App-header-item li.active {
   color: green;
