@@ -8,9 +8,16 @@
   //   font-size: 12px;
   // }
 }
-.gg-bolt {
-  left: 20px;
-  margin-top: 5px;
+.Layout {
+  // width: 100%;
+  max-width: 450px;
+  height: 90vh;
+  // border: 2px solid rgba(198, 54, 218, 0.877);
+  // margin: 5vh auto;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  color: #000000;
 }
 .content {
   grid-area: content;
