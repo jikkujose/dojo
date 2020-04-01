@@ -9,9 +9,7 @@
 .Active {
   border-bottom: 3px solid;
 }
-.InActive {
-  border-bottom: 3px solid rebeccapurple;
-}
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
@@ -19,8 +17,7 @@
 
 .App-header-item {
   // flex: 0 0 auto;
-  padding: 8px 10px;
-  margin-right: 1px;
+  padding: 6px 10px;
   font-weight: normal;
   text-decoration: none;
   font-size: small;
@@ -35,6 +32,6 @@
 }
 
 .search {
-  color: #ff4090;
+  color: rgb(158, 154, 154) !important;
   margin-top: -2px;
 }

@@ -13,13 +13,13 @@ function Navbar() {
           SPACES
         </a>
 
-        <a href="/" className="App-header-item">
+        <a href="/" className="App-header-item InActive">
           PROTOTYPES
         </a>
-        <a href="/" className="App-header-item">
+        <a href="/" className="App-header-item InActive">
           BOARDS
         </a>
-        <a href="/" className="App-header-item">
+        <a href="/" className="App-header-item InActive">
           FAVORITES
         </a>
       </nav>
