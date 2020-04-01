@@ -18,9 +18,15 @@ const useStyles = makeStyles({
 
 function Footer() {
   const classes = useStyles();
-  const [value] = React.useState(0);
+  const [value, setValue] = React.useState(0);
   return (
-    <BottomNavigation value={value} className={classes.root}>
+    <BottomNavigation
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue);
+      }}
+      className={classes.root}
+    >
       <BottomNavigationAction
         label="PhotoCamera"
         value="PhotoCamera"
