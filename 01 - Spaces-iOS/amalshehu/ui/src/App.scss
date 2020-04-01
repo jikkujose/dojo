@@ -1,12 +1,10 @@
 .App {
   // }
+  // background-color: #f8f8f85b; // Need change
 }
 .Layout {
-  // width: 100%;
   max-width: 450px;
   height: 90vh;
-  // border: 2px solid rgba(198, 54, 218, 0.877);
-  // margin: 5vh auto;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -14,10 +12,8 @@
 }
 
 .Content {
-  display: flex;
-  align-items: center;
   width: 100%;
-  background-color: #ffffff;
+  margin: 6em 0 1em 0;
   flex: 1 0 auto;
 }
 
@@ -28,7 +24,8 @@
 }
 
 .Header {
-  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+  // padding: 8px 16px;
+  // box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
 .Header,
@@ -36,112 +33,19 @@
   background-color: rgb(255, 255, 255);
 }
 .Products {
-  padding-left: 20px;
-  list-style-type: none;
-  font-size: 20px;
-  margin-bottom: 40px;
+  height: 100%;
+  width: 100%;
 }
 
 .Products li {
   display: flex;
   overflow-x: auto;
   align-items: center;
-  margin-bottom: 100px;
-  // width: 60px;
-  // height: 60px;
-  // background-color: peachpuff;
-  // margin-right: 20px;
-}
-
-// .Container {
-//   position: relative;
-//   width: 100%;
-//   height: 100%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-.Card {
-  position: relative;
-  width: 20em;
-  background-color: #292929;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    box-shadow: 0 10px 20px 10px rgba(black, 0.2);
-  }
-}
-
-.Card_link {
-  display: block;
-  padding: 1em;
-  text-decoration: none;
-}
-
-.Card_icon {
-  position: absolute;
-  width: 4em;
-  height: 4em;
-  transition: all 0.3s ease-in-out;
-
-  .Card:hover & {
-    opacity: 0;
-    transform: scale(0);
-  }
-}
-
-.Card_media {
-  padding: 2em 0;
-
-  svg path {
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-    transform-origin: center center;
-  }
-
-  .Card:hover & {
-    svg path {
-      animation: fadeInScale 0.3s ease-in-out forwards;
-    }
-
-    svg path:nth-child(2) {
-      animation-delay: 0.1s;
-    }
-
-    svg path:nth-child(3) {
-      animation-delay: 0.2s;
-    }
-  }
-}
-
-.Card_header {
-  position: relative;
-}
-
-.Card_header-title {
-  margin: 0 0 0.25em;
-  color: white;
-}
-
-.Card_header-meta {
-  margin: 0;
-  color: #999;
-}
-
-.Card_header-icon {
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  margin-top: -1em;
-  transform: translateX(-20%);
-  width: 2em;
-  height: 2em;
-  transition: all 0.3s ease-in-out;
-
-  .Card:hover & {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  flex: 1;
+  margin: 0 5px;
+  margin-right: 1px;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 100%;
 }
