@@ -1,0 +1,17 @@
+.App-footer-nav {
+  display: flex;
+  overflow-x: auto;
+  background-color: #ffffff;
+}
+.App-footer-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.App-footer-item {
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  margin-left: 20px;
+  width: 100%;
+  color: #ff40b6;
+  // margin-bottom: 10px;
+}
