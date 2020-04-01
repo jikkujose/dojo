@@ -1,23 +1,34 @@
 import React from 'react';
 import './Navbar.scss';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import Search from '@material-ui/icons/Search';
 
 function Navbar() {
   return (
-    <nav className="App-header-nav">
-      <a href="/" className="App-header-item Active">
-        SPACES
-      </a>
+    <div className="App-header-nav">
+      <nav>
+        <a href="/" className="App-header-item Active">
+          SPACES
+        </a>
 
-      <a href="/" className="App-header-item">
-        PROTOTYPES
-      </a>
-      <a href="/" className="App-header-item">
-        BOARDS
-      </a>
-      <a href="/" className="App-header-item">
-        FAVORITES
-      </a>
-    </nav>
+        <a href="/" className="App-header-item">
+          PROTOTYPES
+        </a>
+        <a href="/" className="App-header-item">
+          BOARDS
+        </a>
+        <a href="/" className="App-header-item">
+          FAVORITES
+        </a>
+      </nav>
+      <span>
+        <IconButton size={'small'} edge="end">
+          <Search className="search" />
+        </IconButton>
+      </span>
+    </div>
   );
 }
 
