@@ -3,20 +3,19 @@ import './App.scss';
 import SwipeableViews from 'react-swipeable-views';
 import Navbar from '../src/components/Navbar';
 import Footer from './components/Footer';
+import ProductCard from './components/ProductCard';
 import { ProductDetail } from './components/ProductDetail';
 import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
-import Card, {
-  CardPrimaryContent,
-  CardMedia,
-  CardActions,
-  CardActionButtons,
-  CardActionIcons
-} from '@material/react-card';
 
 const styles = {
   root: {
     padding: '0 20px'
+  },
+
+  slide: {
+    padding: 10,
+    minHeight: 100
   }
 };
 
@@ -31,6 +30,21 @@ function App() {
         <section className="Content">
           <ul className="Products">
             <SwipeableViews style={styles.root}>
+              <div
+                {...getTriggerProps({ id: 'card' })}
+                style={Object.assign({}, styles.slide)}
+              >
+                <ProductCard></ProductCard>
+              </div>
+              <div style={Object.assign({}, styles.slide)}>
+                <ProductCard></ProductCard>
+              </div>
+              <div style={Object.assign({}, styles.slide)}>
+                <ProductCard></ProductCard>
+              </div>
+              <div style={Object.assign({}, styles.slide)}>
+                <ProductCard></ProductCard>
+              </div>
               <li>
                 <span>
                   <button
