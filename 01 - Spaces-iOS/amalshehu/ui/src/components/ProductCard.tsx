@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function ProductCard() {
   const classes = useStyles();
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true });
-
   return (
     <Card variant="elevation" className={classes.root}>
       <CardMedia
