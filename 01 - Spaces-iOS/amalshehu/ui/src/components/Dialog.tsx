@@ -1,18 +1,13 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import { TransitionProps } from '@material-ui/core/transitions';
-import { Container, Fade, Grow, DialogActions } from '@material-ui/core';
+import { Container, Fade, Grow, DialogActions, Box } from '@material-ui/core';
 import ProductCard from './ProductCard';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -21,17 +16,25 @@ import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    appBar: { background: 'transparent', boxShadow: 'none' },
+    appBar: { background: 'transparent', boxShadow: 'none', color: 'black' },
     title: {
       marginLeft: theme.spacing(2),
       flex: 1
     },
-    home: {
-      backgroundImage: `url('https://images.unsplash.com/photo-1579298245158-33e8f568f7d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=767&q=80')`,
-      backgroundSize: '50% 100%'
+    content: {
+      width: '100%',
+      objectFit: 'cover',
+      backdropFilter: ` blur('2px')`,
+
+      backgroundRepeat: 'no-repeat',
+      backgroundImage: `url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80')`,
+      backgroundSize: ' 100%'
     },
     moreIcon: {
       // color: 'white'
+    },
+    actions: {
+      justifyContent: 'space-evenly'
     }
   })
 );
@@ -48,7 +51,7 @@ export default function FullScreenDialog() {
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -70,7 +73,7 @@ export default function FullScreenDialog() {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar position="static" className={classes.appBar}>
+        <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -87,15 +90,22 @@ export default function FullScreenDialog() {
               save
             </Button> */}
 
-            <IconButton size={'small'} edge="end">
+            <IconButton size={'medium'} edge="end">
               <MoreHorizIcon className={classes.moreIcon} />
             </IconButton>
           </Toolbar>
         </AppBar>
-        <DialogContent className={classes.home}>
-          <ProductCard></ProductCard>
-        </DialogContent>
-        <DialogActions></DialogActions>
+        <DialogContent className={classes.content}></DialogContent>
+        <DialogActions disableSpacing className={classes.actions}>
+          <Box
+            mt={2}
+            display={'flex'}
+            justifyContent={'space-around'}
+            alignItems={'center'}
+          >
+            <ProductCard></ProductCard>
+          </Box>
+        </DialogActions>
       </Dialog>
     </div>
   );
