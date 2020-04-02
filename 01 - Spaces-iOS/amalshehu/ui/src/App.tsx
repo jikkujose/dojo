@@ -7,6 +7,7 @@ import ProductCard from './components/ProductCard';
 import { ProductDetail } from './components/ProductDetail';
 import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
+import FullScreenDialog from './components/Dialog';
 
 const styles = {
   root: {
@@ -30,11 +31,8 @@ function App() {
         <section className="Content">
           <ul className="Products">
             <SwipeableViews style={styles.root}>
-              <div
-                {...getTriggerProps({ id: 'card' })}
-                style={Object.assign({}, styles.slide)}
-              >
-                <ProductCard></ProductCard>
+              <div style={Object.assign({}, styles.slide)}>
+                <FullScreenDialog></FullScreenDialog>
               </div>
               <div style={Object.assign({}, styles.slide)}>
                 <ProductCard></ProductCard>
