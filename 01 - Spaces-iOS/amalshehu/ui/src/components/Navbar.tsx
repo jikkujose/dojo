@@ -1,7 +1,5 @@
 import React from 'react';
 import './Navbar.scss';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import Search from '@material-ui/icons/Search';
 
