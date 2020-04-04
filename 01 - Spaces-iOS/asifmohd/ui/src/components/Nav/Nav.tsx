@@ -3,7 +3,7 @@ import "./Nav.scss"
 import { navData } from "model/navdata"
 import Search from "icons/Search"
 
-const Nav = (selected: number = 0) => (
+const Nav = ({ selected = 0 }) => (
   <nav>
     <ul className="Nav-container">
       {navData.map((n, i) => (
