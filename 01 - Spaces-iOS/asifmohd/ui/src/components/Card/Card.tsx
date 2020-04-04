@@ -1,10 +1,13 @@
 import React, { useEffect, useRef } from "react"
+import { motion, useMotionValue } from "framer-motion"
+import { Link } from "react-router-dom"
 import "./Card.scss"
 
 const Card: React.FC<{
   space
+  isSelected: boolean
   onScroll: Function
-}> = ({ space, onScroll }) => {
+}> = ({ space, isSelected, onScroll }) => {
   const imgRef = useRef(null)
 
   useEffect(() => {
@@ -13,7 +16,7 @@ const Card: React.FC<{
 
   return (
     <div className="Card-container">
-      <div className="Card">
+      <div className={`Card ${isSelected && "open"}`}>
         <div className="Card-image">
           <img data-flickity-lazyload={space?.bg_image} alt="" ref={imgRef} />
           {/* <div className=""></div> */}
@@ -38,6 +41,7 @@ const Card: React.FC<{
           </div>
         </div>
       </div>
+      {!isSelected && <Link to={space.id} className={`Card-open-link`} />}
     </div>
   )
 }

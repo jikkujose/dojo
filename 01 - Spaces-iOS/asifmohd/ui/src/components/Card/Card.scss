@@ -7,6 +7,17 @@
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     width: 300px;
+    &.open {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-color: beige;
+      transform: translateX(-20.71%);
+    }
 
     & .Card-image {
       width: 100%;
@@ -101,4 +112,12 @@
       }
     }
   }
+}
+
+.Card-open-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
