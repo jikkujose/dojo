@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.scss';
 import SwipeableViews from 'react-swipeable-views';
-import Navbar from '../src/components/Navbar';
-import Footer from './components/Footer';
-import ProductCard from './components/ProductCard';
-import { ProductDetail } from './components/ProductDetail';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import ProductCard from '../components/ProductCard';
+import { ProductDetail } from '../components/ProductDetail';
 import { useModal, Modal } from 'react-morphing-modal';
 import 'react-morphing-modal/dist/ReactMorphingModal.css';
-import FullScreenDialog from './components/Dialog';
+import FullScreenDialog from '../components/Dialog';
 
 const styles = {
   root: {
