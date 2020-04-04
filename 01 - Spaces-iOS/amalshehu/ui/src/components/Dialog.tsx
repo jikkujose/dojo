@@ -1,25 +1,25 @@
-import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import { TransitionProps } from '@material-ui/core/transitions';
-import { Container, Fade, Grow, DialogActions, Box } from '@material-ui/core';
-import ProductCard from './ProductCard';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import DialogContent from '@material-ui/core/DialogContent';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import React from 'react'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import Dialog from '@material-ui/core/Dialog'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import CloseIcon from '@material-ui/icons/Close'
+import { TransitionProps } from '@material-ui/core/transitions'
+import { Container, Grow, DialogActions, Box } from '@material-ui/core'
+import ProductCard from './ProductCard'
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
+import DialogContent from '@material-ui/core/DialogContent'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { useTheme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: { background: 'transparent', boxShadow: 'none', color: 'black' },
     title: {
       marginLeft: theme.spacing(2),
-      flex: 1
+      flex: 1,
     },
     content: {
       width: '100%',
@@ -28,38 +28,38 @@ const useStyles = makeStyles((theme: Theme) =>
 
       backgroundRepeat: 'no-repeat',
       backgroundImage: `url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80')`,
-      backgroundSize: ' 100%'
+      backgroundSize: ' 100%',
     },
     moreIcon: {
       // color: 'white'
     },
     actions: {
-      justifyContent: 'space-evenly'
-    }
+      justifyContent: 'space-evenly',
+    },
   })
-);
+)
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement },
   ref: React.Ref<unknown>
 ) {
-  return <Grow in={true} ref={ref} {...props} />;
-});
+  return <Grow in={true} ref={ref} {...props} />
+})
 
 export default function FullScreenDialog() {
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const theme = useTheme()
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'))
 
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const classes = useStyles()
+  const [open, setOpen] = React.useState(true)
 
   const handleClickOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <div>
@@ -108,5 +108,5 @@ export default function FullScreenDialog() {
         </DialogActions>
       </Dialog>
     </div>
-  );
+  )
 }
