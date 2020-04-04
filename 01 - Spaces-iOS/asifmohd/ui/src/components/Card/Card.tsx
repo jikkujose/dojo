@@ -30,7 +30,7 @@ const Card: React.FC<{
             {space.face_thumbs.map(
               (thumb, i) =>
                 i < 3 && (
-                  <span className={"Card-thumb Card-thumb__" + i}>
+                  <span className={"Card-thumb Card-thumb__" + i} key={i}>
                     <img src={thumb.image} alt={thumb.name} />
                   </span>
                 )
