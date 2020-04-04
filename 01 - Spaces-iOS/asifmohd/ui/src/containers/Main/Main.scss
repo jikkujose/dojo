@@ -7,10 +7,15 @@ main {
 
   & .carousel {
     width: 100%;
+    height: 100%;
     & .flickity-viewport {
       padding-bottom: 25px;
+      height: 100% !important;
       & .flickity-slider {
         transform: translateX(20.72%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
