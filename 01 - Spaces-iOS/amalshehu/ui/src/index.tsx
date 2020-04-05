@@ -4,7 +4,7 @@ import './index.scss'
 import App from './app/App'
 import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux'
-import store from './redux/store'
+import store from './app/store'
 
 import '@material/react-card/dist/card.css'
 
