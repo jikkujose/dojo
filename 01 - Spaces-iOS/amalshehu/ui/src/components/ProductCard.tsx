@@ -1,12 +1,12 @@
-import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
-import Typography from '@material-ui/core/Typography';
-import FaceGroup from '@mui-treasury/components/group/face';
-import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing';
-import { Box } from '@material-ui/core';
+import React from 'react'
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardActions from '@material-ui/core/CardActions'
+import Typography from '@material-ui/core/Typography'
+import FaceGroup from '@mui-treasury/components/group/face'
+import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing'
+import { Box } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,25 +15,25 @@ const useStyles = makeStyles((theme: Theme) =>
       minWidth: 275,
       padding: '10 10 10 10',
       boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2)`,
-      borderRadius: 10
+      borderRadius: 10,
     },
     media: {
-      height: '300px'
+      height: '300px',
       // paddingTop: '56.25%' // 16:9
     },
     title: {
-      fontSize: 14
+      fontSize: 14,
     },
     pos: {
       fontSize: 12,
-      marginBottom: 12
-    }
+      marginBottom: 12,
+    },
   })
-);
+)
 
 export default function ProductCard() {
-  const classes = useStyles();
-  const gutterStyles = usePushingGutterStyles({ firstExcluded: true });
+  const classes = useStyles()
+  const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
   return (
     <Card variant="elevation" className={classes.root}>
       <CardMedia
@@ -77,7 +77,7 @@ export default function ProductCard() {
               faces={[
                 'https://i.pravatar.cc/300?img=1',
                 'https://i.pravatar.cc/300?img=3',
-                'https://i.pravatar.cc/300?img=4'
+                'https://i.pravatar.cc/300?img=4',
               ]}
               size={48}
             />
@@ -85,5 +85,5 @@ export default function ProductCard() {
         </Box>
       </CardActions>
     </Card>
-  );
+  )
 }
