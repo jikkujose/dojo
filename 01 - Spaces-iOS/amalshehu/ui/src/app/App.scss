@@ -32,20 +32,3 @@
 .Footer {
   background-color: rgb(255, 255, 255);
 }
-.Products {
-  height: 100%;
-  width: 100%;
-}
-
-.Products li {
-  display: flex;
-  overflow-x: auto;
-  align-items: center;
-  flex: 1;
-  margin: 0 5px;
-  margin-right: 1px;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-  width: 100%;
-  height: 100%;
-}
