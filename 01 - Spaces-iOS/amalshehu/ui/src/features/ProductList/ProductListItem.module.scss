@@ -1,0 +1,17 @@
+.ProductList {
+  height: 100%;
+  width: 100%;
+}
+
+.ProductList li {
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+  flex: 1;
+  margin: 0 5px;
+  margin-right: 1px;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 100%;
+}
