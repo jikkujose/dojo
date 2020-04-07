@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+const baseUrl = 'https://virtserver.swaggerhub.com/Storybrain/Spaces-iOS/1.0.0/'
 export interface Description {
   type: string
   count: number
@@ -45,12 +46,11 @@ export interface ProductResult {
 }
 
 export async function getProducts(): Promise<ProductResult> {
-  const url = `https://virtserver.swaggerhub.com/Storybrain/Spaces-iOS/1.0.0/api/spaces/list`
+  const url = `${baseUrl}api/spaces/list`
   try {
-    const productsResponse = await axios.get<Product[]>(url)
-    debugger
+    const res = await axios.get<ProductResult>(url)
     return {
-      spaces: productsResponse.data,
+      spaces: res.data.spaces,
     }
   } catch (err) {
     throw err
@@ -60,7 +60,7 @@ export async function getProducts(): Promise<ProductResult> {
 export async function getProductDetails(
   id: string = 'd290f1ee-6c54-4b01-90e6-d701748f0851'
 ) {
-  const url = `https://virtserver.swaggerhub.com/Storybrain/Spaces-iOS/1.0.0/api/spaces/list/${id}`
+  const url = `${baseUrl}api/spaces/list/${id}`
   const { data } = await axios.get<ProductDetails>(url)
   return data
 }
