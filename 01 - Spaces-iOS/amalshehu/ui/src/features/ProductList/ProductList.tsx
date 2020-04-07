@@ -3,13 +3,13 @@ import React from 'react'
 import { Product } from 'api/productAPI'
 import { ProductListItem } from './ProductListItem'
 
-import styles from './ProductList.module.css'
+import styles from './ProductListItem.module.scss'
 import SwipeableViews from 'react-swipeable-views'
 import FullScreenDialog from 'components/Dialog'
 
 interface Props {
   products: Product[]
-  showProductDetail: (productId: number) => void
+  // showProductDetail: (productId: string) => void
 }
 const swiperStyle = {
   root: {
