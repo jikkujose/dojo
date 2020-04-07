@@ -1,9 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-import productsDisplayReducer from 'features/productsDisplay/productsDisplaySlice'
+import productDisplayReducer from 'features/ProductDisplay/productDisplaySlice'
+import productSliceReducer from 'features/ProductList/productSlice'
 
 const rootReducer = combineReducers({
-  productsDisplay: productsDisplayReducer,
+  productDisplay: productDisplayReducer,
+  products: productSliceReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
