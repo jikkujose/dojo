@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface CurrentDisplay {
   displayType: 'list' | 'details'
-  productId: number | null
+  productId: string | null
 }
 
 interface CurrentDisplayPayload {
   displayType: 'list' | 'details'
-  productId?: number
+  productId?: string | null
 }
 
 type CurrentDisplayState = {} & CurrentDisplay
@@ -17,8 +17,8 @@ let initialState: CurrentDisplayState = {
   productId: null,
 }
 
-const productsDisplaySlice = createSlice({
-  name: 'productsDisplay',
+const productDisplaySlice = createSlice({
+  name: 'productDisplay',
   initialState,
   reducers: {
     setCurrentDisplayType(state, action: PayloadAction<CurrentDisplayPayload>) {
@@ -29,6 +29,6 @@ const productsDisplaySlice = createSlice({
   },
 })
 
-export const { setCurrentDisplayType } = productsDisplaySlice.actions
+export const { setCurrentDisplayType } = productDisplaySlice.actions
 
-export default productsDisplaySlice.reducer
+export default productDisplaySlice.reducer
