@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Product } from 'api/productAPI'
-import { ProductListItem } from './ProductListItem'
+// import { ProductListItem } from './ProductListItem'
 
 import styles from './ProductListItem.module.scss'
 import SwipeableViews from 'react-swipeable-views'
