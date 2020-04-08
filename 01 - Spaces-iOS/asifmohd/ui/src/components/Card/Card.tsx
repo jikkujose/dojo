@@ -14,7 +14,8 @@ const Card: React.FC<{
   isSelected: boolean
   onScroll: Function
   translateX: number
-}> = ({ space, isSelected, onScroll, translateX = 20.71 }) => {
+  selectedIndex: boolean
+}> = ({ space, isSelected, onScroll, translateX = 20.71, selectedIndex }) => {
   const imgRef = useRef(null)
   const scaleX = useMotionValue(1)
   const scaleY = useMotionValue(1)
@@ -83,7 +84,9 @@ const Card: React.FC<{
             </motion.div>
           </motion.div>
         </div>
-        {!isSelected && <Link to={space.id} className={`Card-open-link`} />}
+        {!isSelected && selectedIndex && (
+          <Link to={space.id} className={`Card-open-link`} />
+        )}
       </div>
     </AnimatePresence>
   )

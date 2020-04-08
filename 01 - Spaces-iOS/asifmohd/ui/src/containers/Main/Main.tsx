@@ -40,6 +40,7 @@ const scrollHandler = (imgRef: HTMLImageElement) => {
 
 const Main = ({ match, history }) => {
   const [x, setX] = useState(20.71)
+  const [SelectedIndex, setSelectedIndex] = useState(0)
   useEffect(() => {
     let isDraggable = !match.params.id
     console.log("isDraggable", isDraggable)
@@ -77,6 +78,10 @@ const Main = ({ match, history }) => {
       var img = event.target
       console.log(event.type, img.src)
     })
+    flickityRef.on("select", function (index) {
+      console.log("selected::", index)
+      setSelectedIndex(index)
+    })
   }, [])
 
   return (
@@ -94,6 +99,7 @@ const Main = ({ match, history }) => {
             onScroll={scrollHandler}
             isSelected={match.params.id === space.id}
             translateX={x}
+            selectedIndex={SelectedIndex === i}
           />
         ))}
       </Flickity>
