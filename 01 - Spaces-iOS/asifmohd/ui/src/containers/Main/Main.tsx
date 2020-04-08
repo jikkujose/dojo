@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Flickity, { FlickityOptions } from "react-flickity-component"
 import { BehaviorSubject, interval } from "rxjs"
 import { debounce } from "rxjs/operators"
@@ -41,6 +41,8 @@ const scrollHandler = (imgRef: HTMLImageElement) => {
 const Main = ({ match, history }) => {
   const [x, setX] = useState(20.71)
   const [SelectedIndex, setSelectedIndex] = useState(0)
+
+  // set draggable state
   useEffect(() => {
     let isDraggable = !match.params.id
     console.log("isDraggable", isDraggable)
@@ -74,6 +76,7 @@ const Main = ({ match, history }) => {
     }
   }, [])
 
+  // lazy load images & get current selected slide index
   useEffect(() => {
     flickityRef.on("lazyLoad", function (event) {
       var img = event.target
