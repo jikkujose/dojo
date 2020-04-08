@@ -79,7 +79,6 @@ const Main = ({ match, history }) => {
       console.log(event.type, img.src)
     })
     flickityRef.on("select", function (index) {
-      console.log("selected::", index)
       setSelectedIndex(index)
     })
   }, [])
