@@ -7,7 +7,8 @@ const Card: React.FC<{
   space
   isSelected: boolean
   onScroll: Function
-}> = ({ space, isSelected, onScroll }) => {
+  translateX: number
+}> = ({ space, isSelected, onScroll, translateX = 20.71 }) => {
   const imgRef = useRef(null)
 
   useEffect(() => {
