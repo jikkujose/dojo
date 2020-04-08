@@ -23,16 +23,18 @@ const swiperStyle = {
 }
 
 export const ProductsList = ({ products }: Props) => {
-  const renderedProducts = products.map((product) => (
+  // Will use products once API is ready.
+  const renderedProducts = [1, 2, 3, 4].map((product) => (
     <div style={Object.assign({}, swiperStyle.slide)}>
       <FullScreenDialog></FullScreenDialog>
     </div>
   ))
-
+  debugger
   return (
     <ul className={styles.ProductList}>
-      <SwipeableViews style={swiperStyle.root}> </SwipeableViews>
-      {renderedProducts}
+      <SwipeableViews style={swiperStyle.root}>
+        {renderedProducts}
+      </SwipeableViews>
     </ul>
   )
 }
