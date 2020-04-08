@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import FaceGroup from '@mui-treasury/components/group/face'
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing'
 import { Box } from '@material-ui/core'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,6 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
     media: {
       height: '300px',
       // paddingTop: '56.25%' // 16:9
+    },
+    cardSkeleton: {
+      height: 190,
     },
     title: {
       fontSize: 14,
@@ -36,12 +40,16 @@ export default function ProductCard() {
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
   return (
     <Card variant="elevation" className={classes.root}>
+      {/* <Suspense
+        fallback={<Skeleton variant="rect" className={classes.media} />}
+      > */}
       <CardMedia
         className={classes.media}
         component="img"
         image="https://images.unsplash.com/photo-1581300740963-476e1e84bc77?ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
         title="Nike"
       />
+      {/* </Suspense> */}
 
       <CardActions disableSpacing>
         <Box
