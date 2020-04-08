@@ -1,5 +1,7 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState, useLayoutEffect } from "react"
 import Flickity, { FlickityOptions } from "react-flickity-component"
+import { BehaviorSubject, interval } from "rxjs"
+import { debounce } from "rxjs/operators"
 import "./Main.scss"
 import "styles/flickity.css"
 import Card from "components/Card/Card"
@@ -22,8 +24,6 @@ let flickityRef: Flickity
 const flkityParallaxOnScroll = (imgRef) => {
   flickityRef.on("scroll", (e) => {
     const slides = flickityRef.slides as Array<any>
-    // let sliderRef = flickityRef["slider"]
-    // let translateX = sliderRef.style.transform?.replace(/[^\d.]/g, "")
     slides.forEach((slide, i) => {
       let offset = (+(slide["target"] + flickityRef["x"]) * -1) / 3
       imgRef[i].style.transform = "translateX(" + offset + "px) scale(1.3) "
@@ -49,8 +49,31 @@ const Main = ({ match, history }) => {
     }
   }, [match.params.id])
 
+  useLayoutEffect(() => {
+    if (flickityRef) {
+      const eventHandler = new BehaviorSubject(0)
+      const unSub = eventHandler
+        .pipe(debounce((ev) => interval(50)))
+        .subscribe((v) => {
+          let sliderRef = flickityRef["slider"]
+          let x = sliderRef.style.transform?.replace(/[^\d-.]/g, "")
+          console.log(x)
+          setX(x)
+        })
+      const calcX = (e) => {
+        eventHandler.next(e)
+      }
+
+      flickityRef.on("scroll", calcX)
+      return () => {
+        flickityRef.off("scroll", calcX)
+        unSub.unsubscribe()
+      }
+    }
+  }, [])
+
   useEffect(() => {
-    flickityRef.on("lazyLoad", function(event) {
+    flickityRef.on("lazyLoad", function (event) {
       var img = event.target
       console.log(event.type, img.src)
     })
