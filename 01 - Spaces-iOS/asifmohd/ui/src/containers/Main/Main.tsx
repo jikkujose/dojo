@@ -54,7 +54,7 @@ const Main = ({ match, history }) => {
     if (flickityRef) {
       const eventHandler = new BehaviorSubject(0)
       const unSub = eventHandler
-        .pipe(debounce((ev) => interval(50)))
+        .pipe(debounce((ev) => interval(10)))
         .subscribe((v) => {
           let sliderRef = flickityRef["slider"]
           let x = sliderRef.style.transform?.replace(/[^\d-.]/g, "")
