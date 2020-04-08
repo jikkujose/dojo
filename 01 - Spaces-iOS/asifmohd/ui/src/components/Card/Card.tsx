@@ -29,14 +29,15 @@ const Card: React.FC<{
   return (
     <AnimatePresence>
       <div className="Card-container">
-        <motion.div
+        <div
           className={`Card ${isSelected && "open"}`}
-          style={{ scaleX, scaleY }}
-          animate={isSelected ? { x: `${-1 * translateX}%` } : { x: 0 }}
-          transition={isSelected ? openSpring : closeSpring}
+          style={{
+            transform: isSelected ? `translateX(${-1 * translateX}%)` : "",
+          }}
         >
           <motion.div
             className="Card-content"
+            style={{ scaleX, scaleY }}
             layoutTransition={isSelected ? openSpring : closeSpring}
           >
             <motion.div className="Card-image" style={{ ...invertedImg }}>
@@ -81,7 +82,7 @@ const Card: React.FC<{
               )}
             </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
         {!isSelected && <Link to={space.id} className={`Card-open-link`} />}
       </div>
     </AnimatePresence>
