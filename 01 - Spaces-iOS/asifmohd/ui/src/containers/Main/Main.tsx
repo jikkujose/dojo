@@ -13,14 +13,14 @@ const flickityOptions: FlickityOptions = {
   pageDots: false,
   prevNextButtons: false,
   lazyLoad: 3,
-  draggable: false,
+  draggable: true,
 }
 
 const imgRefList: HTMLImageElement[] = []
 let flickityRef: Flickity
 
-const flkityParallaxOnScroll = imgRef => {
-  flickityRef.on("scroll", e => {
+const flkityParallaxOnScroll = (imgRef) => {
+  flickityRef.on("scroll", (e) => {
     const slides = flickityRef.slides as Array<any>
     // let sliderRef = flickityRef["slider"]
     // let translateX = sliderRef.style.transform?.replace(/[^\d.]/g, "")
@@ -39,6 +39,7 @@ const scrollHandler = (imgRef: HTMLImageElement) => {
 }
 
 const Main = ({ match, history }) => {
+  const [x, setX] = useState(20.71)
   useEffect(() => {
     let isDraggable = !match.params.id
     console.log("isDraggable", isDraggable)
@@ -58,7 +59,7 @@ const Main = ({ match, history }) => {
   return (
     <main>
       <Flickity
-        flickityRef={ref => (flickityRef = ref)}
+        flickityRef={(ref) => (flickityRef = ref)}
         className={"carousel"}
         elementType={"div"}
         options={flickityOptions}
@@ -69,6 +70,7 @@ const Main = ({ match, history }) => {
             key={space.id}
             onScroll={scrollHandler}
             isSelected={match.params.id === space.id}
+            translateX={x}
           />
         ))}
       </Flickity>
