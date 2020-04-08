@@ -50,7 +50,8 @@ const Main = ({ match, history }) => {
     }
   }, [match.params.id])
 
-  useLayoutEffect(() => {
+  // calculate translateX distance
+  useEffect(() => {
     if (flickityRef) {
       const eventHandler = new BehaviorSubject(0)
       const unSub = eventHandler
