@@ -24,11 +24,10 @@ const StateProvider = ({ children }) => {
       <motion.section
         className="App-container"
         style={{
-          gridTemplateRows: state?.slide.isSelected
+          gridTemplateRows: state.slide.isSelected
             ? `0 minmax(400px, 1fr) 0`
             : `95px minmax(400px, 1fr) 95px`,
         }}
-        transition={state.slide.isSelected ? openSpring : closeSpring}
       >
         {children}
       </motion.section>
