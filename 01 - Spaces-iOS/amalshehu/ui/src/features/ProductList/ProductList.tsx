@@ -1,11 +1,10 @@
 import React from 'react'
 
 import { Product } from 'api/productAPI'
-// import { ProductListItem } from './ProductListItem'
+import { ProductListItem } from './ProductListItem'
 
 import styles from './ProductListItem.module.scss'
 import SwipeableViews from 'react-swipeable-views'
-import FullScreenDialog from 'components/Dialog'
 
 interface Props {
   products: Product[]
@@ -26,10 +25,9 @@ export const ProductsList = ({ products }: Props) => {
   // Will use products once API is ready.
   const renderedProducts = [1, 2, 3, 4].map((product) => (
     <div style={Object.assign({}, swiperStyle.slide)}>
-      <FullScreenDialog></FullScreenDialog>
+      <ProductListItem product={products[0]}></ProductListItem>
     </div>
   ))
-  debugger
   return (
     <ul className={styles.ProductList}>
       <SwipeableViews style={swiperStyle.root}>
