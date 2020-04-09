@@ -4,10 +4,30 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from 'app/rootReducer'
 import { fetchProducts } from './productSlice'
 import { ProductsList } from './ProductList'
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  CircularProgress,
+  Grid,
+} from '@material-ui/core'
+// import { Box } from '@material-ui/core'
+// import Skeleton from '@material-ui/lab/Skeleton'
 
 interface PLProps {}
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      '& > * + *': {
+        marginLeft: theme.spacing(2),
+      },
+    },
+  })
+)
+export const ProductsListPage = () => {
+  const classes = useStyles()
 
-export const ProductsListPage = ({}: PLProps) => {
   const dispatch = useDispatch()
 
   const { isLoading, error: productsError, productsById } = useSelector(
@@ -30,7 +50,20 @@ export const ProductsListPage = ({}: PLProps) => {
   }
 
   let renderedList = isLoading ? (
-    <h3>Loading...</h3>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '40vh' }}
+    >
+      <Grid item xs={3}>
+        <div className={classes.root}>
+          <CircularProgress size={24} thickness={3} color="secondary" />
+        </div>
+      </Grid>
+    </Grid>
   ) : (
     <ProductsList products={products} />
   )

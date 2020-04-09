@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -7,6 +7,12 @@ import Typography from '@material-ui/core/Typography'
 import FaceGroup from '@mui-treasury/components/group/face'
 import { usePushingGutterStyles } from '@mui-treasury/styles/gutter/pushing'
 import { Box } from '@material-ui/core'
+import Skeleton from '@material-ui/lab/Skeleton'
+import { Product } from 'api/productAPI'
+
+type Props = {
+  product: Product
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,6 +27,9 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '300px',
       // paddingTop: '56.25%' // 16:9
     },
+    cardSkeleton: {
+      height: 190,
+    },
     title: {
       fontSize: 14,
     },
@@ -31,22 +40,28 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export default function ProductCard() {
+export const ProductCard = ({ product }: any) => {
   const classes = useStyles()
+  console.log('Inside card')
+
   const gutterStyles = usePushingGutterStyles({ firstExcluded: true })
   return (
     <Card variant="elevation" className={classes.root}>
+      {/* <Suspense
+        fallback={<Skeleton variant="rect" className={classes.media} />}
+      > */}
       <CardMedia
         className={classes.media}
         component="img"
-        image="https://images.unsplash.com/photo-1581300740963-476e1e84bc77?ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
-        title="Nike"
+        image={product.bgImage}
+        title={product.title}
       />
+      {/* </Suspense> */}
 
       <CardActions disableSpacing>
         <Box
           mt={2}
-          ml={4}
+          ml={2.5}
           display={'flex'}
           justifyContent={'flex-around'}
           alignItems={'center'}
@@ -55,15 +70,15 @@ export default function ProductCard() {
             <span>
               <Typography
                 component={'span'}
-                variant={'subtitle1'}
+                variant={'caption'}
                 color={'textPrimary'}
               >
-                Relate UI Kit
+                {product.title}
               </Typography>
             </span>
             <span>
               <Typography className={classes.pos} color="textSecondary">
-                14 Projects
+                {product.description.count} Projects
               </Typography>
             </span>
           </div>
@@ -73,6 +88,7 @@ export default function ProductCard() {
             alignItems={'center'}
             className={gutterStyles.parent}
           >
+            {/* faces={product.faceThumbs.map((t) => t.image)} */}
             <FaceGroup
               faces={[
                 'https://i.pravatar.cc/300?img=1',
