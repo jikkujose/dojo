@@ -10,7 +10,7 @@ interface ProductState {
 
 const productInitialState: ProductState = {
   productsById: {},
-  isLoading: false,
+  isLoading: true,
   error: null,
 }
 
