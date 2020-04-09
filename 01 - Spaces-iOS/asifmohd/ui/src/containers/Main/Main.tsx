@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import Flickity, { FlickityOptions } from "react-flickity-component"
 import { BehaviorSubject, interval } from "rxjs"
 import { debounce } from "rxjs/operators"
@@ -7,6 +7,7 @@ import "styles/flickity.css"
 import Card from "components/Card/Card"
 import spaces from "model/spacesdata.json"
 import { BrowserRouter as Router, Route } from "react-router-dom"
+import { store } from "store/store"
 
 const flickityOptions: FlickityOptions = {
   initialIndex: 0,
@@ -27,6 +28,13 @@ const flkityParallaxOnScroll = (imgRef) => {
     slides.forEach((slide, i) => {
       let offset = (+(slide["target"] + flickityRef["x"]) * -1) / 3
       imgRef[i].style.transform = "translateX(" + offset + "px) scale(1.3) "
+      // if (i === 0) console.log(i, imgRef[i].style.transform)
+      // let transArr = imgRef[i].style.transform
+      //   .split(" ")
+      //   .map((v) => v.replace(/[^\d-.]/g, ""))
+      // imgRef[i].style.transform = `translateX(${
+      //   transArr[0] + offset
+      // }px) translateY(${transArr[1]}px) translateZ(${transArr[2]}px)`
     })
   })
 }
@@ -39,18 +47,20 @@ const scrollHandler = (imgRef: HTMLImageElement) => {
 }
 
 const Main = ({ match, history }) => {
+  const { dispatch } = useContext(store)
   const [x, setX] = useState(20.71)
   const [SelectedIndex, setSelectedIndex] = useState(0)
 
   // set draggable state
   useEffect(() => {
+    dispatch({ type: "NAVIGATE", payload: { match } })
     let isDraggable = !match.params.id
     console.log("isDraggable", isDraggable)
     if (flickityRef) {
       flickityRef["options"].draggable = isDraggable
       flickityRef["updateDraggable"]()
     }
-  }, [match.params.id])
+  }, [match.params.id, dispatch, match])
 
   // calculate translateX distance
   useEffect(() => {
