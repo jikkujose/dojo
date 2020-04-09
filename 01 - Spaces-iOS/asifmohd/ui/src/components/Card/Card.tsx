@@ -27,6 +27,22 @@ const Card: React.FC<{
     onScroll(imgRef.current)
   }, [onScroll])
 
+    useEffect(() => {
+      dispatch({
+        type: "SET CARD STATE",
+        payload: { isSelected, selectedIndex },
+      })
+    }, [dispatch, isSelected, selectedIndex])
+
+    const checkZIndex = (latest) => {
+      if (isSelected) {
+        zIndex.set(2)
+      }
+      if (!isSelected && latest.scaleX < 1.01) {
+        zIndex.set(0)
+      }
+    }
+
   return (
     <AnimatePresence>
       <div className="Card-container">
@@ -40,6 +56,7 @@ const Card: React.FC<{
             className="Card-content"
             style={{ scaleX, scaleY }}
             layoutTransition={isSelected ? openSpring : closeSpring}
+              onUpdate={checkZIndex}
           >
             <motion.div className="Card-image" style={{ ...invertedImg }}>
               <motion.img
