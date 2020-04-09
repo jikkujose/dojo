@@ -8,7 +8,6 @@
     "nav"
     "main"
     "foot";
-  grid-template-rows: 95px minmax(400px, 1fr) 95px;
   grid-template-columns: 1fr;
 
   & nav {
