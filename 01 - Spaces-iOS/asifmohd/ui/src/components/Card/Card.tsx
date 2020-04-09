@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useContext, memo } from "react"
 import {
   motion,
   useInvertedScale,
@@ -8,6 +8,8 @@ import {
 import { Link } from "react-router-dom"
 import "./Card.scss"
 import { openSpring, closeSpring } from "utils/animation"
+import { store } from "store/store"
+import { useInvertedBorderRadius } from "utils/use-inverted-scale"
 
 const Card: React.FC<{
   space
@@ -15,17 +17,17 @@ const Card: React.FC<{
   onScroll: Function
   translateX: number
   selectedIndex: boolean
-}> = ({ space, isSelected, onScroll, translateX = 20.71, selectedIndex }) => {
-  const imgRef = useRef(null)
-  const scaleX = useMotionValue(1)
-  const scaleY = useMotionValue(1)
-  // const inverted = useInvertedBorderRadius(0)
-  // let { scaleX, scaleY } = inverted
-  const invertedImg = useInvertedScale({ scaleX, scaleY })
+}> = memo(
+  ({ space, isSelected, onScroll, translateX = 20.71, selectedIndex }) => {
+    const { dispatch } = useContext(store)
+    const imgRef = useRef(null)
+    const zIndex = useMotionValue(isSelected ? 2 : 0)
+    const inverted = useInvertedBorderRadius(isSelected ? 0 : 10)
+    const invertedImg = useInvertedScale()
 
-  useEffect(() => {
-    onScroll(imgRef.current)
-  }, [onScroll])
+    useEffect(() => {
+      onScroll(imgRef.current)
+    }, [onScroll])
 
     useEffect(() => {
       dispatch({
@@ -43,70 +45,83 @@ const Card: React.FC<{
       }
     }
 
-  return (
-    <AnimatePresence>
-      <div className="Card-container">
-        <div
-          className={`Card ${isSelected && "open"}`}
-          style={{
-            transform: isSelected ? `translateX(${-1 * translateX}%)` : "",
-          }}
-        >
-          <motion.div
-            className="Card-content"
-            style={{ scaleX, scaleY }}
-            layoutTransition={isSelected ? openSpring : closeSpring}
-              onUpdate={checkZIndex}
+    return (
+      <AnimatePresence>
+        <div className="Card-container">
+          <div
+            className={`Card ${isSelected && "open"}`}
+            style={{
+              transform: isSelected ? `translateX(${-1 * translateX}%)` : "",
+            }}
           >
-            <motion.div className="Card-image" style={{ ...invertedImg }}>
-              <motion.img
-                data-flickity-lazyload={space?.bg_image}
-                alt=""
-                ref={imgRef}
-                initial={false}
-                animate={isSelected ? { scale: 3.5 } : { scale: 1.3 }}
-                transition={isSelected ? openSpring : closeSpring}
-              />
-              {/* <div className=""></div> */}
-            </motion.div>
             <motion.div
-              className="Card-info-wrapper"
-              animate={!isSelected ? { height: 34 } : { height: 350 }}
-              transition={isSelected ? openSpring : closeSpring}
+              className="Card-content"
+              style={{ ...inverted, zIndex }}
+              layoutTransition={isSelected ? openSpring : closeSpring}
+              onUpdate={checkZIndex}
             >
-              {!isSelected && (
-                <motion.div
-                  className="Card-info"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1, transition: { delay: 0.3 } }}
-                  exit={{ opacity: 0 }}
-                >
-                  <h2 className="Card-title">{space.title}</h2>
-                  <div className="Card-sub">
-                    {space.description.count +
-                      " " +
-                      space.description.type +
-                      (space.description.count > 1 && "s")}
-                  </div>
-                  {space.face_thumbs.map(
-                    (thumb, i) =>
-                      i < 3 && (
-                        <span className={"Card-thumb Card-thumb__" + i} key={i}>
-                          <img src={thumb.image} alt={thumb.name} />
-                        </span>
-                      )
-                  )}
-                </motion.div>
-              )}
+              <motion.div
+                className="Card-image"
+                initial={false}
+                style={{ ...invertedImg, originX: 0, originY: 0 }}
+                animate={!isSelected ? { height: 304 } : { height: 460 }}
+                transition={isSelected ? openSpring : closeSpring}
+              >
+                <motion.img
+                  data-flickity-lazyload={space?.bg_image}
+                  alt=""
+                  ref={imgRef}
+                  initial={false}
+                  animate={isSelected ? { scale: 3.5 } : { scale: 1.3 }}
+                  transition={closeSpring}
+                />
+                {/* <div className=""></div> */}
+              </motion.div>
+              <motion.div
+                className="Card-info-wrapper"
+                // animate={!isSelected ? { height: 34 } : { height: 350 }}
+                transition={isSelected ? openSpring : closeSpring}
+              >
+                {!isSelected && (
+                  <motion.div
+                    className="Card-info"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { delay: 0.5 } }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <h2 className="Card-title">{space.title}</h2>
+                    <div className="Card-sub">
+                      {space.description.count +
+                        " " +
+                        space.description.type +
+                        (space.description.count > 1 && "s")}
+                    </div>
+                    {space.face_thumbs.map(
+                      (thumb, i) =>
+                        i < 3 && (
+                          <span
+                            className={"Card-thumb Card-thumb__" + i}
+                            key={i}
+                          >
+                            <img src={thumb.image} alt={thumb.name} />
+                          </span>
+                        )
+                    )}
+                  </motion.div>
+                )}
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
+          {!isSelected && selectedIndex && (
+            <Link to={space.id} className={`Card-open-link`} />
+          )}
         </div>
-        {!isSelected && selectedIndex && (
-          <Link to={space.id} className={`Card-open-link`} />
-        )}
-      </div>
-    </AnimatePresence>
-  )
-}
+      </AnimatePresence>
+    )
+  },
+  (prev, next) =>
+    prev.isSelected === next.isSelected &&
+    prev.selectedIndex === next.selectedIndex
+)
 
 export default Card
