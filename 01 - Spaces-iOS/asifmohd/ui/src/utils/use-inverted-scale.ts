@@ -24,7 +24,7 @@ export const useInvertedBorderRadius = (radius: number) => {
       unsubScaleX()
       unsubScaleY()
     }
-  }, [radius])
+  }, [radius, borderRadius, inverted.scaleX, inverted.scaleY])
 
   return {
     scaleX,

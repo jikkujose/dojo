@@ -2,7 +2,6 @@ import { InitContextProps } from "./reducer"
 import React, { createContext, useReducer } from "react"
 import { reducer, State } from "store/reducer"
 import { motion } from "framer-motion"
-import { openSpring, closeSpring } from "utils/animation"
 
 const initialState: State = {
   route: {
