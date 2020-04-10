@@ -64,7 +64,7 @@ const Card: React.FC<{
                 className="Card-image"
                 initial={false}
                 style={{ ...invertedImg, originX: 0, originY: 0 }}
-                animate={!isSelected ? { height: 304 } : { height: 460 }}
+                animate={!isSelected ? { height: 304 } : { height: 400 }}
                 transition={isSelected ? openSpring : closeSpring}
               >
                 <motion.img
@@ -72,21 +72,21 @@ const Card: React.FC<{
                   alt=""
                   ref={imgRef}
                   initial={false}
-                  animate={isSelected ? { scale: 3.5 } : { scale: 1.3 }}
+                  // animate={isSelected ? { scale: 3.5 } : { scale: 1.3 }}
                   transition={closeSpring}
                 />
                 {/* <div className=""></div> */}
               </motion.div>
-              <motion.div
+              <div
                 className="Card-info-wrapper"
-                // animate={!isSelected ? { height: 34 } : { height: 350 }}
-                transition={isSelected ? openSpring : closeSpring}
+                // animate={!isSelected ? { height: 34 } : { height: "50%" }}
+                // transition={isSelected ? openSpring : closeSpring}
               >
                 {!isSelected && (
                   <motion.div
                     className="Card-info"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { delay: 0.5 } }}
+                    animate={{ opacity: 1, transition: { delay: 0.6 } }}
                     exit={{ opacity: 0 }}
                   >
                     <h2 className="Card-title">{space.title}</h2>
@@ -109,7 +109,7 @@ const Card: React.FC<{
                     )}
                   </motion.div>
                 )}
-              </motion.div>
+              </div>
             </motion.div>
           </div>
           {!isSelected && selectedIndex && (
@@ -121,7 +121,8 @@ const Card: React.FC<{
   },
   (prev, next) =>
     prev.isSelected === next.isSelected &&
-    prev.selectedIndex === next.selectedIndex
+    prev.selectedIndex === next.selectedIndex &&
+    prev.translateX === next.translateX
 )
 
 export default Card
