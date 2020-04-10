@@ -18,7 +18,7 @@ const Card: React.FC<{
   translateX: number
   selectedIndex: boolean
 }> = memo(
-  ({ space, isSelected, onScroll, translateX = 20.71, selectedIndex }) => {
+  ({ space, isSelected, onScroll, translateX, selectedIndex }) => {
     const { dispatch } = useContext(store)
     const imgRef = useRef(null)
     const zIndex = useMotionValue(isSelected ? 2 : 0)
