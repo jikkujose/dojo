@@ -17,8 +17,18 @@ const Card: React.FC<{
   onScroll: Function
   translateX: number
   selectedIndex: boolean
+  navBarToggle: Function
+  i: number
 }> = memo(
-  ({ space, isSelected, onScroll, translateX, selectedIndex }) => {
+  ({
+    space,
+    isSelected,
+    onScroll,
+    translateX,
+    selectedIndex,
+    i,
+    navBarToggle,
+  }) => {
     const { dispatch } = useContext(store)
     const imgRef = useRef(null)
     const zIndex = useMotionValue(isSelected ? 2 : 0)
@@ -37,11 +47,19 @@ const Card: React.FC<{
     }, [dispatch, isSelected, selectedIndex])
 
     const checkZIndex = (latest) => {
+      const rond = Math.round(latest.scaleX * 100) / 100
       if (isSelected) {
         zIndex.set(2)
-      }
-      if (!isSelected && latest.scaleX < 1.01) {
-        zIndex.set(0)
+        if (selectedIndex && rond >= 0.7 && rond <= 0.72) {
+          navBarToggle(false)
+        }
+      } else {
+        if (!isSelected && latest.scaleX < 1.01) {
+          zIndex.set(0)
+        }
+        if (rond <= 1.5 && rond >= 1.4) {
+          navBarToggle(true)
+        }
       }
     }
 
@@ -72,16 +90,11 @@ const Card: React.FC<{
                   alt=""
                   ref={imgRef}
                   initial={false}
-                  // animate={isSelected ? { scale: 3.5 } : { scale: 1.3 }}
                   transition={closeSpring}
                 />
                 {/* <div className=""></div> */}
               </motion.div>
-              <div
-                className="Card-info-wrapper"
-                // animate={!isSelected ? { height: 34 } : { height: "50%" }}
-                // transition={isSelected ? openSpring : closeSpring}
-              >
+              <div className="Card-info-wrapper">
                 {!isSelected && (
                   <motion.div
                     className="Card-info"

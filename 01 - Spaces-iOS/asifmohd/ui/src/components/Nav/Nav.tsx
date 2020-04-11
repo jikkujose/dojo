@@ -9,12 +9,13 @@ import { navBarVariants } from "utils/variants"
 
 const Nav = ({ selected = 0 }) => {
   const { state } = useContext(store)
+  console.log("nav state:::", state.showNavBar)
 
   return (
     <motion.nav
       initial="false"
-      animate={state.slide.isSelected ? "hidden" : "visible"}
-      transition={state.slide.isSelected ? openSpring : closeSpring}
+      animate={!state.showNavBar ? "hidden" : "visible"}
+      transition={!state.showNavBar ? openSpring : closeSpring}
       variants={navBarVariants}
     >
       <ul className="Nav-container">

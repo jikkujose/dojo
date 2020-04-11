@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react"
 import Flickity, { FlickityOptions } from "react-flickity-component"
-import { BehaviorSubject, interval } from "rxjs"
-import { debounce } from "rxjs/operators"
+import { BehaviorSubject, interval, Subject } from "rxjs"
+import { debounce, first } from "rxjs/operators"
 import "./Main.scss"
 import "styles/flickity.css"
 import Card from "components/Card/Card"
@@ -28,13 +28,6 @@ const flkityParallaxOnScroll = (imgRef) => {
     slides.forEach((slide, i) => {
       let offset = (+(slide["target"] + flickityRef["x"]) * -1) / 3
       imgRef[i].style.transform = "translateX(" + offset + "px) scale(1.3) "
-      // if (i === 0) console.log(i, imgRef[i].style.transform)
-      // let transArr = imgRef[i].style.transform
-      //   .split(" ")
-      //   .map((v) => v.replace(/[^\d-.]/g, ""))
-      // imgRef[i].style.transform = `translateX(${
-      //   transArr[0] + offset
-      // }px) translateY(${transArr[1]}px) translateZ(${transArr[2]}px)`
     })
   })
 }
@@ -50,12 +43,14 @@ const Main = ({ match, history }) => {
   const { dispatch } = useContext(store)
   const [x, setX] = useState(20.71)
   const [SelectedIndex, setSelectedIndex] = useState(0)
+  const navBarToggleObs = new Subject<boolean>()
+
+  const navBarTogglehandler = (state) => navBarToggleObs.next(state)
 
   // set draggable state
   useEffect(() => {
     dispatch({ type: "NAVIGATE", payload: { match } })
     let isDraggable = !match.params.id
-    console.log("isDraggable", isDraggable)
     if (flickityRef) {
       flickityRef["options"].draggable = isDraggable
       flickityRef["updateDraggable"]()
@@ -89,13 +84,19 @@ const Main = ({ match, history }) => {
   // lazy load images & get current selected slide index
   useEffect(() => {
     flickityRef.on("lazyLoad", function (event) {
-      var img = event.target
+      const img = event.target
       console.log(event.type, img.src)
     })
     flickityRef.on("select", function (index) {
       setSelectedIndex(index)
     })
   }, [])
+
+  useEffect(() => {
+    navBarToggleObs.pipe(first()).subscribe((v) => {
+      dispatch({ type: "TOGGLE NAVBAR", payload: v })
+    })
+  }, [navBarToggleObs, dispatch])
 
   return (
     <main>
@@ -113,6 +114,8 @@ const Main = ({ match, history }) => {
             isSelected={match.params.id === space.id}
             translateX={x}
             selectedIndex={SelectedIndex === i}
+            i={i}
+            navBarToggle={navBarTogglehandler}
           />
         ))}
       </Flickity>
