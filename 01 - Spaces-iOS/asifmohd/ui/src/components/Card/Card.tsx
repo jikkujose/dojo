@@ -48,18 +48,17 @@ const Card: React.FC<{
     }, [dispatch, isSelected, selectedIndex])
 
     const checkZIndex = (latest) => {
-      const rond = Math.round(latest.scaleX * 100) / 100
+      const scaleX = Math.round(latest.scaleX * 100) / 100
       if (isSelected) {
         zIndex.set(2)
         navBarToggle(false)
-        // if (selectedIndex && rond >= 0.7 && rond <= 0.8) {
+        // if (selectedIndex && scaleX >= 0.7 && scaleX <= 0.8) {
         // }
       } else {
         if (!isSelected && latest.scaleX < 1.01) {
           zIndex.set(0)
         }
-        if (rond < 1.2 && rond > 1) {
-          // console.log("its supposed to fucking work!!", rond)
+        if (scaleX < 1.2 && scaleX > 1) {
           navBarToggle(true)
         }
       }
@@ -96,7 +95,7 @@ const Card: React.FC<{
                 />
                 {/* <div className=""></div> */}
               </motion.div>
-              {/* {isSelected && <CloseButton close={() => {}} />} */}
+              {isSelected && <CloseButton close={() => {}} />}
               <div className="Card-info-wrapper">
                 {!isSelected && (
                   <motion.div
