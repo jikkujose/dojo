@@ -13,6 +13,7 @@ export interface State {
     isSelected: boolean
     selectedIndex: number
   }
+  showNavBar: boolean
 }
 
 export interface InitContextProps {
@@ -40,6 +41,11 @@ export const reducer: Reducer<State, Actions> = (state, action) => {
           isSelected,
           selectedIndex,
         },
+      }
+    case "TOGGLE NAVBAR":
+      return {
+        ...state,
+        showNavBar: action.payload,
       }
 
     default:
