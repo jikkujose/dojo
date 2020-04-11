@@ -10,6 +10,7 @@ import "./Card.scss"
 import { openSpring, closeSpring } from "utils/animation"
 import { store } from "store/store"
 import { useInvertedBorderRadius } from "utils/use-inverted-scale"
+import { CloseButton } from "icons/CloseButton"
 
 const Card: React.FC<{
   space
@@ -50,14 +51,15 @@ const Card: React.FC<{
       const rond = Math.round(latest.scaleX * 100) / 100
       if (isSelected) {
         zIndex.set(2)
-        if (selectedIndex && rond >= 0.7 && rond <= 0.72) {
-          navBarToggle(false)
-        }
+        navBarToggle(false)
+        // if (selectedIndex && rond >= 0.7 && rond <= 0.8) {
+        // }
       } else {
         if (!isSelected && latest.scaleX < 1.01) {
           zIndex.set(0)
         }
-        if (rond <= 1.5 && rond >= 1.4) {
+        if (rond < 1.2 && rond > 1) {
+          // console.log("its supposed to fucking work!!", rond)
           navBarToggle(true)
         }
       }
@@ -94,6 +96,7 @@ const Card: React.FC<{
                 />
                 {/* <div className=""></div> */}
               </motion.div>
+              {/* {isSelected && <CloseButton close={() => {}} />} */}
               <div className="Card-info-wrapper">
                 {!isSelected && (
                   <motion.div

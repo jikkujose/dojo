@@ -11,13 +11,13 @@ import { tabBarVariants } from "utils/variants"
 
 const TabBar = () => {
   const { state } = useContext(store)
-  const { isSelected } = state.slide
+  const { showNavBar } = state
   return (
     <footer style={{ overflow: "hidden" }}>
       <motion.div
         className="Footer-contianer"
-        animate={!isSelected ? "visible" : "hidden"}
-        transition={isSelected ? openSpring : closeSpring}
+        animate={showNavBar ? "visible" : "hidden"}
+        transition={showNavBar ? openSpring : closeSpring}
         variants={tabBarVariants}
       >
         <Diamonds />
