@@ -19,6 +19,7 @@ const Card: React.FC<{
   translateX: number
   selectedIndex: boolean
   navBarToggle: Function
+  close: Function
   i: number
 }> = memo(
   ({
@@ -29,6 +30,7 @@ const Card: React.FC<{
     selectedIndex,
     i,
     navBarToggle,
+    close,
   }) => {
     const { dispatch } = useContext(store)
     const imgRef = useRef(null)
@@ -95,7 +97,7 @@ const Card: React.FC<{
                 />
                 {/* <div className=""></div> */}
               </motion.div>
-              {isSelected && <CloseButton close={() => {}} />}
+              {isSelected && <CloseButton close={close} />}
               <div className="Card-info-wrapper">
                 {!isSelected && (
                   <motion.div

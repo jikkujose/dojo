@@ -47,6 +47,8 @@ const Main = ({ match, history }) => {
 
   const navBarTogglehandler = (state) => navBarToggleObs.next(state)
 
+  const closeHandler = () => history.push("/")
+
   // set draggable state
   useEffect(() => {
     dispatch({ type: "NAVIGATE", payload: { match } })
@@ -116,6 +118,7 @@ const Main = ({ match, history }) => {
             selectedIndex={SelectedIndex === i}
             i={i}
             navBarToggle={navBarTogglehandler}
+            close={closeHandler}
           />
         ))}
       </Flickity>
