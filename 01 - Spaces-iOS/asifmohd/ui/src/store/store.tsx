@@ -12,6 +12,7 @@ const initialState: State = {
     isSelected: false,
     selectedIndex: 0,
   },
+  showNavBar: true,
 }
 const store = createContext({} as InitContextProps)
 const { Provider } = store
@@ -23,7 +24,7 @@ const StateProvider = ({ children }) => {
       <motion.section
         className="App-container"
         style={{
-          gridTemplateRows: state.slide.isSelected
+          gridTemplateRows: !state.showNavBar
             ? `0 minmax(400px, 1fr) 0`
             : `95px minmax(400px, 1fr) 95px`,
         }}
