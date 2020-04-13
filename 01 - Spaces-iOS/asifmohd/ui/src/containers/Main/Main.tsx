@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react"
-import Flickity, { FlickityOptions } from "react-flickity-component"
+import Flickity from "react-flickity-component"
 import { BehaviorSubject, interval, Subject } from "rxjs"
 import { debounce, first } from "rxjs/operators"
 import "./Main.scss"
@@ -8,16 +8,7 @@ import Card from "components/Card/Card"
 import spaces from "model/spacesdata.json"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import { store } from "store/store"
-
-const flickityOptions: FlickityOptions = {
-  initialIndex: 0,
-  imagesLoaded: true,
-  cellAlign: "center",
-  pageDots: false,
-  prevNextButtons: false,
-  lazyLoad: 3,
-  draggable: true,
-}
+import { flickityOptions } from "utils/flickity-conf"
 
 const imgRefList: HTMLImageElement[] = []
 let flickityRef: Flickity
