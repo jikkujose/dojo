@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react"
 import Flickity from "react-flickity-component"
-import { BehaviorSubject, interval, Subject } from "rxjs"
-import { debounce, first } from "rxjs/operators"
+import { BehaviorSubject, Subject } from "rxjs"
+import { first, debounceTime } from "rxjs/operators"
 import "./Main.scss"
 import "styles/flickity.css"
 import Card from "components/Card/Card"
@@ -54,14 +54,12 @@ const Main = ({ match, history }) => {
   useEffect(() => {
     if (flickityRef) {
       const eventHandler = new BehaviorSubject(0)
-      const unSub = eventHandler
-        .pipe(debounce((ev) => interval(10)))
-        .subscribe((v) => {
-          let sliderRef = flickityRef["slider"]
-          let x = sliderRef.style.transform?.replace(/[^\d-.]/g, "")
-          console.log(x)
-          setX(x)
-        })
+      const unSub = eventHandler.pipe(debounceTime(50)).subscribe((v) => {
+        let sliderRef = flickityRef["slider"]
+        let x = sliderRef.style.transform?.replace(/[^\d-.]/g, "")
+        setX(x)
+        console.log(x)
+      })
       const calcX = (e) => {
         eventHandler.next(e)
       }

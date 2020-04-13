@@ -9,3 +9,7 @@ export const flickityOptions: FlickityOptions = {
   lazyLoad: 3,
   draggable: true,
 }
+
+// dragThreshold: 4,
+// selectedAttraction: 0.15,
+// friction: 0.8,
