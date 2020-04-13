@@ -8,3 +8,8 @@ export const closeSpring = {
   stiffness: 300,
   damping: 35,
 }
+export const closeInertial = {
+  type: "spring",
+  stiffness: 500,
+  damping: 50,
+}
