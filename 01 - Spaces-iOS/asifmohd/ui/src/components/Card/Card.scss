@@ -27,8 +27,8 @@
 
       button.close {
         position: absolute;
-        top: 15px;
-        left: 10px;
+        top: 20px;
+        left: 15px;
         background: transparent;
         border: none;
       }
@@ -46,6 +46,15 @@
         max-width: 100%;
         overflow: hidden;
         border-radius: 0px !important;
+
+        .Card-desc-title {
+          position: absolute;
+          top: 20%;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #c0c0c0;
+          text-align: center;
+        }
       }
     }
 
@@ -99,24 +108,6 @@
       & .Card-info {
         position: relative;
         width: 100%;
-
-        & .Card-title {
-          font-weight: bold;
-          color: #575757;
-          margin: 0;
-          line-height: 1;
-          letter-spacing: 0.2px;
-          font-size: 17px;
-          opacity: 0.9;
-        }
-        & .Card-sub {
-          margin-top: 4px;
-          font-size: 10px;
-          letter-spacing: 1px;
-          font-weight: 600;
-          opacity: 0.4;
-          text-transform: uppercase;
-        }
 
         & .Card-thumb {
           position: absolute;
