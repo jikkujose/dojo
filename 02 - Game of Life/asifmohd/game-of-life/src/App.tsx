@@ -21,6 +21,9 @@ const gridGenerator = (row: number, col: number) =>
 
 const App = () => {
   const [grid, setGrid] = useState(gridGenerator.call(null, ROW, COLUMN))
+  const [isRunning, setisRunning] = useState(false)
+  const isRunningRef = useRef(isRunning)
+  isRunningRef.current = isRunning
 
   const isRunningRef = useRef(false)
   // isRunningRef.current = false
