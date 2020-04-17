@@ -4,6 +4,17 @@ import "./App.css"
 let ROW = 30
 let COLUMN = 30
 
+const neighborhood = [
+  [0, 1],
+  [0, -1],
+  [1, 0],
+  [-1, 0],
+  [1, 1],
+  [-1, -1],
+  [1, -1],
+  [-1, 1],
+]
+
 const gridGenerator = (row: number, col: number) =>
   Array.from(Array(ROW)).map(() => Array.from(Array(COLUMN)).fill(0))
 
