@@ -25,9 +25,6 @@ const App = () => {
   const isRunningRef = useRef(isRunning)
   isRunningRef.current = isRunning
 
-  const isRunningRef = useRef(false)
-  // isRunningRef.current = false
-
   const setGridState = (i: number, j: number) => {
     const newGrid = deepClone(grid)
     newGrid[i][j] = grid[i][j] ? 0 : 1
@@ -47,6 +44,7 @@ const App = () => {
   }
 
   const startSimulation = () => {
+    console.log("isRunningRef.current", isRunningRef.current)
     if (!isRunningRef.current) return
     setGrid((grid) => {
       const newGrid = deepClone(grid)
@@ -80,6 +78,7 @@ const App = () => {
       <button onClick={handleSimulation}>
         {!isRunning ? "START" : "PAUSE"}
       </button>
+      <button onClick={clearSimulation}>CLEAR</button>
       <main className="Main-container">
         <div
           className="Grid-container"
