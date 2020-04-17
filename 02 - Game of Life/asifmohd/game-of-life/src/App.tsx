@@ -21,7 +21,9 @@ const gridGenerator = (row: number, col: number) =>
 
 const App = () => {
   const [grid, setGrid] = useState(gridGenerator.call(null, ROW, COLUMN))
-  const [isRunning, setisRunning] = useState(false)
+
+  const isRunningRef = useRef(false)
+  // isRunningRef.current = false
 
   const setGridState = (i: number, j: number) => {
     const newGrid = deepClone(grid)
@@ -29,7 +31,56 @@ const App = () => {
     setGrid(newGrid)
   }
 
+  const getNeighborsCount = (grid, i, j) => {
+    let neighborCount = 0
+    neighborhood.forEach(([x, y]) => {
+      const currI = i + x
+      const currJ = j + y
+      if (currI >= 0 && currI < ROW && currJ >= 0 && currJ < COLUMN) {
+        neighborCount += grid[currI][currJ]
+      }
+    })
+    return neighborCount
+  }
+
+  const startSimulation = () => {
+    if (!isRunningRef.current) return
+    setGrid((grid) => {
+      const newGrid = deepClone(grid)
+      for (let i = 0; i < ROW; i++) {
+        for (let j = 0; j < COLUMN; j++) {
+          const neighborCount = getNeighborsCount(grid, i, j)
+          if (neighborCount < 2 || neighborCount > 3) newGrid[i][j] = 0
+          else if (grid[i][j] === 0 && neighborCount === 3) newGrid[i][j] = 1
+        }
+      }
+      return newGrid
+    })
+    setTimeout(startSimulation, 100)
+  }
+
   return (
+    <>
+      <button
+        onClick={() => {
+          // setisRunning(!isRunning)
+          isRunningRef.current = !isRunningRef.current
+          debugger
+          startSimulation()
+        }}
+      >
+        {!isRunningRef.current ? "START" : "PAUSE"}
+      </button>
+      <button
+        onClick={() => {
+          // setisRunning(false)
+          isRunningRef.current = false
+          startSimulation()
+          setGrid(gridGenerator(ROW, COLUMN))
+        }}
+      >
+        CLEAR
+      </button>
       <main className="Main-container">
         <div
           className="Grid-container"
@@ -53,6 +104,7 @@ const App = () => {
           )}
         </div>
       </main>
+    </>
   )
 }
 
