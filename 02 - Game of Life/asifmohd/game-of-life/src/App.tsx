@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import "./App.css"
 
 let ROW = 30
@@ -16,6 +16,7 @@ const neighborhood = [
 ]
 
 const deepClone = (data) => JSON.parse(JSON.stringify(data))
+
 const gridGenerator = (row: number, col: number) =>
   Array.from(Array(ROW)).map(() => Array.from(Array(COLUMN)).fill(0))
 
@@ -46,7 +47,6 @@ const App = () => {
   }
 
   const startSimulation = () => {
-    console.log("isRunningRef.current", isRunningRef.current)
     if (!isRunningRef.current) return
     setGrid((grid) => {
       const newGrid = deepClone(grid)
