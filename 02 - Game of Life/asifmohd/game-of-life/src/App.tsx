@@ -15,6 +15,7 @@ const neighborhood = [
   [-1, 1],
 ]
 
+const deepClone = (data) => JSON.parse(JSON.stringify(data))
 const gridGenerator = (row: number, col: number) =>
   Array.from(Array(ROW)).map(() => Array.from(Array(COLUMN)).fill(0))
 
