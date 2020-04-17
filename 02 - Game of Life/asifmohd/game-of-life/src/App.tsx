@@ -9,6 +9,7 @@ const gridGenerator = (row: number, col: number) =>
 
 const App = () => {
   const [grid, setGrid] = useState(gridGenerator.call(null, ROW, COLUMN))
+  const [isRunning, setisRunning] = useState(false)
 
   const setGridState = (i: number, j: number) => {
     const newGrid = JSON.parse(JSON.stringify(grid))
