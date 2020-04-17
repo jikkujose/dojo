@@ -21,6 +21,8 @@ const gridGenerator = (row: number, col: number) =>
 
 const App = () => {
   const [grid, setGrid] = useState(gridGenerator.call(null, ROW, COLUMN))
+  const [tick, setTick] = useState(100)
+  const tickRef = useRef(tick)
   const [isRunning, setisRunning] = useState(false)
   const isRunningRef = useRef(isRunning)
   isRunningRef.current = isRunning
@@ -57,7 +59,7 @@ const App = () => {
       }
       return newGrid
     })
-    setTimeout(startSimulation, 100)
+    setTimeout(startSimulation, tickRef.current)
   }
 
   const handleSimulation = () => {
@@ -73,8 +75,17 @@ const App = () => {
     setGrid(gridGenerator(ROW, COLUMN))
   }
 
+  useEffect(() => {
+    tickRef.current = tick
+  }, [tick])
+
   return (
     <>
+      <input
+        type="number"
+        value={tick}
+        onChange={(e) => setTick(+e.target.value)}
+      />
       <button onClick={handleSimulation}>
         {!isRunning ? "START" : "PAUSE"}
       </button>
