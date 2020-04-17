@@ -62,27 +62,23 @@ const App = () => {
     setTimeout(startSimulation, 100)
   }
 
+  const handleSimulation = () => {
+    setisRunning(!isRunning)
+    if (!isRunning) {
+      isRunningRef.current = true
+      startSimulation()
+    }
+  }
+
+  const clearSimulation = () => {
+    setisRunning(false)
+    setGrid(gridGenerator(ROW, COLUMN))
+  }
+
   return (
     <>
-      <button
-        onClick={() => {
-          // setisRunning(!isRunning)
-          isRunningRef.current = !isRunningRef.current
-          debugger
-          startSimulation()
-        }}
-      >
-        {!isRunningRef.current ? "START" : "PAUSE"}
-      </button>
-      <button
-        onClick={() => {
-          // setisRunning(false)
-          isRunningRef.current = false
-          startSimulation()
-          setGrid(gridGenerator(ROW, COLUMN))
-        }}
-      >
-        CLEAR
+      <button onClick={handleSimulation}>
+        {!isRunning ? "START" : "PAUSE"}
       </button>
       <main className="Main-container">
         <div
