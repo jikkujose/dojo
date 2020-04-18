@@ -34,7 +34,7 @@ def index():
                 np.savetxt(string_buffer, game.display_board(game.board).T, fmt='%s', delimiter='', encoding='utf-8', newline='<br/>')
                 yield '<div id="id">%s</div>' % string_buffer.getvalue()
                 string_buffer.truncate(0)
-                time.sleep(0.5)
+                time.sleep(1)
                 game.board = game.next_generation()
 
     return Response(inner(), mimetype='text/html')
@@ -73,9 +73,9 @@ def toggle():
     game_active = not game_active
     return redirect('/')
 
-game = None
-game_active = True
-board_size = None
-board_seed = None
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=1672)
+    game = None
+    game_active = True
+    board_size = None
+    board_seed = None
+    app.run(host='0.0.0.0', port=5000)
