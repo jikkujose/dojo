@@ -6,6 +6,10 @@ import ast
 from game import Game
 
 app = Flask(__name__)
+game = None
+game_active = True
+board_size = None
+board_seed = None
 
 @app.route('/', methods=['GET'])
 def index():
@@ -74,8 +78,4 @@ def toggle():
     return redirect('/')
 
 if __name__ == '__main__':
-    game = None
-    game_active = True
-    board_size = None
-    board_seed = None
     app.run(host='0.0.0.0', port=5000)
