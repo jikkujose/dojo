@@ -77,5 +77,5 @@ game = None
 game_active = True
 board_size = None
 board_seed = None
-
-app.run(host='0.0.0.0', port=1672)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=1672)
