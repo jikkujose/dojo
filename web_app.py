@@ -6,7 +6,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    pass
+    def inner():
+        clear_output = "<script>" \
+                       "function clear_output(){var board = document.getElementById('id');board.parentNode.removeChild(board);}:"
+
 
 if __name__ == '__main__':
     game = None
