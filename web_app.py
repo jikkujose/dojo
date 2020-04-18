@@ -34,6 +34,7 @@ def index():
                 time.sleep(0.5)
                 game.board = game.next_generation()
 
+    return Response(inner(), mimetype='text/html')
 
 if __name__ == '__main__':
     game = None
