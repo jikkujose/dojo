@@ -73,10 +73,9 @@ def toggle():
     game_active = not game_active
     return redirect('/')
 
-if __name__ == '__main__':
-    game = None
-    game_active = True
-    board_size = None
-    board_seed = None
+game = None
+game_active = True
+board_size = None
+board_seed = None
 
-    app.run(host='0.0.0.0', port=80, debug=True)
+app.run(host='0.0.0.0', port=80, debug=True)
