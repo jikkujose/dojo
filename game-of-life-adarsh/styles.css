@@ -1,0 +1,14 @@
+.gameBox {
+  margin: 7%;
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.tools {
+  padding: 2%;
+}
+
+#red {
+  color: red;
+}

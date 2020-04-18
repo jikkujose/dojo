@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game of Life</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="sketch.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="gameBox">
+      <div class="header"><h1>Game of Life - John Conway</h1></div>
+      <div class="info1">
+        <p>Click the board to Draw the pattern and Click Start</p>
+      </div>
+      <div class="info2">
+        <p>
+          Or Simple click start to see <span id="red">R-Pentomino Pattern</span>
+        </p>
+      </div>
+      <div class="tools">
+        <span id="button"
+          ><button type="button" id="start" onclick="start()">
+            Start
+          </button></span
+        >
+        <span id="button"
+          ><button type="button" id="pause" onclick="pause()">
+            Pause
+          </button></span
+        >
+        <span id="button"
+          ><button type="button" id="reset" onclick="reset()">
+            Reset
+          </button></span
+        >
+      </div>
+      <div id="sketch-holder"></div>
+    </div>
+  </body>
+</html>
