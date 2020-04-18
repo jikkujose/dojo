@@ -95,7 +95,7 @@ const App = () => {
           </p>
           <div className="Nav-controls">
             <span className="btn" onClick={handleSimulation}>
-              <span style={{ background: !isRunning ? "#8cea23" : "#ff4343" }}>
+              <span style={{ background: !isRunning ? "#a3dc63" : "#ff4343" }}>
                 {!isRunning ? "play" : "stop"}
               </span>
             </span>
