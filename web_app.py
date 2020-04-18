@@ -26,7 +26,10 @@ def index():
             yield '<div id="id">%s</div>' % string_buffer.getvalue()
             string_buffer.truncate(0)
 
+            while(game_active):
+                pass
 
 if __name__ == '__main__':
     game = None
+    game_active = True
     app.run()
