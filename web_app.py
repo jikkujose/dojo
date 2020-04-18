@@ -1,5 +1,6 @@
 from flask import Flask, redirect, Response, request
 import time
+from io import StringIO
 from game import Game
 
 app = Flask(__name__)
@@ -17,7 +18,7 @@ def index():
         yield "<script>"+clear_output+"</script>"
         yield form
 
-
+        string_buffer = StringIO()
 
 if __name__ == '__main__':
     game = None
