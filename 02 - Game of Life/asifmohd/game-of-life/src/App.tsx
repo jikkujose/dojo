@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react"
-import "./App.css"
+import "./App.scss"
 
-let ROW = 30
-let COLUMN = 30
+let ROW = 35
+let COLUMN = 35
 
 const neighborhood = [
   [0, 1],
@@ -81,38 +81,78 @@ const App = () => {
 
   return (
     <>
-      <input
-        type="number"
-        value={tick}
-        onChange={(e) => setTick(+e.target.value)}
-      />
-      <button onClick={handleSimulation}>
-        {!isRunning ? "START" : "PAUSE"}
-      </button>
-      <button onClick={clearSimulation}>CLEAR</button>
-      <main className="Main-container">
-        <div
-          className="Grid-container"
-          style={{
-            gridTemplateColumns: `repeat(${COLUMN}, 25px)`,
-          }}
-        >
-          {grid.map((row, i) =>
-            row.map((col, j) => (
-              <div
-                key={`${i}${j}`}
-                onClick={() => setGridState(i, j)}
-                style={{
-                  width: 25,
-                  height: 25,
-                  backgroundColor: grid[i][j] ? "#212121" : "#f1f1f1",
-                  border: "solid 1px black",
-                }}
-              ></div>
-            ))
-          )}
-        </div>
-      </main>
+      <div className="Main-container">
+        <nav className="Nav-container">
+          <h2 className="Nav-title">game of life</h2>
+          <p className="Nav-desc">
+            The game is a zero-player game, meaning that its evolution is
+            determined by its initial state, requiring no further input. One
+            interacts with the Game of Life by creating an initial configuration
+            and observing how it evolves. It is Turing complete and can simulate
+            a universal constructor or any other Turing machine. Simply click on
+            the grid to set intial state and click play!
+          </p>
+          <div className="Nav-controls">
+            <span className="btn" onClick={handleSimulation}>
+              <span>{!isRunning ? "play" : "stop"}</span>
+            </span>
+            <span className="btn">
+              <span onClick={clearSimulation}>reset</span>
+            </span>
+            <span className="btn">
+              <span>settings</span>
+            </span>
+          </div>
+          <div className="Nav-settings-container">
+            <div className="Nav-setting">
+              <label>simulation speed</label>
+              <span className="btn">
+                <input
+                  type="text"
+                  style={{ width: 25 }}
+                  value={tick}
+                  onChange={(e) => setTick(+e.target.value)}
+                />
+              </span>
+            </div>
+            {/* <div className="Nav-setting">
+              <label>Rows x Columns</label>
+              <span style={{ display: "flex", width: "100%" }}>
+                <span className="btn">
+                  <input type="text" style={{ width: 25 }} />
+                </span>
+                <span>X</span>
+                <span className="btn">
+                  <input type="text" style={{ width: 25 }} />
+                </span>
+              </span>
+            </div> */}
+          </div>
+        </nav>
+        <main className="Grid-container">
+          <div
+            className="Grid"
+            style={{
+              gridTemplateColumns: `repeat(${COLUMN}, 20px)`,
+            }}
+          >
+            {grid.map((row, i) =>
+              row.map((col, j) => (
+                <div
+                  key={`${i}${j}`}
+                  onClick={() => setGridState(i, j)}
+                  style={{
+                    width: 20,
+                    height: 20,
+                    backgroundColor: grid[i][j] ? "#212121" : "#f1f1f1",
+                    border: "solid 1px black",
+                  }}
+                ></div>
+              ))
+            )}
+          </div>
+        </main>
+      </div>
     </>
   )
 }
