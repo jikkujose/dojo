@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react"
 import "./App.scss"
 
-let ROW = 35
-let COLUMN = 35
+let ROW = 50
+let COLUMN = 50
 
 const neighborhood = [
   [0, 1],
@@ -95,7 +95,9 @@ const App = () => {
           </p>
           <div className="Nav-controls">
             <span className="btn" onClick={handleSimulation}>
-              <span>{!isRunning ? "play" : "stop"}</span>
+              <span style={{ background: !isRunning ? "#8cea23" : "#ff4343" }}>
+                {!isRunning ? "play" : "stop"}
+              </span>
             </span>
             <span className="btn">
               <span onClick={clearSimulation}>reset</span>
@@ -141,7 +143,7 @@ const App = () => {
           <div
             className="Grid"
             style={{
-              gridTemplateColumns: `repeat(${COLUMN}, 20px)`,
+              gridTemplateColumns: `repeat(${COLUMN}, 15px)`,
             }}
           >
             {grid.map((row, i) =>
@@ -150,8 +152,8 @@ const App = () => {
                   key={`${i}${j}`}
                   onClick={() => setGridState(i, j)}
                   style={{
-                    width: 20,
-                    height: 20,
+                    width: 15,
+                    height: 15,
                     backgroundColor: grid[i][j] ? "#212121" : "#f1f1f1",
                     border: "solid 1px black",
                   }}
