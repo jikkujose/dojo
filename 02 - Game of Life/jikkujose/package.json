@@ -4,10 +4,14 @@
   "main": "index.js",
   "author": "Jikku Jose",
   "license": "MIT",
+  "scripts": {
+    "start": "parcel ./src/index.html"
+  },
   "devDependencies": {
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "p5": "^1.0.0"
+    "p5": "^1.0.0",
+    "utils": "^0.3.1"
   }
 }
