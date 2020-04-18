@@ -24,9 +24,9 @@ class Game:
 
     def display_cell(self, cell):
         if cell == 1:
-            return " ■ "
+            return "&nbsp;■&nbsp;"
         else:
-            return " □ "
+            return "&nbsp;□&nbsp;"
 
     def _overpopulation(self, cell, neighbours):
         return 0
