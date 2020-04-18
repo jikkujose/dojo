@@ -11,7 +11,7 @@ app = Flask(__name__)
 def index():
     def inner():
         clear_output = "function clear_output(){var board = document.getElementById('id');board.parentNode.removeChild(board);};"
-        toggle = "function toggle(){window.location = '/pause';return false;};"
+        toggle = "function toggle(){window.location = '/toggle';return false;};"
         form = "<form method='POST' action='/start'>" \
                  "<input type='text' name='size' placeholder='size'>" \
                  "<input type='text' name='seed' placeholder='seed'>" \
