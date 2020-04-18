@@ -51,6 +51,16 @@ def start():
         else:
             game = Game(board_size)
 
+    if board_seed:
+        board_seed = ast.literal_eval(board_seed)
+        if not isinstance(board_seed, list):
+            return "Invalid board seed."
+        for points in board_seed:
+            if not isinstance(points, tuple):
+                return "Invalid board seed."
+
+            game.board[points] = 1
+
 
 if __name__ == '__main__':
     game = None
