@@ -5,9 +5,8 @@ import os
 import itertools
 
 class Game:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+    def __init__(self, size):
+        self.size = size
         self.rule = {
             0: self._underpopulation,
             1: self._underpopulation,
@@ -19,7 +18,7 @@ class Game:
             7: self._overpopulation,
             8: self._overpopulation
         }
-        self.board = np.zeros((x,y), dtype=np.int)
+        self.board = np.zeros(size, dtype=np.int)
         self.display_board = np.vectorize(self.display_cell)
         self.cell_new_state = np.vectorize(self._cell_new_state)
 
