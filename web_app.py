@@ -61,6 +61,9 @@ def start():
 
             game.board[points] = 1
 
+    game_active = True
+
+    return redirect('/')
 
 if __name__ == '__main__':
     game = None
