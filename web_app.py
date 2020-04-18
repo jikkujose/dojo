@@ -36,6 +36,10 @@ def index():
 
     return Response(inner(), mimetype='text/html')
 
+@app.route('/start', methods=['POST'])
+def start():
+    pass
+
 if __name__ == '__main__':
     game = None
     game_active = True
