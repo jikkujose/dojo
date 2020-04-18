@@ -2,6 +2,7 @@ from flask import Flask, redirect, Response, request
 import time
 import numpy as np
 from io import StringIO
+import ast
 from game import Game
 
 app = Flask(__name__)
@@ -42,6 +43,14 @@ def start():
 
     board_size = request.form.get('size')
     board_seed = request.form.get('seed')
+
+    if board_size:
+        board_size = ast.literal_eval(board_size)
+        if not isinstance(board_size, tuple):
+            return "Invalid board size."
+        else:
+            game = Game(board_size)
+
 
 if __name__ == '__main__':
     game = None
