@@ -20,7 +20,7 @@ def index():
                  "<input type='text' name='size' placeholder='size'>" \
                  "<input type='text' name='seed' placeholder='seed'>" \
                  "<input type='submit' value='Start' />" \
-                 "<input type='button' onclick='toggle()' value='Pause/Restart' />" \
+                 "<input type='button' onclick='toggle()' value='Pause/Resume' />" \
                "</form>"
 
         yield "<script>%s%s</script>" % (clear_output,toggle)
@@ -38,7 +38,7 @@ def index():
                 np.savetxt(string_buffer, game.display_board(game.board).T, fmt='%s', delimiter='', encoding='utf-8', newline='<br/>')
                 yield '<div id="id">%s</div>' % string_buffer.getvalue()
                 string_buffer.truncate(0)
-                time.sleep(2)
+                time.sleep(3)
                 game.board = game.next_generation()
 
     return Response(inner(), mimetype='text/html')
