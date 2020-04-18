@@ -7,8 +7,14 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def index():
     def inner():
-        clear_output = "<script>" \
-                       "function clear_output(){var board = document.getElementById('id');board.parentNode.removeChild(board);}:"
+        clear_output = "function clear_output(){var board = document.getElementById('id');board.parentNode.removeChild(board);}:"
+        form = "<form method='POST' action='/start'>" \
+                 "<input type='text' name='size' placeholder='size'>" \
+                 "<input type='text' name='seed' placeholder='seed'>" \
+                 "<input type='submit' value='Start' />" \
+               "</form>"
+
+
 
 
 if __name__ == '__main__':
