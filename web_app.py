@@ -1,5 +1,6 @@
 from flask import Flask, redirect, Response, request
 import time
+import numpy as np
 from io import StringIO
 from game import Game
 
@@ -19,6 +20,9 @@ def index():
         yield form
 
         string_buffer = StringIO()
+
+        if game:
+            np.savetxt(string_buffer, game.display_board.T, fmt='%s', delimiter='', encoding='utf-8', newline='<br/>')
 
 if __name__ == '__main__':
     game = None
