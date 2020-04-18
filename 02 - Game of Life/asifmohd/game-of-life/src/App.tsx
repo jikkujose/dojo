@@ -23,6 +23,7 @@ const gridGenerator = (row: number, col: number) =>
 const App = () => {
   const [grid, setGrid] = useState(gridGenerator.call(null, ROW, COLUMN))
   const [tick, setTick] = useState(100)
+  const [showSettings, setShowSettings] = useState(false)
   const tickRef = useRef(tick)
   const [isRunning, setisRunning] = useState(false)
   const isRunningRef = useRef(isRunning)
@@ -99,23 +100,29 @@ const App = () => {
             <span className="btn">
               <span onClick={clearSimulation}>reset</span>
             </span>
-            <span className="btn">
-              <span>settings</span>
+            <span
+              className="btn"
+              onClick={() => setShowSettings(!showSettings)}
+            >
+              <span style={{ background: !showSettings ? "white" : "#ebd74b" }}>
+                {!showSettings ? "settings" : "done"}
+              </span>
             </span>
           </div>
-          <div className="Nav-settings-container">
-            <div className="Nav-setting">
-              <label>simulation speed</label>
-              <span className="btn">
-                <input
-                  type="text"
-                  style={{ width: 25 }}
-                  value={tick}
-                  onChange={(e) => setTick(+e.target.value)}
-                />
-              </span>
-            </div>
-            {/* <div className="Nav-setting">
+          {showSettings && (
+            <div className="Nav-settings-container">
+              <div className="Nav-setting">
+                <label>simulation speed</label>
+                <span className="btn">
+                  <input
+                    type="text"
+                    style={{ width: 25 }}
+                    value={tick}
+                    onChange={(e) => setTick(+e.target.value)}
+                  />
+                </span>
+              </div>
+              {/* <div className="Nav-setting">
               <label>Rows x Columns</label>
               <span style={{ display: "flex", width: "100%" }}>
                 <span className="btn">
@@ -127,7 +134,8 @@ const App = () => {
                 </span>
               </span>
             </div> */}
-          </div>
+            </div>
+          )}
         </nav>
         <main className="Grid-container">
           <div
