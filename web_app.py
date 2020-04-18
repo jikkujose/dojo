@@ -79,4 +79,4 @@ if __name__ == '__main__':
     board_size = None
     board_seed = None
 
-    app.run()
+    app.run(host='0.0.0.0', port=80)
