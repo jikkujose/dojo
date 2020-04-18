@@ -38,7 +38,7 @@ def index():
                 np.savetxt(string_buffer, game.display_board(game.board).T, fmt='%s', delimiter='', encoding='utf-8', newline='<br/>')
                 yield '<div id="id">%s</div>' % string_buffer.getvalue()
                 string_buffer.truncate(0)
-                time.sleep(1)
+                time.sleep(2)
                 game.board = game.next_generation()
 
     return Response(inner(), mimetype='text/html')
