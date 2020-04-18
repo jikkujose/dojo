@@ -14,6 +14,8 @@ def index():
                  "<input type='submit' value='Start' />" \
                "</form>"
 
+        yield "<script>"+clear_output+"</script>"
+        yield form
 
 
 
