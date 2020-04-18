@@ -16,6 +16,7 @@ def index():
                  "<input type='text' name='size' placeholder='size'>" \
                  "<input type='text' name='seed' placeholder='seed'>" \
                  "<input type='submit' value='Start' />" \
+                 "<input type='button' onclick='toggle()' value='Pause/Restart' />" \
                "</form>"
 
         yield "<script>%s%s</script>" % (clear_output,toggle)
