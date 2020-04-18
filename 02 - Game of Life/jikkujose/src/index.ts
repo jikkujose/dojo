@@ -10,16 +10,18 @@ const sketch = s => {
   const xCellCount = Math.floor(width / (size + gap))
   const yCellCount = Math.floor(height / (size + gap))
   const b = getTwoDArray(xCellCount, yCellCount)
+
   const conway = new Conway(b)
 
   s.setup = () => {
     s.createCanvas(config.board.width, config.board.height)
     s.background(config.colors.background)
-    s.frameRate(1)
+    s.frameRate(config.simulation.frameRate)
   }
 
   s.draw = () => {
     console.log("draw")
+    s.background(config.colors.background)
     drawBoard(conway.next())
   }
 
