@@ -10,6 +10,13 @@ const sketch = s => {
   const xCellCount = Math.floor(width / (size + gap))
   const yCellCount = Math.floor(height / (size + gap))
   const b = getTwoDArray(xCellCount, yCellCount)
+  const randomState = () => Math.floor(10 * Math.random()) % 2 == 0
+
+  for (let i = 0; i < xCellCount; i++) {
+    for (let j = 0; j < yCellCount; j++) {
+      b[j][i] = randomState()
+    }
+  }
 
   const conway = new Conway(b)
 

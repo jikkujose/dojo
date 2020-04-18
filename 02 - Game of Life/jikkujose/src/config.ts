@@ -1,7 +1,7 @@
 export const config = {
   cell: {
     size: 60,
-    gap: 2,
+    gap: 4,
     radius: 4,
   },
   colors: {
