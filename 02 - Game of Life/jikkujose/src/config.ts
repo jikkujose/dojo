@@ -1,7 +1,8 @@
 export const config = {
   cell: {
-    size: 20,
+    size: 10,
     gap: 2,
+    radius: 1,
   },
   colors: {
     background: "rgba(230, 230, 230, 0.9)",
