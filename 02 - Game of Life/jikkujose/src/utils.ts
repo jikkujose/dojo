@@ -10,6 +10,7 @@ export const getInitialBoard = () => {
   const xCellCount = Math.floor(width / (size + gap))
   const yCellCount = Math.floor(height / (size + gap))
   const board = getTwoDArray(xCellCount, yCellCount)
+  const board = getTwoDArray(xCellCount, yCellCount)
   const randomState = () => Math.floor(10 * Math.random()) % 2 == 0
 
   for (let i = 0; i < xCellCount; i++) {

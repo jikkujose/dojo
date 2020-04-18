@@ -14,7 +14,7 @@ export class Conway {
   next = () => {
     for (let i = 0; i < this.xCellCount; i++) {
       for (let j = 0; j < this.yCellCount; j++) {
-        this.nextBoard[j][i] = this.willCellLive(j, i)
+        this.nextBoard[j][i] = this.willCellLive(i + 1, j + 1)
       }
     }
 
@@ -23,55 +23,56 @@ export class Conway {
     return this.board
   }
 
-  willCellLive = (j, i) => {
-    const currentState = this.board[j][i]
-    const liveNeighbours = this.liveNeighbourCount(j, i)
+  willCellLive = (x, y) => {
+    const currentState = this.board[y - 1][x - 1]
+    const liveNeighbours = this.liveNeighbourCount(x, y)
 
-    if (currentState) {
-      if (liveNeighbours < 2 || liveNeighbours > 3) {
+    switch (liveNeighbours) {
+      case 0:
         return false
-      } else {
+      case 1:
+        return false
+      case 2:
+        const result = currentState ? true : false
+        return result
+      case 3:
         return true
-      }
-    } else {
-      if (liveNeighbours == 3) {
-        return true
-      }
+      default:
+        return false
     }
-
-    return false
   }
 
-  liveNeighbourCount = (j, i) => {
+  liveNeighbourCount = (x, y) => {
     const addresses = [
       [-1, -1],
-      [0, -1],
-      [1, -1],
-      [1, 0],
-      [1, 1],
-      [0, 1],
       [-1, 1],
       [-1, 0],
+      [1, -1],
+      [1, 1],
+      [1, 0],
+      [0, -1],
+      [0, 1],
     ]
 
-    const count = addresses.reduce((total, [l, m]) => {
-      let isAlive = false
+    let count = 0
+    const xCellCount = this.board.length - 1
+    const yCellCount = this.board[0].length - 1
 
-      const maxJIndex = this.board.length - 1
-      const maxIIndex = this.board[0].length - 1
+    addresses.forEach(([_x, _y]) => {
+      const nx = x + _x
+      const ny = x + _y
+      let isNeighbourCellAlive = false
 
-      const _j = j + l
-      const _i = i + m
-
-      if (_j < 0 || _j > maxJIndex || _i < 0 || _i > maxIIndex) {
-        isAlive = false
+      if (nx < 1 || nx > xCellCount || ny < 1 || ny > yCellCount) {
       } else {
-        isAlive = this.board[_j][_i]
+        isNeighbourCellAlive = Math.floor(10 * Math.random()) % 2 == 0
       }
 
-      return isAlive ? total + 1 : total
-    }, 0)
+      if (isNeighbourCellAlive) {
+      }
+    })
 
+    console.log("coord:", x, y, count)
     return count
   }
 }

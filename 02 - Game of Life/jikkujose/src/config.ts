@@ -1,6 +1,6 @@
 export const config = {
   cell: {
-    size: 60,
+    size: 40,
     gap: 4,
     radius: 4,
   },
