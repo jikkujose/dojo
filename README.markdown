@@ -13,6 +13,7 @@ Collaborative coding challenges for fun & profit
 
 `username`    | Challenge
 ------------- | ---------
+<<<<<<< HEAD
 `amalshehu`   | `10`
 `asifmohd`    | `10`
 `adarsh`      | `10`
