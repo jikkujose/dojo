@@ -24,6 +24,7 @@ def index():
         if game:
             np.savetxt(string_buffer, game.display_board.T, fmt='%s', delimiter='', encoding='utf-8', newline='<br/>')
             yield '<div id="id">%s</div>' % string_buffer.getvalue()
+            string_buffer.truncate(0)
 
 
 if __name__ == '__main__':
