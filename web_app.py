@@ -65,6 +65,12 @@ def start():
 
     return redirect('/')
 
+@app.route('/toggle')
+def toggle():
+    global game_active
+    game_active = not game_active
+    return redirect('/')
+
 if __name__ == '__main__':
     game = None
     game_active = True
