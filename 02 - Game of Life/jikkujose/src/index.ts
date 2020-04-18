@@ -2,23 +2,15 @@ import p5 from "p5"
 
 import { config } from "./config"
 import { Conway } from "./conway"
-import { getTwoDArray } from "./utils"
+import { getInitialBoard, translateToIndex } from "./utils"
 
 const sketch = s => {
-  const { size, gap } = config.cell
-  const { width, height } = config.board
-  const xCellCount = Math.floor(width / (size + gap))
-  const yCellCount = Math.floor(height / (size + gap))
-  const b = getTwoDArray(xCellCount, yCellCount)
-  const randomState = () => Math.floor(10 * Math.random()) % 2 == 0
-
-  for (let i = 0; i < xCellCount; i++) {
-    for (let j = 0; j < yCellCount; j++) {
-      b[j][i] = randomState()
-    }
+  const state = {
+    isRunning: false,
+    board: getInitialBoard(),
   }
 
-  const conway = new Conway(b)
+  const conway = new Conway(state.board)
 
   s.setup = () => {
     s.createCanvas(config.board.width, config.board.height)
@@ -28,9 +20,30 @@ const sketch = s => {
 
   s.draw = () => {
     console.log("draw")
+
+    if (state.isRunning) {
+      s.loop()
+      state.board = conway.next(state.board)
+    } else {
+      // s.noLoop()
+    }
+
     s.background(config.colors.background)
-    drawBoard(conway.next())
+    drawBoard(state.board)
   }
+
+  s.doubleClicked = () => {
+    state.isRunning = !state.isRunning
+    console.log("doubleClicked", state.isRunning)
+  }
+
+  s.mousePressed = () => {
+    const [x, y] = translateToIndex(s.mouseX, s.mouseY)
+
+    state.board[y][x] = !state.board[y][x]
+  }
+
+  s.mouseMoved = () => {}
 
   const drawBoard = board => {
     const xCellCount = board[0].length
