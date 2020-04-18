@@ -38,9 +38,15 @@ def index():
 
 @app.route('/start', methods=['POST'])
 def start():
-    pass
+    global game, game_active, board_size, board_seed
+
+    board_size = request.form.get('size')
+    board_seed = request.form.get('seed')
 
 if __name__ == '__main__':
     game = None
     game_active = True
+    board_size = None
+    board_seed = None
+
     app.run()
