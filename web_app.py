@@ -10,14 +10,15 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def index():
     def inner():
-        clear_output = "function clear_output(){var board = document.getElementById('id');board.parentNode.removeChild(board);}:"
+        clear_output = "function clear_output(){var board = document.getElementById('id');board.parentNode.removeChild(board);};"
+        toggle = "function toggle(){window.location = '/pause';return false;};"
         form = "<form method='POST' action='/start'>" \
                  "<input type='text' name='size' placeholder='size'>" \
                  "<input type='text' name='seed' placeholder='seed'>" \
                  "<input type='submit' value='Start' />" \
                "</form>"
 
-        yield "<script>"+clear_output+"</script>"
+        yield "<script>%s%s</script>" % (clear_output,toggle)
         yield form
 
         string_buffer = StringIO()
