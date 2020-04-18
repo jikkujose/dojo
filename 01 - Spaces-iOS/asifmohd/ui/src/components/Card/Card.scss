@@ -1,0 +1,148 @@
+.Card-container {
+  padding-right: 28px;
+  width: 300px;
+  height: 428px;
+  position: relative;
+
+  .Card {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    .Card-content {
+      pointer-events: auto;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+
+      button {
+        outline: none;
+        -webkit-appearance: none;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        cursor: pointer;
+      }
+
+      button.close {
+        position: absolute;
+        top: 20px;
+        left: 15px;
+        background: transparent;
+        border: none;
+      }
+    }
+    &.open {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      .Card-content {
+        height: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        // border-radius: 0px !important;
+
+        .Card-desc-title {
+          position: absolute;
+          top: 20%;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #c0c0c0;
+          text-align: center;
+        }
+      }
+    }
+
+    & .Card-image {
+      // width: 100%;
+      // height: 304px;
+      overflow: hidden;
+      position: relative;
+      // top: 0;
+      // left: 0;
+      // background-color: beige;
+      img {
+        opacity: 0;
+        -webkit-transition: opacity 0.2s;
+        transition: opacity 0.2s;
+
+        /* fade in lazy loaded image */
+        &.flickity-lazyloaded,
+        &.flickity-lazyerror {
+          opacity: 1;
+        }
+      }
+
+      .badge {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: #666;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    & .Card-info-wrapper {
+      // background-color: white;
+      padding: 40px 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & .Card-info {
+        position: relative;
+        width: 100%;
+
+        & .Card-thumb {
+          position: absolute;
+          padding: 4px;
+          top: 0;
+          justify-content: center;
+          display: flex;
+          border-radius: 50%;
+          background: white;
+          &__0 {
+            right: 0;
+          }
+          &__1 {
+            right: 30px;
+          }
+          &__2 {
+            right: 60px;
+          }
+          & img {
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Card-open-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
