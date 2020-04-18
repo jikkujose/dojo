@@ -78,4 +78,4 @@ game_active = True
 board_size = None
 board_seed = None
 
-app.run(host='0.0.0.0', port=80)
+app.run(host='0.0.0.0')
