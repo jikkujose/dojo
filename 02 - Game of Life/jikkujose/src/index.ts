@@ -1,9 +1,17 @@
 import p5 from "p5"
 
 import { config } from "./config"
-import { conway } from "./conway"
+import { Conway } from "./conway"
+import { getTwoDArray } from "./utils"
 
 const sketch = s => {
+  const { size, gap } = config.cell
+  const { width, height } = config.board
+  const xCellCount = Math.floor(width / (size + gap))
+  const yCellCount = Math.floor(height / (size + gap))
+  const b = getTwoDArray(xCellCount, yCellCount)
+  const conway = new Conway(b)
+
   s.setup = () => {
     s.createCanvas(config.board.width, config.board.height)
     s.background(config.colors.background)
@@ -21,7 +29,7 @@ const sketch = s => {
 
     for (let i = 0; i < xCellCount; i++) {
       for (let j = 0; j < yCellCount; j++) {
-        drawCell(i + 1, j + 1, board[i][j])
+        drawCell(i + 1, j + 1, board[j][i])
       }
     }
   }

@@ -1,9 +1,3 @@
-export const getTwoDArray = (board, cell) => {
-  const { width, height } = board
-  const { size, gap } = cell
-
-  const xCellCount = Math.floor(width / (size + gap))
-  const yCellCount = Math.floor(height / (size + gap))
-
-  return new Array(xCellCount).fill(null).map(() => new Array(yCellCount))
+export const getTwoDArray = (x: number, y: number) => {
+  return new Array(y).fill(null).map(() => new Array(x))
 }

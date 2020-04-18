@@ -6,8 +6,8 @@ export const config = {
   },
   colors: {
     background: "rgba(230, 230, 230, 0.9)",
-    on: "rgba(0, 0, 0, 0.9)",
-    off: "rgba(255, 255, 255, 0.9)",
+    on: "rgba(234, 0, 0, 0.9)",
+    off: "rgba(2, 54, 255, 0.9)",
   },
   board: {
     width: 512,
