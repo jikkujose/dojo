@@ -14,6 +14,6 @@ export const config = {
     height: window.innerHeight,
   },
   simulation: {
-    frameRate: 1,
+    frameRate: 30,
   },
 }

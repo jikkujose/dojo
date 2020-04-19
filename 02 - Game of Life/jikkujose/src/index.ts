@@ -28,9 +28,10 @@ const sketch = s => {
     drawBoard(state.board)
   }
 
-  s.doubleClicked = () => {
-    state.isRunning = !state.isRunning
-    console.log("doubleClicked", state.isRunning)
+  s.keyPressed = () => {
+    if (s.keyCode == 32) {
+      state.isRunning = !state.isRunning
+    }
   }
 
   s.mousePressed = () => {
