@@ -1,0 +1,61 @@
+.Btn {
+  color: #fff;
+  cursor: pointer;
+  width: 146px;
+  height: 46px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.Product_btn {
+  background: #20eecc;
+  transition: transform 0.3s;
+}
+
+.Product_btn:hover {
+  transform: scale(1.02);
+}
+
+.Btn_cancel {
+  background: #ff1f4b;
+}
+
+.Btn_submit {
+  background: #23d160;
+}
+
+.Product_detail {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  min-width: 300px;
+  min-height: 3;
+  padding: 2rem;
+  background: red;
+  border-radius: 8px;
+  max-width: 475px;
+}
+
+.Product_detail h2 {
+  text-align: center;
+}
+
+.Product_detail_btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Product_detail label {
+  margin-bottom: 1rem;
+}
+
+.Product_detail input {
+  border: none;
+  height: 2.25rem;
+  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 1rem;
+}
