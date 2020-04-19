@@ -1,15 +1,20 @@
 import { config } from "./config"
 
 export const getTwoDArray = (x: number, y: number) => {
-  return new Array(y).fill(null).map(() => new Array(x))
+  let array = new Array(y)
+
+  for (let i = 0; i < y; i++) {
+    array[i] = new Array(x)
+  }
+
+  return array
 }
 
-export const getInitialBoard = () => {
+export const getInitialBoard = (x, y) => {
   const { size, gap } = config.cell
   const { width, height } = config.board
-  const xCellCount = Math.floor(width / (size + gap))
-  const yCellCount = Math.floor(height / (size + gap))
-  const board = getTwoDArray(xCellCount, yCellCount)
+  const xCellCount = x || Math.floor(width / (size + gap))
+  const yCellCount = y || Math.floor(height / (size + gap))
   const board = getTwoDArray(xCellCount, yCellCount)
   const randomState = () => Math.floor(10 * Math.random()) % 2 == 0
 

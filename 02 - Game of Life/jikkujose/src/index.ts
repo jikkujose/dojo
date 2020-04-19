@@ -1,16 +1,16 @@
 import p5 from "p5"
 
 import { config } from "./config"
-import { Conway } from "./conway"
+import { conway } from "./conway"
 import { getInitialBoard, translateToIndex } from "./utils"
 
 const sketch = s => {
   const state = {
     isRunning: false,
     board: getInitialBoard(),
+    instructions: null,
+    isInstructionVisible: true,
   }
-
-  const conway = new Conway(state.board)
 
   s.setup = () => {
     s.createCanvas(config.board.width, config.board.height)
@@ -23,21 +23,33 @@ const sketch = s => {
 
     if (state.isRunning) {
       s.loop()
-      state.board = conway.next(state.board)
-    } else {
-      // s.noLoop()
+      state.board = conway(state.board)
     }
 
     s.background(config.colors.background)
     drawBoard(state.board)
+    if (state.isInstructionVisible) {
+      drawInstructions()
+    }
   }
 
-  s.doubleClicked = () => {
-    state.isRunning = !state.isRunning
-    console.log("doubleClicked", state.isRunning)
+  s.keyPressed = () => {
+    if (state.isInstructionVisible) {
+      state.isInstructionVisible = false
+      return
+    }
+
+    if (s.keyCode == 32) {
+      state.isRunning = !state.isRunning
+    }
   }
 
   s.mousePressed = () => {
+    if (state.isInstructionVisible) {
+      state.isInstructionVisible = false
+      return
+    }
+
     const [x, y] = translateToIndex(s.mouseX, s.mouseY)
 
     state.board[y][x] = !state.board[y][x]
@@ -51,7 +63,7 @@ const sketch = s => {
 
     for (let i = 0; i < xCellCount; i++) {
       for (let j = 0; j < yCellCount; j++) {
-        drawCell(i + 1, j + 1, board[j][i])
+        drawCell(i, j, board[j][i])
       }
     }
   }
@@ -61,16 +73,31 @@ const sketch = s => {
     y: number,
     isAlive = true,
     { size, gap, radius } = config.cell,
-    { on, off } = config.colors
+    { on, off, editModeOn } = config.colors
   ) => {
-    const _x = (x - 1) * (size + gap)
-    const _y = (y - 1) * (size + gap)
+    const _x = x * (size + gap)
+    const _y = y * (size + gap)
 
-    const fillColor = isAlive ? on : off
+    const onColor = state.isRunning ? on : editModeOn
+
+    const fillColor = isAlive ? onColor : off
     s.fill(fillColor)
 
     s.noStroke()
     s.rect(_x, _y, size, size, radius)
+  }
+
+  s.preload = () => {
+    state.instructions = s.loadImage("./instructions.png")
+  }
+
+  const drawInstructions = text => {
+    const image = state.instructions
+
+    const centerX = (s.width - image.width) / 2
+    const centerY = (s.height - image.height) / 2
+
+    s.image(image, centerX, centerY)
   }
 }
 
