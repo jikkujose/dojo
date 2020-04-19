@@ -8,6 +8,8 @@ const sketch = s => {
   const state = {
     isRunning: false,
     board: getInitialBoard(),
+    instructions: null,
+    isInstructionVisible: true,
   }
 
   s.setup = () => {
@@ -26,15 +28,28 @@ const sketch = s => {
 
     s.background(config.colors.background)
     drawBoard(state.board)
+    if (state.isInstructionVisible) {
+      drawInstructions()
+    }
   }
 
   s.keyPressed = () => {
+    if (state.isInstructionVisible) {
+      state.isInstructionVisible = false
+      return
+    }
+
     if (s.keyCode == 32) {
       state.isRunning = !state.isRunning
     }
   }
 
   s.mousePressed = () => {
+    if (state.isInstructionVisible) {
+      state.isInstructionVisible = false
+      return
+    }
+
     const [x, y] = translateToIndex(s.mouseX, s.mouseY)
 
     state.board[y][x] = !state.board[y][x]
@@ -70,6 +85,19 @@ const sketch = s => {
 
     s.noStroke()
     s.rect(_x, _y, size, size, radius)
+  }
+
+  s.preload = () => {
+    state.instructions = s.loadImage("./instructions.png")
+  }
+
+  const drawInstructions = text => {
+    const image = state.instructions
+
+    const centerX = (s.width - image.width) / 2
+    const centerY = (s.height - image.height) / 2
+
+    s.image(image, centerX, centerY)
   }
 }
 
