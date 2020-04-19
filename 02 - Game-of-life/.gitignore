@@ -1,0 +1,5 @@
+dist
+.cache
+dist
+.firebase
+.old_git
