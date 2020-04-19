@@ -58,12 +58,14 @@ const sketch = s => {
     y: number,
     isAlive = true,
     { size, gap, radius } = config.cell,
-    { on, off } = config.colors
+    { on, off, editModeOn } = config.colors
   ) => {
     const _x = x * (size + gap)
     const _y = y * (size + gap)
 
-    const fillColor = isAlive ? on : off
+    const onColor = state.isRunning ? on : editModeOn
+
+    const fillColor = isAlive ? onColor : off
     s.fill(fillColor)
 
     s.noStroke()
