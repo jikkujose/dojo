@@ -1,7 +1,13 @@
 import { config } from "./config"
 
 export const getTwoDArray = (x: number, y: number) => {
-  return new Array(y).fill(null).map(() => new Array(x))
+  let array = new Array(y)
+
+  for (let i = 0; i < y; i++) {
+    array[i] = new Array(x)
+  }
+
+  return array
 }
 
 export const getInitialBoard = (x, y) => {
