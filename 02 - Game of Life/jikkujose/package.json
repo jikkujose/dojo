@@ -11,6 +11,7 @@
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "jest": "^25.3.0",
+    "parcel-plugin-static-files-copy": "^2.3.1",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   },
