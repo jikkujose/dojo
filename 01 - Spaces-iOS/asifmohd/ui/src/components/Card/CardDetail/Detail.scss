@@ -1,0 +1,102 @@
+.Flickity-container {
+    display: flex;
+    height: 500px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 33%;
+    .inner-carousel {
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        & .flickity-viewport {
+            // height: 100% !important;
+            & .flickity-slider {
+                transform: translateX(20.72%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
+
+.Card-container {
+    padding-right: 28px;
+    width: 300px;
+    height: 428px;
+
+    .Card {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        .Card-content {
+            pointer-events: auto;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        & .Card-image {
+            width: 100%;
+            overflow: hidden;
+            height: 304px;
+            position: relative;
+            img {
+                transform: scale(1.2);
+                opacity: 0;
+                -webkit-transition: opacity 0.2s;
+                transition: opacity 0.2s;
+
+                /* fade in lazy loaded image */
+                &.flickity-lazyloaded,
+                &.flickity-lazyerror {
+                    opacity: 1;
+                }
+            }
+        }
+
+        & .Card-info-wrapper {
+            // background-color: white;
+            padding: 40px 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            & .Card-info {
+                position: relative;
+                width: 100%;
+
+                & .Card-thumb {
+                    position: absolute;
+                    padding: 4px;
+                    top: 0;
+                    justify-content: center;
+                    display: flex;
+                    border-radius: 50%;
+                    background: white;
+                    &__0 {
+                        right: 0;
+                    }
+                    &__1 {
+                        right: 30px;
+                    }
+                    &__2 {
+                        right: 60px;
+                    }
+                    & img {
+                        border-radius: 50%;
+                        width: 35px;
+                        height: 35px;
+                    }
+                }
+            }
+        }
+    }
+}

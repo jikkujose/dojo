@@ -11,12 +11,12 @@ Collaborative coding challenges for fun & profit
 
 ## Leader Board
 
-`username`    | Challenge
-------------- | ---------
-`amalshehu`   | `10`
-`asifmohd`    | `10`
-`adarsh`      | `10`
-`jikkujose`   | `00`
-`rakeshbs`    | `01`
-`jibinmathew` | `00`
-`nikhilmohan` | `00`
+| `username`    | Challenge |
+| ------------- | --------- |
+| `amalshehu`   | `10`      |
+| `asifmohd`    | `10`      |
+| `adarsh`      | `10`      |
+| `jikkujose`   | `00`      |
+| `rakeshbs`    | `01`      |
+| `jibinmathew` | `00`      |
+| `nikhilmohan` | `00`      |

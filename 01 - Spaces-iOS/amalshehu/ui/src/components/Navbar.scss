@@ -1,0 +1,37 @@
+.App-header-nav {
+  display: flex;
+  overflow-x: auto;
+  align-items: flex-start;
+  max-width: 48em;
+  margin: 0;
+  background-color: #fffeff;
+}
+.Active {
+  border-bottom: 3px solid;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.App-header-item {
+  // flex: 0 0 auto;
+  padding: 6px 10px;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: small;
+  color: #ff4090;
+}
+.App-header-item li.active {
+  color: green;
+  background-color: yellow;
+}
+.App-header-item li.active a {
+  color: red;
+}
+
+.search {
+  color: rgb(158, 154, 154) !important;
+  margin-top: -2px;
+}
