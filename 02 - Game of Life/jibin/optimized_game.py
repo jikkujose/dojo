@@ -2,13 +2,19 @@ import numpy as np
 import sys
 import time
 import os
+import scipy.signal
+
+
 
 class Game:
     def __init__(self, size):
         self.board_size = size
 
         self.board = np.zeros(self.board_size, dtype=np.bool)
-        self.dup_board = np.zeros((size[0]+2,size[1]+2), dtype=np.bool)
+
+        self.adjacent_matrix = np.ones((3, 3), dtype=int)
+        self.adjacent_matrix[1][1] = 0
+
         self.board_neighbors = np.zeros_like(self.board, dtype=int)
 
         self.display_board = np.vectorize(self.display_cell)
@@ -32,9 +38,10 @@ class Game:
     def _underpopulation(self, cell, neighbours):
         return 0
 
-    def get_live_neighbours(self, cell_x, cell_y):
+    def get_live_neighbours(self):
 
-        return np.sum(self.dup_board[cell_x-1:cell_x+2, cell_y-1:cell_y+2]) - self.dup_board[cell_x][cell_y]
+        # return np.sum(self.dup_board[cell_x-1:cell_x+2, cell_y-1:cell_y+2]) - self.dup_board[cell_x][cell_y]
+        return scipy.signal.convolve2d(self.board, self.adjacent_matrix, mode='same')
 
     def _cell_new_state(self, cell, neighbours):
         # return self.rule[neighbours](cell, neighbours)
@@ -54,12 +61,8 @@ class Game:
 
     def next_generation(self):
 
-        self.dup_board[1:self.board_size[0]+1, 1:self.board_size[1]+1] = self.board
 
-        for i in range(1, self.board_size[0]+1):
-            for j in range(1, self.board_size[1]+1):
-                self.board_neighbors[i-1][j-1] = self.get_live_neighbours(i, j)
-
+        self.board_neighbors = self.get_live_neighbours()
 
         new_board_state = self.cell_new_state(self.board, self.board_neighbors)
         return new_board_state

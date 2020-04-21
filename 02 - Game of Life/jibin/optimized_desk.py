@@ -1,12 +1,13 @@
-#0.60 -> 0.48 -> 0.03 -> 0.01
+#0.60 removed looping neighbours-> 0.48 -removed neighbour calculation all together> 0.03 remove rule dictionary-> 0.01 removed neighbour calculation-> 0.0001
 import pygame
 from optimized_game import Game
 
+# size = (1000, 1030)
 size = (900, 930)
 
-width = 29
-height = 29
-margin = 1
+# width = 29
+# height = 29
+# margin = 1
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -16,9 +17,29 @@ RED = (255, 0, 0)
 start = False
 done = False
 
-board_size = (size[0] // (width + margin), (size[1] - 30) // (height + margin))
+# board_size = (size[0] // (width + margin), (size[1] - 30) // (height + margin))
+#
+board_size = (30, 30)
+#
+width = size[0]//board_size[0]
+height = (size[1]-30)//board_size[1]
+margin = 1
+
+print(width, height)
 
 import time
+
+# 1000 X 1000
+# game = Game(board_size)
+# game.board[1][0] = True
+# game.board[1][1] = True
+# game.board[1][2] = True
+#
+# while True:
+#     start_time = time.process_time()
+#     game.board = game.next_generation()
+#     print(time.process_time() - start_time)
+#
 
 
 def draw_button(position, text):
@@ -82,6 +103,7 @@ while not done:
 
     pygame.display.flip()
 
-    clock.tick(120)
+    clock.tick(60)
 
 pygame.quit()
+
