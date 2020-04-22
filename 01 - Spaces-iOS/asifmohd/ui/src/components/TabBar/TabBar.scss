@@ -1,6 +1,5 @@
+@use "styles/mixins" as *;
 .Footer-contianer {
-  display: flex;
+  @include flex(space-around);
   height: 100%;
-  align-items: center;
-  justify-content: space-around;
 }
