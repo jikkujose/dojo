@@ -1,0 +1,48 @@
+@mixin flex($justify-content: center, $align-items: center) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin box-dim($width: 100%, $height: 100%) {
+  width: $width;
+  height: $height;
+}
+
+@mixin position(
+  $position,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin font-style(
+  $size: false,
+  $colour: false,
+  $weight: false,
+  $ls: false,
+  $lh: false
+) {
+  @if $size {
+    font-size: $size;
+  }
+  @if $colour {
+    color: $colour;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $ls {
+    letter-spacing: $ls;
+  }
+  @if $lh {
+    line-height: $lh;
+  }
+}
