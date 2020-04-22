@@ -1,3 +1,13 @@
+import { Transition, Variants, VariantLabels } from "framer-motion"
+
+export interface Animation {
+  variants?: Variants
+  initial?: VariantLabels | string
+  animate?: VariantLabels | string
+  exit?: VariantLabels | string
+  transition?: Transition
+}
+
 export const openSpring = {
   type: "spring",
   stiffness: 200,
