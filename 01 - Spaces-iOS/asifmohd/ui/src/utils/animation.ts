@@ -1,6 +1,6 @@
 import { Transition, Variants, VariantLabels } from "framer-motion"
 
-export interface Animation {
+export interface Animations {
   variants?: Variants
   initial?: VariantLabels | string
   animate?: VariantLabels | string
