@@ -28,6 +28,14 @@ export const closeBtnVariants: Variants = {
   visible: { y: 0, opacity: 1, transition: { delay: 0.4, duration: 0.3 } },
 }
 
+export const infoWrapperVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { delay: 0.5 },
+  },
+}
+
 export const infoVariants: Variants = {
   hidden: {
     opacity: 0,
