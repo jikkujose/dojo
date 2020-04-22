@@ -6,7 +6,7 @@ import { openSpring, closeSpring, closeInertial } from "utils/animation"
 import { store } from "store/store"
 import { useInvertedBorderRadius } from "utils/use-inverted-scale"
 import CloseBtn from "ui/CloseBtn/CloseBtn"
-import Info from "./CardInfo/Info"
+import Info from "../../ui/CardInfo/Info"
 import Detail from "./CardDetail/Detail"
 import { infoVariants, ImageVariants } from "utils/variants"
 
