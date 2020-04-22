@@ -48,19 +48,12 @@ const InnerCard = ({ space }) => {
               transition={closeSpring}
             />
           </div>
-          <div className="Card-info-wrapper">
-            <motion.div
-              className="Card-info"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0.5 } }}
-              exit={{ opacity: 0 }}
-            >
-              <Info
-                title={"Lorm Ipsum"}
-                description={space.description}
-                style={{}}
-              />
-              {/* {space.face_thumbs.map(
+          <Info
+            title={"Lorm Ipsum"}
+            description={space.description}
+            style={{}}
+          />
+          {/* {space.face_thumbs.map(
                 (thumb, i) =>
                   i < 3 && (
                     <span className={"Card-thumb Card-thumb__" + i} key={i}>
@@ -68,13 +61,8 @@ const InnerCard = ({ space }) => {
                     </span>
                   )
               )} */}
-            </motion.div>
-          </div>
         </div>
       </div>
-      {/* {!isSelected && selectedIndex && (
-        <Link to={space.id} className={`Card-open-link`} />
-      )} */}
     </div>
   )
 }
