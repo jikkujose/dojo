@@ -7,34 +7,27 @@ import Info from "ui/CardInfo/Info"
 import { openSpring, closeInertial } from "utils/animation"
 import { flicktyVariants, infoVariants } from "utils/variants"
 import { flickityOptions } from "utils/flickity-conf"
-import Card from "components/Card/Card"
 import { store } from "store/store"
 import CloseBtn from "ui/CloseBtn/CloseBtn"
-import { InfoType } from "model/interface"
-import CardImage from "ui/CardImage/CardImage"
+import { InfoType, Slide } from "model/interface"
+import InnerCard from "components/InnerCard/InnerCard"
 
 const Detail = ({ close }) => {
-  const { state } = useContext(store)
-  const id = +state.route.path
+  const { route } = useContext(store).state
+  const id = route.path?.params.id ?? 0
   const space = spaces[id]
 
   return (
     <>
       <CloseBtn close={close} />
       <Info
-        title={space.title}
-        description={space.description}
+        title={space?.title}
+        description={space?.description}
         {...infoProps}
       />
       <FlickityContainer>
-        {spaces[id].slides.map((slide, i) => (
-          <Card
-            slide={slide}
-            isDetail={true}
-            key={i}
-            isSelected={false}
-            translateX={0}
-          />
+        {spaces[id].slides.map((slide: Slide, i) => (
+          <InnerCard slide={space.slides[i]} key={i} />
         ))}
       </FlickityContainer>
     </>
@@ -61,23 +54,6 @@ const FlickityContainer = ({ children }) => {
         {children}
       </Flickity>
     </motion.div>
-  )
-}
-
-const InnerCard = ({ space }) => {
-  return (
-    <div className="Card-container">
-      <div className="Card">
-        <div className="Card-content">
-          <CardImage bgImage={space?.bg_image} animate={false} />
-          <Info
-            title={"Lorm Ipsum"}
-            description={space.description}
-            style={{}}
-          />
-        </div>
-      </div>
-    </div>
   )
 }
 
