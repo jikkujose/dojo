@@ -28,8 +28,14 @@ export interface Space {
 export interface InfoType {
   title: string
   description: Description
-  style
+  style: any
   isDescTitle?: boolean
   thumbs?: null | FaceThumb[]
   animation?: Animations
+}
+export interface CardImageType {
+  bgImage: string
+  imgRef
+  isSelected: boolean
+  animate: boolean
 }
