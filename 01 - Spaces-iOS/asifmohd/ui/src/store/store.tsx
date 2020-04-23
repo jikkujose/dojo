@@ -4,10 +4,7 @@ import { reducer, State } from "store/reducer"
 import { motion } from "framer-motion"
 
 const initialState: State = {
-  route: {
-    path: "",
-    prev: "",
-  },
+  route: {},
   slide: {
     isSelected: false,
     selectedIndex: 0,
