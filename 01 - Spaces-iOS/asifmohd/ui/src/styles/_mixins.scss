@@ -1,5 +1,6 @@
-@mixin flex($justify-content: center, $align-items: center) {
+@mixin flex($justify-content: center, $align-items: center, $direction: row) {
   display: flex;
+  flex-direction: $direction;
   justify-content: $justify-content;
   align-items: $align-items;
 }
@@ -9,13 +10,7 @@
   height: $height;
 }
 
-@mixin position(
-  $position,
-  $top: null,
-  $right: null,
-  $bottom: null,
-  $left: null
-) {
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
   position: $position;
   top: $top;
   right: $right;
@@ -23,13 +18,7 @@
   left: $left;
 }
 
-@mixin font-style(
-  $size: false,
-  $colour: false,
-  $weight: false,
-  $ls: false,
-  $lh: false
-) {
+@mixin font-style($size: false, $colour: false, $weight: false, $ls: false, $lh: false) {
   @if $size {
     font-size: $size;
   }
