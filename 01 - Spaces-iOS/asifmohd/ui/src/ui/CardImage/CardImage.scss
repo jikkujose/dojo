@@ -1,0 +1,29 @@
+.Card-image {
+    // width: 100%;
+    // height: 304px;
+    overflow: hidden;
+    position: relative;
+    img {
+        opacity: 0;
+        -webkit-transition: opacity 0.2s;
+        transition: opacity 0.2s;
+
+        /* fade in lazy loaded image */
+        &.flickity-lazyloaded,
+        &.flickity-lazyerror {
+            opacity: 1;
+        }
+    }
+
+    .badge {
+        @include position(absolute, $top: 0, $left: 0, $right: 0, $bottom: 0);
+        @include box-dim(48px, 48px);
+        @include flex;
+        @include font-style(32px, #666);
+        margin: auto;
+        background-color: $body-bg;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+}
