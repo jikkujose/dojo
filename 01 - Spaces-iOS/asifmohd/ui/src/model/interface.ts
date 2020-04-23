@@ -25,6 +25,17 @@ export interface Space {
   icon?: string
 }
 
+export interface CardType {
+  space: Space
+  isDetail: boolean
+  isSelected: boolean
+  translateX: number
+  selectedIndex: boolean
+  onScroll: Function
+  navBarToggle: Function
+  close: Function
+}
+
 export interface InfoType {
   title: string
   description: Description
