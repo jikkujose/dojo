@@ -1,32 +1,22 @@
 import React, { useEffect, useRef, useContext, memo } from "react"
-import { motion, useInvertedScale, useMotionValue } from "framer-motion"
+import { motion, useMotionValue } from "framer-motion"
 import { Link } from "react-router-dom"
 import "./Card.scss"
-import { openSpring, closeSpring, closeInertial } from "utils/animation"
+import { openSpring, closeSpring } from "utils/animation"
 import { store } from "store/store"
 import { useInvertedBorderRadius } from "utils/use-inverted-scale"
-import CloseBtn from "ui/CloseBtn/CloseBtn"
-import Info from "../../ui/CardInfo/Info"
-import Detail from "./CardDetail/Detail"
-import { infoVariants, ImageVariants } from "utils/variants"
+import Info from "ui/CardInfo/Info"
+import Detail from "containers/Details/Detail"
+import { CardType } from "model/interface"
+import CardImage from "ui/CardImage/CardImage"
 
-const Card: React.FC<{
-  space
-  isSelected: boolean
-  onScroll: Function
-  translateX: number
-  selectedIndex: boolean
-  navBarToggle: Function
-  close: Function
-  i: number
-}> = memo(
+const Card: React.FC<CardType> = memo(
   ({
     space,
-    isSelected,
+    isSelected = false,
     onScroll,
     translateX,
     selectedIndex,
-    i,
     navBarToggle,
     close,
   }) => {
@@ -34,18 +24,6 @@ const Card: React.FC<{
     const imgRef = useRef(null)
     const zIndex = useMotionValue(isSelected ? 2 : 0)
     const inverted = useInvertedBorderRadius(isSelected ? 0 : 10)
-    const invertedImg = useInvertedScale()
-    const openInfoStyle = {
-      title: {
-        fontSize: 24,
-        letterSpacing: 0.8,
-        color: "#c0c0c0",
-      },
-      sub: {
-        fontSize: 13,
-        opacity: 0.8,
-      },
-    }
 
     useEffect(() => {
       onScroll(imgRef.current)
@@ -63,7 +41,6 @@ const Card: React.FC<{
       if (isSelected) {
         zIndex.set(2)
         navBarToggle(false)
-        // if()
       } else {
         if (!isSelected && scaleX < 1.01) {
           zIndex.set(0)
@@ -88,51 +65,26 @@ const Card: React.FC<{
             layoutTransition={isSelected ? openSpring : closeSpring}
             onUpdate={checkZIndex}
           >
-            <motion.div
-              className="Card-image"
-              variants={ImageVariants}
-              style={{ ...invertedImg, originX: 0, originY: 0 }}
-              animate={!isSelected ? "visible" : "hidden"}
-              transition={isSelected ? openSpring : closeSpring}
-            >
-              <motion.img
-                data-flickity-lazyload={space?.bg_image}
-                alt=""
-                ref={imgRef}
-                initial={false}
-                transition={closeSpring}
-              />
-            </motion.div>
-            {isSelected && (
-              <>
-                <CloseBtn close={close} />
-                <Info
-                  title={space.title}
-                  description={space.description}
-                  style={openInfoStyle}
-                  isDescTitle={true}
-                  animation={{
-                    variants: infoVariants,
-                    initial: "hidden",
-                    animate: "visible",
-                    exit: "hidden",
-                    transition: closeInertial,
-                  }}
-                />
-                <Detail />
-              </>
-            )}
-            {!isSelected && (
+            <CardImage
+              bgImage={space?.bg_image}
+              isSelected={isSelected}
+              imgRef={imgRef}
+              animate={true}
+            />
+            {isSelected ? (
+              <Detail close={close} />
+            ) : (
               <Info
-                title={space.title}
-                description={space.description}
+                title={space?.title}
+                description={space?.description}
                 thumbs={space?.face_thumbs}
                 style={{}}
+                animation={{}}
               />
             )}
           </motion.div>
         </motion.div>
-        {!isSelected && selectedIndex && (
+        {!isSelected && selectedIndex && space && (
           <Link to={space.id} className={`Card-open-link`} />
         )}
       </motion.div>
