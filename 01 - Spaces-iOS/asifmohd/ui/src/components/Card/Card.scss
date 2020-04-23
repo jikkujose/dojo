@@ -10,11 +10,12 @@
     @include box-dim;
     position: relative;
     .Card-content {
+      @include box-dim;
+      @include flex(flex-start, inherit, column);
       pointer-events: auto;
       position: relative;
       border-radius: 10px;
       overflow: hidden;
-      @include box-dim;
       background-color: white;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       margin: 0 auto;

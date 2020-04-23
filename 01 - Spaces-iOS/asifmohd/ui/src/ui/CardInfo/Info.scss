@@ -9,6 +9,7 @@
 }
 
 .Card-info-wrapper {
+  margin-top: auto;
   @include flex(space-between);
   padding: 40px 30px 50px;
 
