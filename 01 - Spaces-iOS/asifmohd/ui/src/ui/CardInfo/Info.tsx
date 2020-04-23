@@ -24,7 +24,7 @@ const TitleWrapper = (props: Props<{}>) => (
   </div>
 )
 
-const Info: React.FC<InfoType> = ({
+const Info: React.FC<Partial<InfoType>> = ({
   title,
   description,
   style,
@@ -40,7 +40,7 @@ const Info: React.FC<InfoType> = ({
         </h2>
         <div className="Card-sub" style={style?.sub}>
           {`${description?.count} ${description?.type}${
-            description?.count > 1 && "s"
+            description && description?.count > 1 && "s"
           }`}
         </div>
       </motion.div>
