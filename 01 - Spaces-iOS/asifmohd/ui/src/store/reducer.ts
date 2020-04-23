@@ -6,8 +6,22 @@ interface Actions {
 
 export interface State {
   route: {
-    path: string
-    prev: string
+    path?: {
+      isExact: boolean
+      params: {
+        [key: string]: string
+      }
+      path: string
+      url: string
+    }
+    prev?: {
+      isExact: boolean
+      params: {
+        [key: string]: string
+      }
+      path: string
+      url: string
+    }
   }
   slide: {
     isSelected: boolean
