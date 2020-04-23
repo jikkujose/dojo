@@ -69,7 +69,7 @@ const Card: React.FC<CardType> = memo(
               bgImage={space?.bg_image}
               isSelected={isSelected}
               imgRef={imgRef}
-              animate={true}
+              animate={false}
             />
             {isSelected ? (
               <Detail close={close} />

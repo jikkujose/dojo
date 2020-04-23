@@ -9,7 +9,7 @@ const InnerCard: React.FC<{ slide: Slide }> = ({ slide }) => {
     <div className="Card-container">
       <div className="Card">
         <div className="Card-content">
-          <CardImage bgImage={slide?.bg_image} animate={false} />
+          <CardImage bgImage={slide?.bg_image} animate={true} />
           <Info
             title={slide.title}
             description={slide.description}
