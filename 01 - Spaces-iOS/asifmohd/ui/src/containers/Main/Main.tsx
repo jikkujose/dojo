@@ -5,10 +5,11 @@ import { first, debounceTime } from "rxjs/operators"
 import "./Main.scss"
 import "styles/flickity.css"
 import Card from "components/Card/Card"
-import spaces from "model/spacesdata.json"
+import spaces from "model/spaceList.json"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import { store } from "store/store"
 import { flickityOptions } from "utils/flickity-conf"
+import { Space } from "model/interface"
 
 const imgRefList: HTMLImageElement[] = []
 let flickityRef: Flickity
@@ -42,7 +43,7 @@ const Main = ({ match, history }) => {
 
   // set draggable state
   useEffect(() => {
-    dispatch({ type: "NAVIGATE", payload: { match } })
+    dispatch({ type: "NAVIGATE", payload: { ...match } })
     let isDraggable = !match.params.id
     if (flickityRef) {
       flickityRef["options"].draggable = isDraggable
@@ -97,15 +98,15 @@ const Main = ({ match, history }) => {
         elementType={"div"}
         options={flickityOptions}
       >
-        {spaces.map((space, i) => (
+        {spaces.map((space: Space, i) => (
           <Card
             space={space}
             key={space.id}
             onScroll={scrollHandler}
             isSelected={match.params.id === space.id}
+            isDetail={false}
             translateX={x}
             selectedIndex={SelectedIndex === i}
-            i={i}
             navBarToggle={navBarTogglehandler}
             close={closeHandler}
           />
