@@ -15,14 +15,6 @@ function reset() {
   location.reload();
 }
 
-function setTheboard() {
-  for (let i = 0; i < cols; i++) {
-    for (let j = 0; j < rows; j++) {
-      board[i][j] = floor(random(2));
-    }
-  }
-}
-
 function ifInsideBoard(nCol, nRow) {
   if (!(nCol < 0 || nCol >= cols) && !(nRow < 0 || nRow >= rows)) return true;
 }
