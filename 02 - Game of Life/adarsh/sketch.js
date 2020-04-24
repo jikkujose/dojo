@@ -20,8 +20,7 @@ function ifInsideBoard(nCol, nRow) {
 }
 
 function createMatrix() {
-  matrix = [...Array(cols).fill(0)].map(() => Array(rows).fill(0));
-  return matrix;
+  return [...Array(cols).fill(0)].map(() => Array(rows).fill(0));
 }
 
 function neighbors(col, row) {
@@ -91,9 +90,9 @@ function nextGeneration() {
 function defaultPattern() {
   row = rows / 2 + 5;
   col = cols / 2 - 10;
-  matrix[row + 1][col - 1] = 1;
-  matrix[row][col - 1] = 1;
-  matrix[row][col] = 1;
-  matrix[row][col + 1] = 1;
-  matrix[row - 1][col] = 1;
+  board[row + 1][col - 1] = 1;
+  board[row][col - 1] = 1;
+  board[row][col] = 1;
+  board[row][col + 1] = 1;
+  board[row - 1][col] = 1;
 }
