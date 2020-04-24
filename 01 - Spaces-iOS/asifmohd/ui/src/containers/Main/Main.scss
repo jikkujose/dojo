@@ -1,0 +1,17 @@
+@use "styles/mixins" as *;
+
+main {
+  @include flex;
+  @include box-dim;
+
+  & .carousel {
+    @include box-dim;
+    & .flickity-viewport {
+      height: 100% !important;
+      & .flickity-slider {
+        transform: translateX(20.72%);
+        @include flex;
+      }
+    }
+  }
+}

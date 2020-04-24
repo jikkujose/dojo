@@ -1,0 +1,18 @@
+@use "styles/mixins" as *;
+
+.Flickity-container {
+  @include flex;
+  @include box-dim(100%, 500px);
+  @include position(absolute, $top: 33%);
+  .inner-carousel {
+    @include box-dim;
+    z-index: 3;
+    & .flickity-viewport {
+      // height: 100% !important;
+      & .flickity-slider {
+        transform: translateX(20.72%);
+        @include flex;
+      }
+    }
+  }
+}

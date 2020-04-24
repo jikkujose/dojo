@@ -1,0 +1,61 @@
+@use "styles/mixins" as *;
+@use "styles/variables" as *;
+
+.Card-desc-title {
+  @include position(absolute, $top: 20%, $left: 50%);
+  transform: translateX(-50%);
+  color: #c0c0c0;
+  text-align: center;
+}
+
+.Card-info-wrapper {
+  margin-top: auto;
+  @include flex(space-between);
+  padding: 40px 30px 50px;
+
+  & .Card-info {
+    position: relative;
+    width: 100%;
+
+    & .Card-thumb {
+      position: absolute;
+      padding: 4px;
+      top: 0;
+      justify-content: center;
+      display: flex;
+      border-radius: 50%;
+      background: white;
+      &__0 {
+        right: 0;
+      }
+      &__1 {
+        right: 30px;
+      }
+      &__2 {
+        right: 60px;
+      }
+      & img {
+        border-radius: 50%;
+        @include box-dim(35px, 35px);
+      }
+    }
+  }
+}
+
+.Card-title {
+  font-weight: bold;
+  color: #575757;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  font-size: 17px;
+  opacity: 0.9;
+}
+.Card-sub {
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  opacity: 0.4;
+  text-transform: uppercase;
+}

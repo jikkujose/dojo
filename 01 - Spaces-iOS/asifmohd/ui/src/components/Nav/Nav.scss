@@ -1,0 +1,33 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+
+.Nav-container {
+  margin: 0;
+  padding: 0;
+  @include flex(space-around, center);
+  height: 100%;
+  list-style-type: none;
+  & .Nav-list {
+    padding: 15px 10px;
+    position: relative;
+    @include flex;
+    & .Nav-item {
+      text-decoration: none;
+      @include font-style(12px, $nav-item-primary, 600, 1.5px);
+      text-transform: uppercase;
+
+      &.Nav-active-text {
+        color: $nav-item-active;
+      }
+    }
+    &.Nav-active {
+      &:after {
+        content: "";
+        @include position(absolute, $right: 0, $bottom: -4px);
+        @include box-dim(100%, 4px);
+        border-radius: 10px;
+        background-color: $nav-item-active;
+      }
+    }
+  }
+}

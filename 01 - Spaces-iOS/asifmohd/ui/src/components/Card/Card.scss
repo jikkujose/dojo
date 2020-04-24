@@ -1,0 +1,37 @@
+@use "styles/mixins" as *;
+@use "styles/variables" as *;
+
+.Card-container {
+  padding-right: 28px;
+  @include box-dim(300px, 428px);
+  position: relative;
+
+  .Card {
+    @include box-dim;
+    position: relative;
+    .Card-content {
+      @include box-dim;
+      @include flex(flex-start, inherit, column);
+      pointer-events: auto;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+    }
+    &.open {
+      @include position(fixed, $top: 0, $left: 0, $right: 0);
+      @include box-dim;
+      z-index: 1;
+      .Card-content {
+        @include box-dim;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.Card-open-link {
+  @include position(absolute, $top: 0, $left: 0, $right: 0, $bottom: 0);
+}

@@ -1,0 +1,266 @@
+<html>
+    <head><meta charset="UTF-8"></head>
+    <body>
+        <span>Iteration:</span><span id="iteration">0</span><br><br>
+        <canvas style="border: 1px solid #000;"></canvas>
+        <script type="text/javascript">
+         let params = new URLSearchParams(window.location.search)
+         let n = parseInt(params.get("n") || 100)
+         let size = parseInt(params.get("size") || 800)
+         let canvas = document.querySelector("canvas")
+         let counter = document.getElementById("iteration")
+         var context = canvas.getContext("2d")
+         let boards, board, boardIndex = 0
+         let running = 0, iteration = 0, draw = true, drawStep = 1, delay = 0
+         let pattern
+
+         function setSize(x) {
+             size = x
+             context.canvas.width = size
+             context.canvas.height = size
+         }
+
+         function emptyBoard(rows, columns) {
+             return Array(rows+2).fill().map(() => Array(columns+2).fill(0))
+         }
+
+         function randomBoard(rows, columns) {
+             let board = emptyBoard(rows, columns)
+
+             for(let y=1; y <= rows; y++)
+                 for(let x=1; x <= columns; x++)
+                     board[y][x] = Math.floor(Math.random()*2)
+
+             return board
+         }
+
+         function drawBoard() {
+             if(!draw) return
+             if(iteration % drawStep != 0) return
+
+             let d = size/n
+
+             for(let y=0; y < n; y++) {
+                 for(let x=0; x < n; x++) {
+                     context.fillStyle = (board[y+1][x+1] == 1) ? "black": "white"
+                     context.fillRect(d*x, d*y, d, d)
+                 }
+             }
+         }
+
+         function handleClick(event) {
+             let rect = canvas.getBoundingClientRect()
+             let d = size/n
+             let x = event.clientX - rect.left
+             let y = event.clientY - rect.top
+             let py = Math.ceil(y/d) - 1
+             let px = Math.ceil(x/d) - 1
+
+             if(pattern) {
+                 for(let y = 0; y < pattern.length; y++) {
+                     let row = pattern[y]
+                     for(let x = 0; x < row.length; x++) {
+                         board[py+1+y][px+1+x] = row[x] == '1' ? 1 : 0
+                     }
+                 }
+                 pattern = undefined
+             } else {
+                 board[py+1][px+1] = (board[py+1][px+1] == 1) ? 0 : 1
+             }
+
+             drawBoard()
+         }
+
+         function iterate() {
+             let nextIndex = (boardIndex + 1) % 2
+             let nextBoard = boards[nextIndex]
+
+             for(let y=1; y <= n; y++) {
+                 for(let x=1; x <= n; x++) {
+                     let neighbors = board[y-1][x-1]+board[y-1][x]+board[y-1][x+1]+board[y][x-1]+board[y][x+1]+board[y+1][x-1]+board[y+1][x]+board[y+1][x+1]
+
+                     let a = 0
+
+                     if(board[y][x] == 0) {
+                         if(neighbors == 3) a = 1
+                     } else {
+                         if(neighbors == 2 || neighbors == 3) a = 1
+                     }
+
+                     nextBoard[y][x] = a
+                 }
+             }
+
+             boardIndex = nextIndex
+             board = nextBoard
+         }
+
+         function step() {
+             iterate()
+             iteration += 1
+             counter.innerHTML = iteration
+             drawBoard()
+         }
+
+         function handleStart() {
+             running = !running
+
+             let f = function() {
+                 if(!running) return
+                 step()
+                 setTimeout(f, delay)
+             }
+
+             f()
+         }
+
+         function handleReset() {
+             running = false
+             iteration = 0
+             drawStep = 1
+             delay = 0
+             counter.innerHTML = 0
+             board = emptyBoard(n, n)
+             drawBoard()
+         }
+
+         function handleRandom() {
+             board = randomBoard(n, n)
+             drawBoard()
+         }
+
+         function handleKeypress(e) {
+             let k = String.fromCharCode(e.which)
+             switch(k) {
+                 case ' ':
+                     handleStart()
+                     break
+
+                 case 'r':
+                     handleRandom()
+                     break
+
+                 case 'R':
+                     handleReset()
+                     break
+
+                 case 'n':
+                     step()
+                     break
+
+                 case '-':
+                     setSize(Math.max(size-100, 100))
+                     drawBoard()
+                     break
+
+                 case '+':
+                     setSize(Math.min(size+100, 10000))
+                     drawBoard()
+                     break
+
+                 case '*':
+                     setSize(parseInt(params.get("size") || 800))
+                     drawBoard()
+                     break
+
+                 case '?':
+                     help = !help
+                     drawBoard()
+                     break
+
+                 case ',':
+                     delay = Math.max(delay-1, 0)
+                     console.log("delay", delay)
+                     break
+
+                 case '.':
+                     delay += 1
+                     console.log("delay", delay)
+                     break
+
+                 case '/':
+                     delay = 0
+                     console.log("delay", delay)
+                     break
+
+                 case 'd':
+                     draw=!draw
+                     break
+
+                 case '[':
+                     drawStep = Math.max(drawStep-1, 1)
+                     console.log("drawstep", drawStep)
+                     break
+
+                 case ']':
+                     drawStep = Math.min(drawStep+1, 1000)
+                     console.log("drawstep", drawStep)
+                     break
+
+                 case '\\':
+                     drawStep = 1
+                     console.log("drawstep", drawStep)
+                     break
+
+                 case 'a':
+                     pattern = ['0100000',
+                                '0001000',
+                                '1100111']
+                     break
+
+                 case 'l':
+                     pattern = ['00111',
+                                '01001',
+                                '10001',
+                                '10010',
+                                '11100']
+                     break
+
+                 default:
+                     pattern = undefined
+                     break
+             }
+         }
+
+         setSize(size)
+         boards = [randomBoard(n, n), emptyBoard(n, n)]
+         board = boards[boardIndex]
+         drawBoard()
+         canvas.addEventListener("mousedown", handleClick)
+         document.querySelector("body").addEventListener("keypress", handleKeypress)
+
+         let help = ''
+
+         p=`click: toggle cell state
+
+                 space: start/pause
+                 n: step
+                 r: random
+                 R: reset
+
+                 -: decrease canvas size
+                 +: increase canvas size
+                 *: reset canvas size
+
+                 ,: decrease delay
+                 .: increase delay
+                 /: reset delay
+
+                 [: decrease draw step
+                 ]: increase draw step
+                 \\: reset draw step
+
+                 d: toggle draw
+
+                 a: place acorn (press a and click on canvas)
+
+                 query paramater 'n' to set world size
+                 query paramater 'size' to set canvas size
+         `.split("\n").map(s => {
+             help += s.trim() + "\n"
+         })
+
+         console.log(help)
+        </script>
+    </body>
+</html>
