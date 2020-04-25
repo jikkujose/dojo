@@ -15,21 +15,12 @@ function reset() {
   location.reload();
 }
 
-function setTheboard() {
-  for (let i = 0; i < cols; i++) {
-    for (let j = 0; j < rows; j++) {
-      board[i][j] = floor(random(2));
-    }
-  }
-}
-
 function ifInsideBoard(nCol, nRow) {
   if (!(nCol < 0 || nCol >= cols) && !(nRow < 0 || nRow >= rows)) return true;
 }
 
 function createMatrix() {
-  matrix = [...Array(cols).fill(0)].map(() => Array(rows).fill(0));
-  return matrix;
+  return [...Array(cols).fill(0)].map(() => Array(rows).fill(0));
 }
 
 function neighbors(col, row) {
@@ -99,9 +90,9 @@ function nextGeneration() {
 function defaultPattern() {
   row = rows / 2 + 5;
   col = cols / 2 - 10;
-  matrix[row + 1][col - 1] = 1;
-  matrix[row][col - 1] = 1;
-  matrix[row][col] = 1;
-  matrix[row][col + 1] = 1;
-  matrix[row - 1][col] = 1;
+  board[row + 1][col - 1] = 1;
+  board[row][col - 1] = 1;
+  board[row][col] = 1;
+  board[row][col + 1] = 1;
+  board[row - 1][col] = 1;
 }
