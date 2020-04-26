@@ -20,7 +20,7 @@ const Controls: FC<ControlsProps> = ({
   setFrameRate,
 }) => {
   const [showSettings, setShowSettings] = useState(false)
-  let windowWidth = useWindowResize()
+  let { windowWidth } = useWindowResize()
   return (
     <nav className="Nav-container">
       {!(showSettings && windowWidth < 582) && (
