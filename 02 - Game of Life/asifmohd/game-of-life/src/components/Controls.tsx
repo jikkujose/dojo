@@ -1,5 +1,6 @@
 import React, { useState, FC } from "react"
 import { config } from "utils/config"
+import useWindowResize from "hooks/useWindowResize"
 
 const { controls } = config
 
@@ -19,9 +20,12 @@ const Controls: FC<ControlsProps> = ({
   setFrameRate,
 }) => {
   const [showSettings, setShowSettings] = useState(false)
+  let windowWidth = useWindowResize()
   return (
     <nav className="Nav-container">
-      <h2 className="Nav-title">game of life</h2>
+      {!(showSettings && windowWidth < 582) && (
+        <h2 className="Nav-title">conway's game of life</h2>
+      )}
       <p className="Nav-desc">{controls.gameDescription}</p>
       <div className="Nav-controls">
         <span className="btn" onClick={toggleSimulation}>
@@ -36,7 +40,14 @@ const Controls: FC<ControlsProps> = ({
           </span>
         </span>
         <span className="btn">
-          <span onClick={clearBoard}>reset</span>
+          <span
+            onClick={clearBoard}
+            style={{
+              background: controls.resetBtnColor,
+            }}
+          >
+            reset
+          </span>
         </span>
         <span className="btn" onClick={() => setShowSettings(!showSettings)}>
           <span
