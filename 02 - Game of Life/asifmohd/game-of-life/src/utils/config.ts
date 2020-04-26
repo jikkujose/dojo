@@ -3,10 +3,10 @@ export const config = {
     row: 50,
     column: 50,
     padding: {
-      verticalPadding: 7,
-      hoirizontalPadding: 3,
-      smScreenVerticalPadding: 5,
-      smScreenhoirizontalPadding: 1,
+      verticalPadding: 6,
+      hoirizontalPadding: 4,
+      smScreenVerticalPadding: 6,
+      smScreenhoirizontalPadding: 2,
     },
   },
   cells: {
