@@ -5,18 +5,18 @@ const { controls } = config
 
 interface ControlsType {
   isRunning: boolean
-  tick: number
+  frameRate: number
   toggleSimulation: () => void
   clearBoard: () => void
-  setTick: (e: React.ChangeEvent<HTMLInputElement>) => void
+  setFrameRate: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Controls: FC<ControlsType> = ({
   isRunning,
   toggleSimulation,
   clearBoard,
-  tick,
-  setTick,
+  frameRate,
+  setFrameRate,
 }) => {
   const [showSettings, setShowSettings] = useState(false)
   return (
@@ -58,8 +58,8 @@ const Controls: FC<ControlsType> = ({
               <input
                 type="text"
                 style={{ width: 25 }}
-                value={tick}
-                onChange={setTick}
+                value={frameRate}
+                onChange={setFrameRate}
               />
             </span>
           </div>

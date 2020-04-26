@@ -5,12 +5,17 @@ import Board from "components/Board"
 import { gridGenerator } from "utils/utils"
 import { conway } from "conway"
 import { useBoardGenerator } from "utils/useBoardGenerator"
+import { config } from "utils/config"
+
+const {
+  controls: { speed },
+} = config
 
 const App = () => {
   const gameBoardRef = useRef<HTMLElement>(null)
   const [grid, setGrid, dimension] = useBoardGenerator(gameBoardRef)
-  const [tick, setTick] = useState(100)
-  const tickRef = useRef(tick)
+  const [frameRate, setFrameRate] = useState(speed)
+  const frameRateRef = useRef(frameRate)
   const [isRunning, setisRunning] = useState(false)
   const isRunningRef = useRef(isRunning)
   isRunningRef.current = isRunning
@@ -32,7 +37,7 @@ const App = () => {
   const runSimulation = () => {
     if (!isRunningRef.current) return
     setGrid((grid) => conway(grid))
-    setTimeout(runSimulation, tickRef.current)
+    setTimeout(runSimulation, frameRateRef.current)
   }
 
   const toggleSimulationHandler = () => {
@@ -48,13 +53,13 @@ const App = () => {
     setGrid(gridGenerator(dimension.row, dimension.column))
   }
 
-  const setTickHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTick(+e.target.value)
+  const setFrameRateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFrameRate(+e.target.value)
   }
 
   useEffect(() => {
-    tickRef.current = tick
-  }, [tick])
+    frameRateRef.current = frameRate
+  }, [frameRate])
 
   return (
     <div className="Main-container">
@@ -62,8 +67,8 @@ const App = () => {
         isRunning={isRunning}
         toggleSimulation={toggleSimulationHandler}
         clearBoard={clearBoardHandler}
-        tick={tick}
-        setTick={setTickHandler}
+        frameRate={frameRate}
+        setFrameRate={setFrameRateHandler}
       />
       <Board
         gameBoardRef={gameBoardRef}
