@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react"
 import "./App.scss"
 import Controls from "components/Controls"
 import Board from "components/Board"
-import { gridGenerator } from "utils/utils"
+import { gridGenerator, digitsOnly } from "utils/utils"
 import { conway } from "conway"
 import { useBoardGenerator } from "hooks/useBoardGenerator"
 import { config } from "utils/config"
@@ -14,8 +14,8 @@ const {
 const App = () => {
   const gameBoardRef = useRef<HTMLElement>(null)
   const [grid, setGrid, dimension] = useBoardGenerator(gameBoardRef)
-  const [frameRate, setFrameRate] = useState(speed)
-  const frameRateRef = useRef(frameRate)
+  const [tick, setTick] = useState(speed)
+  const tickRef = useRef(tick)
   const [isRunning, setisRunning] = useState(false)
   const isRunningRef = useRef(isRunning)
   isRunningRef.current = isRunning
@@ -32,12 +32,12 @@ const App = () => {
     setGrid(newGrid)
   }
 
-  const toggleCellStateHandler = (x, y) => toggleCellState(x, y)
+  const toggleCellStateHandler = (x: number, y: number) => toggleCellState(x, y)
 
   const runSimulation = () => {
     if (!isRunningRef.current) return
     setGrid((grid) => conway(grid))
-    setTimeout(runSimulation, frameRateRef.current)
+    setTimeout(runSimulation, tickRef.current)
   }
 
   const toggleSimulationHandler = () => {
@@ -53,13 +53,15 @@ const App = () => {
     setGrid(gridGenerator(dimension.row, dimension.column))
   }
 
-  const setFrameRateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFrameRate(+e.target.value)
+  const setTickHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const interval = +e.target.value.toString().replace(digitsOnly, "")
+    if (!isNaN(interval)) setTick(interval)
+    if (interval === null || interval === undefined) setTick(0)
   }
 
   useEffect(() => {
-    frameRateRef.current = frameRate
-  }, [frameRate])
+    tickRef.current = tick
+  }, [tick])
 
   return (
     <div className="Main-container">
@@ -67,8 +69,8 @@ const App = () => {
         isRunning={isRunning}
         toggleSimulation={toggleSimulationHandler}
         clearBoard={clearBoardHandler}
-        frameRate={frameRate}
-        setFrameRate={setFrameRateHandler}
+        tick={tick}
+        setTick={setTickHandler}
       />
       <Board
         gameBoardRef={gameBoardRef}

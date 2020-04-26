@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react"
-import { getWindowSize } from "utils/utils"
+import { getWindowWidth, getWindowHeight } from "utils/utils"
 
 const useWindowResize = () => {
-  const [windowSize, setWindowSize] = useState(getWindowSize)
+  const [windowWidth, setWindowWidth] = useState(getWindowWidth)
+  const [windowHeight, setWindowHeight] = useState(getWindowHeight)
 
   useEffect(() => {
     let timeoutId
 
     const resizeListener = () => {
       clearTimeout(timeoutId)
-      timeoutId = setTimeout(() => setWindowSize(getWindowSize()), 150)
+      timeoutId = setTimeout(() => {
+        setWindowWidth(getWindowWidth())
+        setWindowHeight(getWindowHeight())
+      }, 150)
     }
 
     window.addEventListener("resize", resizeListener)
@@ -19,7 +23,7 @@ const useWindowResize = () => {
     }
   }, [])
 
-  return windowSize
+  return { windowWidth, windowHeight }
 }
 
 export default useWindowResize

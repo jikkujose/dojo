@@ -6,18 +6,18 @@ const { controls } = config
 
 interface ControlsProps {
   isRunning: boolean
-  frameRate: number
+  tick: number
   toggleSimulation: () => void
   clearBoard: () => void
-  setFrameRate: (e: React.ChangeEvent<HTMLInputElement>) => void
+  setTick: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Controls: FC<ControlsProps> = ({
   isRunning,
   toggleSimulation,
   clearBoard,
-  frameRate,
-  setFrameRate,
+  tick,
+  setTick,
 }) => {
   const [showSettings, setShowSettings] = useState(false)
   let { windowWidth } = useWindowResize()
@@ -60,22 +60,22 @@ const Controls: FC<ControlsProps> = ({
             {!showSettings ? "settings" : "done"}
           </span>
         </span>
-      </div>
-      {showSettings && (
-        <div className="Nav-settings-container">
-          <div className="Nav-setting">
-            <label>simulation speed</label>
-            <span className="btn">
-              <input
-                type="text"
-                style={{ width: 25 }}
-                value={frameRate}
-                onChange={setFrameRate}
-              />
-            </span>
+        {showSettings && (
+          <div className="Nav-settings-container">
+            <div className="Nav-setting">
+              <label>simulation speed</label>
+              <span className="btn">
+                <input
+                  type="text"
+                  style={{ width: 25 }}
+                  value={tick}
+                  onChange={setTick}
+                />
+              </span>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   )
 }

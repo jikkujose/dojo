@@ -6,18 +6,15 @@ export const getCurrentGridDim = (grid: number[][]) => [
   grid[0].length,
 ]
 
-export const getWindowSize = () => {
-  return {
-    windowWidth:
-      window.innerWidth ||
-      document.documentElement.clientWidth ||
-      document.body.clientWidth,
-    windowHeight:
-      window.innerHeight ||
-      document.documentElement.clientHeight ||
-      document.body.clientHeight,
-  }
-}
+export const getWindowWidth = () =>
+  window.innerWidth ||
+  document.documentElement.clientWidth ||
+  document.body.clientWidth
+
+export const getWindowHeight = () =>
+  window.innerHeight ||
+  document.documentElement.clientHeight ||
+  document.body.clientHeight
 
 export const getPadding = (
   {
@@ -26,7 +23,7 @@ export const getPadding = (
     smScreenVerticalPadding,
     smScreenhoirizontalPadding,
   },
-  { windowWidth, windowHeight }
+  windowWidth: number
 ): { vPadding: number; hPadding: number } =>
   windowWidth > 576
     ? { vPadding: verticalPadding, hPadding: hoirizontalPadding }
@@ -43,3 +40,12 @@ export const setContainerHeight = () => {
   let vh = window.innerHeight * 0.01
   document.documentElement.style.setProperty("--vh", `${vh}px`)
 }
+
+export const digitsOnly: RegExp = /[^1234567890]/g
+// export const validateInput = (
+//   e: React.KeyboardEvent<HTMLInputElement>,
+//   validatorExp: RegExp
+// ) => {
+//   console.log(e.key, e.keyCode)
+//   if (!validatorExp.test(e.key)) e.preventDefault()
+// }

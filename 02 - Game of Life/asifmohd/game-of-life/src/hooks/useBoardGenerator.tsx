@@ -18,7 +18,7 @@ export const useBoardGenerator = (
 ] => {
   const [dimension, setDimension] = useState<Dimension>({ row: 0, column: 0 })
   const [grid, setGrid] = useState<number[][]>(() => gridGenerator(0, 0))
-  let windowSize = useWindowResize()
+  let { windowWidth } = useWindowResize()
 
   const setGameBoard = ({ row, column }) => {
     setGrid(gridGenerator(row, column))
@@ -31,7 +31,7 @@ export const useBoardGenerator = (
         board: { padding },
         cells: { size },
       } = config
-      const { vPadding, hPadding } = getPadding(padding, windowSize)
+      const { vPadding, hPadding } = getPadding(padding, windowWidth)
       return {
         row: Math.floor(height / size) - vPadding,
         column: Math.floor(width / size) - hPadding,
@@ -42,7 +42,7 @@ export const useBoardGenerator = (
       const { clientHeight, clientWidth } = gameBoard.current
       setGameBoard(calculateGridDimension(clientHeight, clientWidth))
     }
-  }, [gameBoard, windowSize])
+  }, [gameBoard, windowWidth])
 
   return [grid, setGrid, dimension, setDimension]
 }
