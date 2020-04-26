@@ -11,12 +11,23 @@ Collaborative coding challenges for fun & profit
 
 ## Leader Board
 
-| `username`    | Challenge |
-| ------------- | --------- |
-| `amalshehu`   | `10`      |
-| `asifmohd`    | `10`      |
-| `adarsh`      | `10`      |
-| `jikkujose`   | `00`      |
-| `rakeshbs`    | `01`      |
-| `jibinmathew` | `00`      |
-| `nikhilmohan` | `00`      |
+| `username`         | Challenge              |
+| -------------      | ---------------------- |
+| [`@amalshehu`][as] | `1`[`1`][1-02]         |
+| `asifmohd`         | `1`[`1`][2-02]         |
+| `adarsh`           | `1`[`1`][3-02]         |
+| [`@jikkujose`][jj] | `0`[`0`][4-02]         |
+| `rakeshbs`         | `0`[`1`][5-02]         |
+| `jibinmathew`      | `00`                   |
+| `nikhilmohan`      | `0`[`0`][7-02]         |
+| `jeswinsimon`      | `0`[`0`][8-02]         |
+
+[as]: http://github.com/amalshehu
+[jj]: http://github.com/jikkujose
+[4-02]: https://jikkujose.in/02-conway-game-of-life/
+[5-02]: https://rakeshbs.github.io/conway/
+[2-02]: https://game-of-life-99e63.web.app/
+[3-02]: https://adarsh-why.github.io/conway-game-of-life/
+[7-02]: https://nikhilmohan-02-conway-game-of-life.surge.sh/
+[8-02]: https://jeswinsimon.github.io/game-of-life/
+[1-02]: https://game-of-life-2e998.firebaseapp.com/
