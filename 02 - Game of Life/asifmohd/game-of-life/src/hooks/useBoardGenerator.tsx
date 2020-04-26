@@ -16,7 +16,7 @@ export const useBoardGenerator = (
   Dimension,
   Dispatch<SetStateAction<Dimension>>
 ] => {
-  const [dimension, setDimension] = useState<Dimension>({ row: 50, column: 50 })
+  const [dimension, setDimension] = useState<Dimension>({ row: 0, column: 0 })
   const [grid, setGrid] = useState<number[][]>(() => gridGenerator(0, 0))
   let windowWidth = useWindowResize()
 

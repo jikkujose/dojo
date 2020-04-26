@@ -19,29 +19,31 @@ const Board: FC<BoardProps> = ({
 }) => {
   return (
     <main className="Grid-container" ref={gameBoardRef}>
-      <div
-        className="Grid"
-        style={{
-          gridTemplateColumns: `repeat(${gridDimension.column}, ${cells.size}px)`,
-        }}
-      >
-        {grid.map((row, i) =>
-          row.map((col, j) => (
-            <div
-              key={`${i}${j}`}
-              onClick={() => toggleCellState(i, j)}
-              style={{
-                width: `${cells.size}px`,
-                height: `${cells.size}px`,
-                backgroundColor: grid[i][j]
-                  ? cells.aliveColor
-                  : cells.deadColor,
-                border: cells.border,
-              }}
-            ></div>
-          ))
-        )}
-      </div>
+      {!!gridDimension.column && (
+        <div
+          className="Grid"
+          style={{
+            gridTemplateColumns: `repeat(${gridDimension.column}, ${cells.size}px)`,
+          }}
+        >
+          {grid.map((row, i) =>
+            row.map((col, j) => (
+              <div
+                key={`${i}${j}`}
+                onClick={() => toggleCellState(i, j)}
+                style={{
+                  width: `${cells.size}px`,
+                  height: `${cells.size}px`,
+                  backgroundColor: grid[i][j]
+                    ? cells.aliveColor
+                    : cells.deadColor,
+                  border: cells.border,
+                }}
+              ></div>
+            ))
+          )}
+        </div>
+      )}
     </main>
   )
 }
