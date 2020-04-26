@@ -3,7 +3,7 @@ import { config } from "utils/config"
 
 const { controls } = config
 
-interface ControlsType {
+interface ControlsProps {
   isRunning: boolean
   frameRate: number
   toggleSimulation: () => void
@@ -11,7 +11,7 @@ interface ControlsType {
   setFrameRate: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Controls: FC<ControlsType> = ({
+const Controls: FC<ControlsProps> = ({
   isRunning,
   toggleSimulation,
   clearBoard,

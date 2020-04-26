@@ -1,17 +1,17 @@
 import React, { FC } from "react"
-import { Dimension } from "utils/useBoardGenerator"
+import { Dimension } from "hooks/useBoardGenerator"
 import { config } from "utils/config"
 
 const { cells } = config
 
-interface BoardType {
+interface BoardProps {
   gameBoardRef: React.RefObject<HTMLElement>
   grid: number[][]
   gridDimension: Dimension
   toggleCellState: (x: number, y: number) => void
 }
 
-const Board: FC<BoardType> = ({
+const Board: FC<BoardProps> = ({
   gameBoardRef,
   grid,
   gridDimension,
