@@ -1,6 +1,6 @@
 import { useEffect, useState, Dispatch, SetStateAction } from "react"
 import { config } from "../utils/config"
-import { gridGenerator } from "utils/utils"
+import { gridGenerator, getPadding } from "utils/utils"
 import useWindowResize from "./useWindowResize"
 
 export interface Dimension {
@@ -20,23 +20,24 @@ export const useBoardGenerator = (
   const [grid, setGrid] = useState<number[][]>(() => gridGenerator(0, 0))
   let windowWidth = useWindowResize()
 
-  const calculateGridDimension = (height: number, width: number) => {
-    const {
-      board: { verticalPadding, hoirizontalPadding },
-      cells: { size },
-    } = config
-    return {
-      row: Math.floor(height / size) - verticalPadding,
-      column: Math.floor(width / size) - hoirizontalPadding,
-    }
-  }
-
   const setGameBoard = ({ row, column }) => {
     setGrid(gridGenerator(row, column))
     setDimension((dimension) => ({ ...dimension, row, column }))
   }
 
   useEffect(() => {
+    const calculateGridDimension = (height: number, width: number) => {
+      const {
+        board: { padding },
+        cells: { size },
+      } = config
+      const { vPadding, hPadding } = getPadding(padding, windowWidth)
+      return {
+        row: Math.floor(height / size) - vPadding,
+        column: Math.floor(width / size) - hPadding,
+      }
+    }
+
     if (gameBoard && gameBoard.current) {
       const { clientHeight, clientWidth } = gameBoard.current
       setGameBoard(calculateGridDimension(clientHeight, clientWidth))
