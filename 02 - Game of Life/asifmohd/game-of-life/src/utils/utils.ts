@@ -1,4 +1,4 @@
-export const gridGenerator = (row: number, col: number) =>
+export const gridGenerator = (row: number, col: number): number[][] =>
   Array.from(Array(row)).map(() => Array.from(Array(col)).fill(0))
 
 export const getCurrentGridDim = (grid: number[][]) => [
