@@ -4,7 +4,7 @@ import Controls from "components/Controls"
 import Board from "components/Board"
 import { gridGenerator } from "utils/utils"
 import { conway } from "conway"
-import { useBoardGenerator } from "utils/useBoardGenerator"
+import { useBoardGenerator } from "hooks/useBoardGenerator"
 import { config } from "utils/config"
 
 const {

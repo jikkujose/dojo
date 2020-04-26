@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getWindowWidth } from "./utils"
+import { getWindowWidth } from "utils/utils"
 
 const useWindowResize = () => {
   const [windowWidth, setWindowWidth] = useState(getWindowWidth())

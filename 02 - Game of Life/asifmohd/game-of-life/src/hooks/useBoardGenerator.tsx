@@ -1,6 +1,6 @@
 import { useEffect, useState, Dispatch, SetStateAction } from "react"
-import { config } from "./config"
-import { gridGenerator } from "./utils"
+import { config } from "../utils/config"
+import { gridGenerator } from "utils/utils"
 import useWindowResize from "./useWindowResize"
 
 export interface Dimension {
