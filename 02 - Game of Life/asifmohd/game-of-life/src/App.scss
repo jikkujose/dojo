@@ -6,7 +6,7 @@
     "nav nav"
     "main main";
   grid-template-columns: auto;
-  grid-template-rows: minmax(100px, 140px) 1fr;
+  grid-template-rows: minmax(100px, 120px) 1fr;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   & nav {
@@ -17,7 +17,7 @@
     grid-area: main;
   }
   @include md {
-    grid-template-rows: minmax(100px, 120px) 1fr;
+    grid-template-rows: 100px 1fr;
   }
 
   @include lg {
@@ -28,9 +28,11 @@
 }
 .Nav-container {
   background: #e3e3e3;
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
+  flex-wrap: wrap;
   padding: 0 1.1em;
   @include lg {
     flex-direction: column;
@@ -40,11 +42,18 @@
   .Nav-title {
     text-transform: capitalize;
     text-align: center;
-    font-size: clamp(2em, 3.6vw, 6em);
+    font-size: clamp(1.9em, 3.6vw, 6em);
     align-self: center;
-    width: 50%;
+    margin: 0;
+    width: 100%;
+    @include md {
+      width: 50%;
+      text-align: start;
+    }
     @include lg {
       width: auto;
+      padding: 1em 0;
+      text-align: center;
     }
   }
   .Nav-desc {
@@ -58,22 +67,23 @@
 
   .Nav-controls {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
 
     @include sm {
-      margin-left: 2em;
       order: 1;
+      width: 100%;
+      padding: 0.5em;
     }
 
     @include md {
-      flex-direction: row;
       align-items: center;
       flex-wrap: wrap;
     }
 
     @include lg {
       margin-top: 1.5em;
+      flex-wrap: nowrap;
     }
   }
 
@@ -86,8 +96,13 @@
     margin: 1.2em 0;
     background: #63bbde;
     border-radius: 0.5em;
+    position: absolute;
+    @include sm {
+      left: 50%;
+      transform: translate(-50%, 50%);
+      top: 2em;
+    }
     @include md {
-      position: absolute;
       right: 1.2em;
       top: 4.5em;
     }
@@ -117,6 +132,7 @@
   align-items: center;
   overflow: hidden;
   background: #dc7373;
+  // padding: 2em;
 
   .Grid {
     display: grid;
@@ -132,6 +148,7 @@
   cursor: pointer;
   text-align: center;
   font: normal 1em "Patrick Hand", sans-serif;
+  margin: 0 0.4em;
   margin-right: 10px;
   text-transform: uppercase;
   color: #000;
