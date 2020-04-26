@@ -3,7 +3,7 @@ import { config } from "./config"
 import { gridGenerator } from "./utils"
 import useWindowResize from "./useWindowResize"
 
-interface Dimension {
+export interface Dimension {
   row: number
   column: number
 }
