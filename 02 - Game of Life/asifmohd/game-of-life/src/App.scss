@@ -1,41 +1,108 @@
+@import "./styles/mixins";
+
 .Main-container {
   display: grid;
-  grid-template-areas: "nav main";
-  grid-template-columns: minmax(200px, 400px) minmax(600px, 1fr);
-  grid-template-rows: auto;
+  grid-template-areas:
+    "nav nav"
+    "main main";
+  grid-template-columns: auto;
+  grid-template-rows: minmax(100px, 140px) 1fr;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-  overflow: scroll;
+  & nav {
+    grid-area: nav;
+  }
+
+  & main {
+    grid-area: main;
+  }
+  @include md {
+    grid-template-rows: minmax(100px, 120px) 1fr;
+  }
+
+  @include lg {
+    grid-template-areas: "nav main";
+    grid-template-columns: minmax(200px, 300px) minmax(600px, 1fr);
+    grid-template-rows: auto;
+  }
 }
 .Nav-container {
   background: #e3e3e3;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0 1.1em;
+  @include lg {
+    flex-direction: column;
+    justify-content: start;
+  }
 
   .Nav-title {
     text-transform: capitalize;
     text-align: center;
-    font-size: 45px;
+    font-size: clamp(2em, 3.6vw, 6em);
+    align-self: center;
+    width: 50%;
+    @include lg {
+      width: auto;
+    }
   }
   .Nav-desc {
-    padding: 60px;
+    display: none;
+    padding: 1.2em;
+
+    @include lg {
+      display: block;
+    }
   }
 
   .Nav-controls {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
+
+    @include sm {
+      margin-left: 2em;
+      order: 1;
+    }
+
+    @include md {
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    @include lg {
+      margin-top: 1.5em;
+    }
   }
 
   .Nav-settings-container {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
-    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2em;
+    margin: 1.2em 0;
+    background: #63bbde;
+    border-radius: 0.5em;
+    @include md {
+      position: absolute;
+      right: 1.2em;
+      top: 4.5em;
+    }
+    @include lg {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
 
     .Nav-setting {
       display: flex;
       width: 100%;
       justify-content: center;
-      margin-bottom: 16px;
+      align-items: center;
+      margin: 0.2em 0.6em;
 
       label {
         width: 50%;
@@ -48,7 +115,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  overflow: hidden;
+  background: #dc7373;
 
   .Grid {
     display: grid;
@@ -62,7 +130,8 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
   cursor: pointer;
-  font: normal 22px/25px "Patrick Hand", sans-serif;
+  text-align: center;
+  font: normal 1em "Patrick Hand", sans-serif;
   margin-right: 10px;
   text-transform: uppercase;
   color: #000;
@@ -84,7 +153,7 @@
 .btn input {
   background: #fff;
   display: block;
-  padding: 5px 15px;
+  padding: 5px 14px;
   border-radius: 5px;
   border: 2px solid #000;
 }
