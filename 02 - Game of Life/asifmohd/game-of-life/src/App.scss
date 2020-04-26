@@ -42,7 +42,7 @@
   .Nav-title {
     text-transform: capitalize;
     text-align: center;
-    font-size: clamp(1.9em, 3.6vw, 6em);
+    font-size: clamp(1.9em, 3vw, 4em);
     align-self: center;
     margin: 0;
     width: 100%;
@@ -62,6 +62,7 @@
 
     @include lg {
       display: block;
+      text-align: justify;
     }
   }
 
@@ -69,6 +70,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    position: relative;
 
     @include sm {
       order: 1;
@@ -83,6 +85,7 @@
 
     @include lg {
       margin-top: 1.5em;
+      width: 100%;
       flex-wrap: nowrap;
     }
   }
@@ -97,20 +100,7 @@
     background: #63bbde;
     border-radius: 0.5em;
     position: absolute;
-    @include sm {
-      left: 50%;
-      transform: translate(-50%, 50%);
-      top: 2em;
-    }
-    @include md {
-      right: 1.2em;
-      top: 4.5em;
-    }
-    @include lg {
-      position: relative;
-      top: 0;
-      right: 0;
-    }
+    top: 2.4em;
 
     .Nav-setting {
       display: flex;
