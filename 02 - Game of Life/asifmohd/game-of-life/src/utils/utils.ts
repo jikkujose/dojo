@@ -9,3 +9,19 @@ export const getWindowWidth = () =>
   window.innerWidth ||
   document.documentElement.clientWidth ||
   document.body.clientWidth
+
+export const getPadding = (
+  {
+    verticalPadding,
+    hoirizontalPadding,
+    smScreenVerticalPadding,
+    smScreenhoirizontalPadding,
+  },
+  windowWidth: number
+): { vPadding: number; hPadding: number } =>
+  windowWidth > 576
+    ? { vPadding: verticalPadding, hPadding: hoirizontalPadding }
+    : {
+        vPadding: smScreenVerticalPadding,
+        hPadding: smScreenhoirizontalPadding,
+      }
