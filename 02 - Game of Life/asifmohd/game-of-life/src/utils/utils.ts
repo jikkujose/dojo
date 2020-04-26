@@ -5,10 +5,19 @@ export const getCurrentGridDim = (grid: number[][]) => [
   grid.length,
   grid[0].length,
 ]
-export const getWindowWidth = () =>
-  window.innerWidth ||
-  document.documentElement.clientWidth ||
-  document.body.clientWidth
+
+export const getWindowSize = () => {
+  return {
+    windowWidth:
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth,
+    windowHeight:
+      window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight,
+  }
+}
 
 export const getPadding = (
   {
@@ -17,7 +26,7 @@ export const getPadding = (
     smScreenVerticalPadding,
     smScreenhoirizontalPadding,
   },
-  windowWidth: number
+  { windowWidth, windowHeight }
 ): { vPadding: number; hPadding: number } =>
   windowWidth > 576
     ? { vPadding: verticalPadding, hPadding: hoirizontalPadding }
