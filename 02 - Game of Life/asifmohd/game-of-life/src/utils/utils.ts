@@ -25,3 +25,12 @@ export const getPadding = (
         vPadding: smScreenVerticalPadding,
         hPadding: smScreenhoirizontalPadding,
       }
+
+export const isMobileDevice = () =>
+  typeof window.orientation !== "undefined" ||
+  navigator.userAgent.indexOf("IEMobile") !== -1
+
+export const setContainerHeight = () => {
+  let vh = window.innerHeight * 0.01
+  document.documentElement.style.setProperty("--vh", `${vh}px`)
+}
