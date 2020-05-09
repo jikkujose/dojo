@@ -2,6 +2,12 @@
 
 Collaborative coding challenges for fun & profit
 
+## Current Challenge: May 09 2020
+
+03 - Mandelbrot Set
+
+Deadline: 1800 IST, May 11 2020
+
 ## Instructions
 
 1. Fork project
