@@ -7,6 +7,7 @@ Collaborative coding challenges for fun & profit
 1. Fork project
 2. Create a directory in the challenge directory with your `username`
 3. Code the solution of the challenge in your directory
+4. Tag the commit with versions (`v1`, `v2` etc) based on hitting each stage
 4. Issue PR when ready
 
 ## Leader Board
@@ -15,13 +16,14 @@ Collaborative coding challenges for fun & profit
 | -------------           | ---------------------- |
 | [`@amalshehu`][as]      | `1`[`1`][1-02]         |
 | `asifmohd`              | `1`[`1`][2-02]         |
-| `adarsh`                | `1`[`1`][3-02]         |
+| [`@adarsh`][ac]         | `1`[`1`][3-02]         |
 | [`@jikkujose`][jj]      | `0`[`0`][4-02]         |
 | [`@rakeshbs`][rbs]      | `0`[`1`][5-02]         |
 | `jibinmathew`           | `00`                   |
 | [`@nikhilmohan`][cavoo] | `0`[`0`][7-02]         |
 | [`@jeswinsimon`][js]    | `0`[`0`][8-02]         |
 
+[ac]: https://github.com/adarsh-why
 [as]: http://github.com/amalshehu
 [jj]: http://github.com/jikkujose
 [js]: http://github.com/jeswinsimon
