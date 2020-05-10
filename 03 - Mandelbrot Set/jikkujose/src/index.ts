@@ -1,5 +1,7 @@
 import p5 from "p5"
 import { config } from "./config"
+import { willConverge } from "./mandlebrot"
+import { coordinateTranslator } from "./utils"
 
 const sketch = s => {
   s.setup = () => {
@@ -11,8 +13,23 @@ const sketch = s => {
   s.draw = () => {
     console.log("draw")
 
-    s.fill(10)
-    s.rect(10, 10, 20, 20)
+    drawPoints()
+  }
+
+  const drawPoints = () => {
+    for (let i = 0; i < config.width; i++) {
+      for (let j = 0; j < config.height; j++) {
+        drawPoint(i, j)
+      }
+    }
+  }
+
+  const drawPoint = (x: number, y: number) => {
+    let c = coordinateTranslator(x, y)
+
+    if (willConverge(c)) {
+      s.point(x, y)
+    }
   }
 }
 

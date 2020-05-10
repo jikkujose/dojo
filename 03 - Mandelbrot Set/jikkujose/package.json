@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "start": "parcel ./src/index.html"
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
