@@ -25,7 +25,7 @@ Deadline: 1800 IST, May 11 2020
 | [`@adarsh`][ac]         | `1`[`1`][3-02]         |
 | [`@jikkujose`][jj]      | `0`[`0`][4-02]         |
 | [`@rakeshbs`][rbs]      | `0`[`1`][5-02]         |
-| [`jibinmathew`][jm]     | `00`                   |
+| [`@jibinmathew`][jm]    | `00`                   |
 | [`@nikhilmohan`][cavoo] | `0`[`0`][7-02]         |
 | [`@jeswinsimon`][js]    | `0`[`0`][8-02]         |
 
