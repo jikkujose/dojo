@@ -14,6 +14,13 @@ const sketch = s => {
     console.log("draw")
 
     drawPoints()
+    s.stroke(255, 0, 0)
+    s.strokeWeight(10)
+    drawPoint(config.width / 2, config.height / 2)
+    console.log(
+      "center: ",
+      coordinateTranslator(config.width / 2, config.height / 2)
+    )
   }
 
   const drawPoints = () => {
