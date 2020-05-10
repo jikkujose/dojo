@@ -13,8 +13,40 @@ const sketch = s => {
   s.draw = () => {
     console.log("draw")
 
-    drawInLayers(25)
+    let n = 50
+    let scaleFactor = 3
+    let shiftX = 0.51
+    let shiftY = 0.3
+
+    drawTileInLayers(n, scaleFactor, shiftX, shiftY)
+    // drawTile(0, 0, config.width, config.height, n, scaleFactor, shiftX, shiftY)
+    // drawInLayers(5)
     // drawGraph()
+  }
+
+  s.mouseClicked = () => {
+    console.log(s.mouseX, s.mouseY, coordinateTranslator(s.mouseX, s.mouseY))
+  }
+
+  const drawTileInLayers = (
+    l: number,
+    scaleFactor: number = 1,
+    shiftX: number = 0,
+    shiftY: number = 0
+  ) => {
+    let k = l
+    for (let i = 0; i < k; i++) {
+      drawTile(
+        0,
+        0,
+        config.width,
+        config.height,
+        Math.floor(l / k) * i + 1,
+        scaleFactor,
+        shiftX,
+        shiftY
+      )
+    }
   }
 
   const drawPoints = (n: number) => {
@@ -31,8 +63,40 @@ const sketch = s => {
     }
   }
 
-  const drawPoint = (x: number, y: number, n) => {
-    let c = coordinateTranslator(x, y)
+  const drawTiles = (n: number, tileSize: number = 10) => {
+    for (let i = 0; i < config.width / tileSize; i++) {
+      for (let j = 0; j < config.height / tileSize; j++) {
+        drawTile(i, j, (i + 1) * tileSize, (j + 1) * tileSize, n)
+      }
+    }
+  }
+
+  const drawTile = (
+    lX,
+    lY,
+    rX,
+    rY,
+    n,
+    scaleFactor: number = 1,
+    shiftX: number = 0,
+    shiftY: number = 0
+  ) => {
+    for (let i = lX; i < rX; i++) {
+      for (let j = lY; j < rY; j++) {
+        drawPoint(i, j, n, scaleFactor, shiftX, shiftY)
+      }
+    }
+  }
+
+  const drawPoint = (
+    x: number,
+    y: number,
+    n: number,
+    scaleFactor: number = 1,
+    shiftX: number = 0,
+    shiftY: number = 0
+  ) => {
+    let c = coordinateTranslator(x, y, scaleFactor, shiftX, shiftY)
 
     if (willConverge(c, n)) {
       s.stroke(10 * n)
