@@ -19,11 +19,12 @@ export const iterate = ([cX, cY], n) => {
 }
 
 export const willConverge = ([x, y], n = config.iterationCount) => {
-  const c = iterate([x, y], n)
+  const [cX, cY] = iterate([x, y], n)
+  const radiusSquare = cX * cX + cY * cY
 
-  if (c[0] > 2 || c[1] > 2) {
-    return false
-  } else {
+  if (radiusSquare < 4) {
     return true
+  } else {
+    return false
   }
 }

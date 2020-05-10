@@ -1,5 +1,5 @@
 export const config = {
   width: window.innerWidth,
   height: window.innerHeight,
-  iterationCount: 20,
+  iterationCount: 1,
 }
