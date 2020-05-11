@@ -80,7 +80,11 @@ const sketch = s => {
     let _y = (y / height) * multiplier + coordinateYStart
 
     const i = willConverge(_x, _y, n)
-    s.stroke((255 * i) / n)
+    const alpha = i / n
+    s.stroke(s.color(252, 191, 73, alpha))
+    let c1 = s.color(0, 0, 0)
+    let c2 = s.color(0, 166, 251)
+    s.stroke(s.lerpColor(c1, c2, alpha))
     s.point(x, y)
   }
 }
