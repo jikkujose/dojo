@@ -1,7 +1,6 @@
 import p5 from "p5"
 import { config } from "./config"
 import { willConverge } from "./mandlebrot"
-import { coordinateTranslator } from "./utils"
 
 const sketch = s => {
   s.setup = () => {
@@ -10,51 +9,17 @@ const sketch = s => {
     s.noLoop()
   }
 
+  const state = {
+    scaleFactor: 1,
+    shiftX: -3.5,
+    shiftY: -2,
+  }
+
   s.draw = () => {
     console.log("draw")
 
-    let n = 50
-    let scaleFactor = 3
-    let shiftX = 0.51
-    let shiftY = 0.3
-
-    drawTileInLayers(n, scaleFactor, shiftX, shiftY)
-    // drawTile(0, 0, config.width, config.height, n, scaleFactor, shiftX, shiftY)
-    // drawInLayers(5)
-    // drawGraph()
-  }
-
-  s.mouseClicked = () => {
-    console.log(s.mouseX, s.mouseY, coordinateTranslator(s.mouseX, s.mouseY))
-  }
-
-  const drawTileInLayers = (
-    l: number,
-    scaleFactor: number = 1,
-    shiftX: number = 0,
-    shiftY: number = 0
-  ) => {
-    let k = l
-    for (let i = 0; i < k; i++) {
-      drawTile(
-        0,
-        0,
-        config.width,
-        config.height,
-        Math.floor(l / k) * i + 1,
-        scaleFactor,
-        shiftX,
-        shiftY
-      )
-    }
-  }
-
-  const drawPoints = (n: number) => {
-    for (let i = 0; i < config.width; i++) {
-      for (let j = 0; j < config.height; j++) {
-        drawPoint(i, j, n)
-      }
-    }
+    drawPoints(32)
+    // drawInLayers(23)
   }
 
   const drawInLayers = (n: number) => {
@@ -63,54 +28,61 @@ const sketch = s => {
     }
   }
 
-  const drawTiles = (n: number, tileSize: number = 10) => {
-    for (let i = 0; i < config.width / tileSize; i++) {
-      for (let j = 0; j < config.height / tileSize; j++) {
-        drawTile(i, j, (i + 1) * tileSize, (j + 1) * tileSize, n)
+  const drawPoints = (n: number) => {
+    let width = config.width
+    let height = config.height
+
+    for (let i = 0; i < width; i++) {
+      for (let j = 0; j < height; j++) {
+        drawPoint(
+          i,
+          j,
+          width,
+          height,
+          state.scaleFactor,
+          `rgba(255, 255, 255, 0.8)`,
+          n,
+          state.shiftX,
+          state.shiftY
+        )
       }
     }
   }
 
-  const drawTile = (
-    lX,
-    lY,
-    rX,
-    rY,
-    n,
-    scaleFactor: number = 1,
-    shiftX: number = 0,
-    shiftY: number = 0
-  ) => {
-    for (let i = lX; i < rX; i++) {
-      for (let j = lY; j < rY; j++) {
-        drawPoint(i, j, n, scaleFactor, shiftX, shiftY)
-      }
-    }
+  s.mouseClicked = () => {
+    state.scaleFactor *= 1.5
+    let { shiftX, shiftY, scaleFactor } = state
+
+    let multiplier = 2 / scaleFactor
+    let _x = (s.mouseX / config.height) * multiplier + state.shiftX
+    let _y = (s.mouseY / config.height) * multiplier + state.shiftY
+
+    state.shiftX = _x
+    state.shiftY = _y
+
+    s.background(23)
+    s.redraw()
   }
 
   const drawPoint = (
     x: number,
     y: number,
-    n: number,
+    width: number = config.width,
+    height: number = config.height,
     scaleFactor: number = 1,
-    shiftX: number = 0,
-    shiftY: number = 0
+    color: string = "rgba(255, 255, 255)",
+    n: number = 20,
+    coordinateXStart: number = config.coordinateXStart,
+    coordinateYStart: number = config.coordinateYStart
   ) => {
-    let c = coordinateTranslator(x, y, scaleFactor, shiftX, shiftY)
+    let multiplier = 4 / scaleFactor
+    let _x = (x / height) * multiplier + coordinateXStart
+    let _y = (y / height) * multiplier + coordinateYStart
 
-    if (willConverge(c, n)) {
-      s.stroke(10 * n)
+    if (willConverge([_x, _y], n)) {
+      s.stroke(color)
       s.point(x, y)
     }
-  }
-
-  const drawGraph = () => {
-    s.stroke("rgba(255, 0, 0, 0.4)")
-    s.line(0, config.height / 2, config.width, config.height / 2)
-    s.line(config.width / 2, 0, config.width / 2, config.height)
-    s.stroke("rgba(255, 0, 0, 0.4)")
-    s.strokeWeight(4)
-    s.point(config.width / 2, config.height / 2)
   }
 }
 
