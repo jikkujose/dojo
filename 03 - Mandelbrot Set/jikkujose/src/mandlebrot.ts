@@ -7,15 +7,16 @@ export const willConverge = (
 ) => {
   let x = 0,
     y = 0,
-    radiusSquare = 0
+    absoluteValue = 0
 
   for (let i = 0; i < n; i++) {
-    x = x * x - y * y + cX
+    let _x = x * x - y * y + cX
     y = 2 * x * y + cY
 
-    radiusSquare = x * x + y * y
+    absoluteValue = _x * _x + y * y
+    x = _x
 
-    if (radiusSquare > 4) return i
+    if (absoluteValue > 4) return i
   }
 
   return n
