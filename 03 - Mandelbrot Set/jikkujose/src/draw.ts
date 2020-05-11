@@ -18,12 +18,12 @@ const sketch = s => {
   s.draw = () => {
     console.log("draw")
 
-    drawPoints(32)
+    drawPoints(23)
     // drawInLayers(23)
   }
 
   const drawInLayers = (n: number) => {
-    for (let i = 0; i < n; i++) {
+    for (let i = 1; i < n; i++) {
       drawPoints(i)
     }
   }
@@ -80,7 +80,7 @@ const sketch = s => {
     let _y = (y / height) * multiplier + coordinateYStart
 
     const i = willConverge(_x, _y, n)
-    s.stroke(i)
+    s.stroke((i / 23) * 255)
     s.point(x, y)
   }
 }
