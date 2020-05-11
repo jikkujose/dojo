@@ -79,10 +79,9 @@ const sketch = s => {
     let _x = (x / height) * multiplier + coordinateXStart
     let _y = (y / height) * multiplier + coordinateYStart
 
-    if (willConverge([_x, _y], n)) {
-      s.stroke(color)
-      s.point(x, y)
-    }
+    const i = willConverge(_x, _y, n)
+    s.stroke(i)
+    s.point(x, y)
   }
 }
 
